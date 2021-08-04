@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="mx-auto mt-5">
+    <h2>新規団体登録</h2>
+    <%= form_with model: @orchestra, url: orchestra_registration_path, local: true do |f| %>
+      <%= render "members/shared/error_messages", resource: resource %>
+      <table>
+        <tr>
+          <td>団体名</td>
+          <td><%= f.text_field :name, autofocus: true %></td>
+        </tr>
+        <tr>
+          <td>アドレス</td>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email", size: 40 %></td>
+        </tr>
+        <tr>
+          <td>パスワード(6文字以上)</td>
+          <td><%= f.password_field :password, autocomplete: "new-password" %></td>
+        </tr>
+        <tr>
+          <td>パスワード(確認用)</td>
+          <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><%= f.submit "新規登録" , class: "btn btn-success"%></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>ご登録済みの方は<%= link_to "こちら", new_member_session_path %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>団体登録の方は<%= link_to "こちら", new_orchestra_registration_path %></td>
+        </tr>
+      </table>
+    <% end %>
+    </div>
+  </div>
+</div>
