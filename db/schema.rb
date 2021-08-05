@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2021_08_03_020934) do
   create_table "belongings", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "orchesta_id", null: false
+    t.integer "orchestra_id", null: false
     t.integer "member_id", null: false
     t.boolean "part_top", default: false, null: false
     t.integer "belonging_status", default: 0, null: false

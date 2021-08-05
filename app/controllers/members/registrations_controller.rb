@@ -4,10 +4,11 @@ class Members::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
-  # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  #sign_up画面にインスタンス変数を使用する
+  def new
+    @instruments = Instrument.all
+    super
+  end
 
   # POST /resource
   # def create
@@ -38,7 +39,7 @@ class Members::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -59,4 +60,10 @@ class Members::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  def sign_up_params
+    # ここに :age, :genderを追記
+    params.require(:member).permit(:family_name,:family_name_kana,:given_name, :given_name_kana,:instrument_id, :email, :password, :password_confirmation)
+  end
+
 end

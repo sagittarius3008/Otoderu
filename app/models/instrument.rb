@@ -1,5 +1,5 @@
 class Instrument < ApplicationRecord
-  has_many :member
+  has_many :members
   
   validates :name, presence: true
   

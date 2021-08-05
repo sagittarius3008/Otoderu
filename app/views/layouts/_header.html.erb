@@ -4,11 +4,11 @@
       <%= link_to image_tag("logo.png"), root_path, class: "mr-auto" %>
       <ul class="navbar-nav flex-row">
         <% if orchestra_signed_in? %>
-         <!--<li class="nav-item mr-2"><%#= link_to "登録楽器一覧", groups_orchestra_instruments_path, class: "btn btn-light" %></li>-->
-         <!--<li class="nav-item mr-2"><%#= link_to "一覧", groups_orchestras_path, class: "btn btn-light" %></li>-->
+         <li class="nav-item mr-2"><%= link_to "登録楽器一覧", orchestras_instruments_path, class: "btn btn-light" %></li>
+         <li class="nav-item mr-2"><%= link_to "練習登録", orchestras_practices_path, class: "btn btn-light" %></li>
          <li class="nav-item mr-2"><%= link_to "ログアウト", destroy_orchestra_session_path, class: "btn btn-light", method: :delete %></li>
         <% elsif member_signed_in? %>
-         <li class="nav-item mr-2"><%= link_to "マイページ", members_path, class: "btn btn-light" %></li>
+         <li class="nav-item mr-2"><%= link_to "マイページ", members_member_mypage_path, class: "btn btn-light" %></li>
          <li class="nav-item mr-2"><%= link_to "ログアウト", destroy_member_session_path, class: "btn btn-light", method: :delete %></li>
         <% else %>
          <li class="nav-item mr-2"><%= link_to "Otoderuとは", homes_about_path, class: "btn btn-dark" %></li>

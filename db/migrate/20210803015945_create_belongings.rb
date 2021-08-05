@@ -4,7 +4,7 @@ class CreateBelongings < ActiveRecord::Migration[5.2]
 
       t.timestamps
       
-      t.integer :orchesta_id, null: false
+      t.integer :orchestra_id, null: false
       t.integer :member_id, null: false
       t.boolean :part_top, null: false, default: false
       t.integer :belonging_status, null: false, default: 0
