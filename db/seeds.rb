@@ -43,9 +43,11 @@ end
     given_name_kana: "#{Gimei.first.katakana}",
     introduction: "団員#{n + 1}です。よろしくお願いします。",
     email: "member#{n + 1}@test.com",
-    password: "testtest"
+    password: "111111"
     )
 end
+
+
 
 # 作成中
 # Member.all.each do |member|

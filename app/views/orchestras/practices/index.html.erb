@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="mt-5 mx-auto d-flex">
+      <div class="col-5">
+        <h2>練習日登録</h2>
+          <%= form_with model:@practice, url: { controller: "practices", action: "create" }, method: :post, local:true do |f| %>
+            <table>
+              <tbody>
+                <tr>
+                  <td><%= f.label "日付",class: 'm-2' %></td>
+                  <td><%= f.date_field :schedule, class: 'form-control　col-3 m-2' %></td>
+                </tr>
+                <tr>
+                  <td><%= f.label "時間",class: 'm-2' %></td>
+                  <td>
+                    <%= f.time_select :start_time, {prompt:'--'}, class: 'form-control　col-3 m-2' %>-
+                    <%= f.time_select :end_time, {prompt:'--'}, class: 'form-control　col-3 m-2' %>
+                  </td>
+                </tr>
+                <tr>
+                  <td><%= f.label "練習場所",class: 'm-2' %></td>
+                  <td><%= f.text_field :place, class: 'form-control　col-3 m-2' %></td>
+                </tr>
+                <tr>
+                  <td><%= f.label "譜面台",class: 'm-2' %></td>
+                  <td>要<%= f.radio_button :stand, false, class: 'form-control　col-3 m-2' %>不要<%= f.radio_button :stand, true, class: 'form-control　col-3 m-2' %></td>
+                </tr>
+                <tr>
+                  <td><%= f.label "備考",class: 'm-2' %></td>
+                  <td><%= f.text_area :note, class: 'form-control　col-3 m-2' %></td>
+                </tr>
+                <tr>
+                  <td><%= f.submit "登録", class: 'btn btn-success m-2' %></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          <% end %>
+      </div>
+      <div>
+        <h2>練習一覧</h2>
+        <%= render 'practice_index', practice_index: @practice_index %>
+      </div>
+    </div>
+  </div>
+</div>

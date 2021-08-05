@@ -62,7 +62,6 @@ class Members::RegistrationsController < Devise::RegistrationsController
   # end
 
   def sign_up_params
-    # ここに :age, :genderを追記
     params.require(:member).permit(:family_name,:family_name_kana,:given_name, :given_name_kana,:instrument_id, :email, :password, :password_confirmation)
   end
 

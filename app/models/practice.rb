@@ -8,5 +8,6 @@ class Practice < ApplicationRecord
     validates :end_time
     validates :place
   end
+  validates :stand, inclusion: [true, false]
 
 end

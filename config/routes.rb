@@ -17,9 +17,11 @@ Rails.application.routes.draw do
 
   namespace :members do
     get 'member/mypage' => 'members#mypage'
+    get 'member/attendance_edit' => 'members#attendance_edit'
     resources :members, only:[:edit, :show, :update, :destroy]
     resources :attendances, only:[:index, :show]
     resources :orchestras, only:[:index, :create]
+    resources :practices, only:[:index, :show]
   end
 
   namespace :orchestras do
