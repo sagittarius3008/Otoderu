@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="mt-5 mx-auto col-8">
+      <h2>マイページ</h2>
+      <div class="d-flex">
+        <%= link_to "出欠確認", members_member_path(@member), class:"btn" %>
+        <%= link_to "プロフィール編集", edit_members_member_path(@member), class:"btn" %>
+      </div>
+      直近の練習予定は*/*日　オーケストラです。
+      <% @orchestras.each do |orchestra| %>
+        <div><%= orchestra.name %></div>
+      <% end %>
+      <%= link_to "入団", members_orchestras_path, class:"btn" %>
+    </div>
+  </div>
+</div>

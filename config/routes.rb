@@ -15,14 +15,17 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get 'homes/about' => 'homes#about'
 
-    resources :members
-    resources :attendances
-    resources :belongings
+  namespace :members do
+    get 'member/mypage' => 'members#mypage'
+    resources :members, only:[:edit, :show, :update, :destroy]
+    resources :attendances, only:[:index, :show]
+    resources :orchestras, only:[:index, :create]
+  end
 
-  namespace :groups do
-    resources :orchestras do
-      resources :instruments, only:[:create, :index, :update]
-    end
+  namespace :orchestras do
+    resources :orchestras
+    resources :instruments, only:[:create, :index, :update]
+    resources :practices, only:[:index, :create, :update, :destroy]
   end
 
 end

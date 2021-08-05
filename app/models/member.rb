@@ -4,8 +4,8 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
-  has_many :attendance
-  has_many :belonging
+  has_many :attendances
+  has_many :belongings
   belongs_to :instrument
   
   with_options presence: true do

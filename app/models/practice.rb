@@ -1,12 +1,12 @@
 class Practice < ApplicationRecord
-  has_many :attendance
+  has_many :attendances
   belongs_to :orchestra
-  
+
   with_options presence: true do
     validates :schedule
     validates :start_time
     validates :end_time
     validates :place
   end
-  
+
 end

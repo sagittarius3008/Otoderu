@@ -4,8 +4,8 @@ class Orchestra < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
-  has_many :belonging
-  has_many :practice
+  has_many :belongings
+  has_many :practices
   
   with_options presence: true do
     validates :name
