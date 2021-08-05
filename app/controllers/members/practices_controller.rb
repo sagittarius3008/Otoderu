@@ -5,7 +5,6 @@ class Members::PracticesController < ApplicationController
   end
 
   def show
-
   end
 
 end

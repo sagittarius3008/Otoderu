@@ -8,8 +8,6 @@
       </div>
       直近の練習予定は*/*日　オーケストラです。
       <% @member.belongings.each do |belonging| %>
-      <%# byebug %>
-      <!--belonging.orchestra.nameで取得可能なのにorchestraがundifined-->
         <div><%= link_to belonging.orchestra.name, members_member_attendance_edit_path(belonging.orchestra), class:"btn" %></div>
       <% end %>
       <%= link_to "入団", members_orchestras_path, class:"btn" %>

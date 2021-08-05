@@ -2,7 +2,6 @@ class Members::MembersController < ApplicationController
 
   def mypage
     @member = Member.find(current_member.id)
-    # @orchestras = Orchestra.all
   end
 
   def show
