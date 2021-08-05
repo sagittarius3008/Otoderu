@@ -11,9 +11,9 @@
 
 ### テーマを選んだ理由
 
-オーケストラでは出席者により練習する曲、順番を決めるため出欠の把握が重要である。  
-しかし、多くの団体では出欠連絡を促すという、個人の責任感に任せた管理となっている。  
-今回、スラック bot と連携した、出欠連絡の仕組みを改善することで出欠連絡率を高める方法を提案する。  
+オーケストラでは出席者により練習する曲、順番を決めるため出欠の把握が重要である。
+しかし、多くの団体では出欠連絡を促すという、個人の責任感に任せた管理となっている。
+今回、スラック bot と連携した、出欠連絡の仕組みを改善することで出欠連絡率を高める方法を提案する。
 尚、最近ではコロナ影響によりイス、譜面台の使用も個数制限を課せられることもあり、従来より確実な人数把握が求められている。
 
 ### ターゲットユーザ
@@ -22,9 +22,9 @@
 
 ## 設計書
 
-- ER 図  
-  ![ER図](https://user-images.githubusercontent.com/83518855/127965124-5fcb47a8-859f-47e4-b60a-01d609b32812.png)
-- URL  
+- ER 図
+  ![ER図](https://user-images.githubusercontent.com/83518855/128344752-554fe694-86f1-4b90-83cb-e5cccc266cd2.png)
+- URL
   完成後記載
 - [テーブル定義書](https://docs.google.com/spreadsheets/d/1a9zYIdhUhD_8Z63i26BLWO315mVppMZ7koWDFI5wkVA/edit?usp=sharing)
 - [アプリケーション詳細設計:要修正](https://docs.google.com/spreadsheets/d/1lXLAcZVtGDKtB71RUtqQRwT3cMNWfw1PctalsSpCccA/edit?usp=sharing)
