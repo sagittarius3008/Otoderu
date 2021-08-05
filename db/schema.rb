@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 2021_08_03_020934) do
     t.integer "member_id", null: false
     t.integer "practice_id", null: false
     t.integer "attendance_status", default: 0, null: false
-    t.boolean "stand", default: false, null: false
     t.string "note"
   end
 
@@ -72,13 +71,13 @@ ActiveRecord::Schema.define(version: 2021_08_03_020934) do
   create_table "practices", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "attendance_id", null: false
     t.integer "orchestra_id", null: false
     t.date "schedule", null: false
     t.time "start_time", null: false
     t.time "end_time", null: false
     t.string "place", null: false
     t.text "note", null: false
+    t.boolean "stand", default: false, null: false
   end
 
 end

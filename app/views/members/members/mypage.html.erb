@@ -7,8 +7,8 @@
         <%= link_to "プロフィール編集", edit_members_member_path(@member), class:"btn" %>
       </div>
       直近の練習予定は*/*日　オーケストラです。
-      <% @orchestras.each do |orchestra| %>
-        <div><%= orchestra.name %></div>
+      <% @member.belongings.each do |belonging| %>
+        <div><%= link_to belonging.orchestra.name, members_member_attendance_edit_path(belonging.orchestra), class:"btn" %></div>
       <% end %>
       <%= link_to "入団", members_orchestras_path, class:"btn" %>
     </div>

@@ -2,9 +2,6 @@ class Members::MembersController < ApplicationController
 
   def mypage
     @member = Member.find(current_member.id)
-
-    @belongings = Belonging.where(member_id: current_member.id)
-    @orchestras = Orchestra.all
   end
 
   def show
@@ -15,6 +12,9 @@ class Members::MembersController < ApplicationController
   end
 
   def update
+  end
+
+  def attendance_edit
   end
 
 end
