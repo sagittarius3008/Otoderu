@@ -21,6 +21,7 @@ class Members::MembersController < ApplicationController
   end
 
   def attendance_edit
+    @orchestra = Orchestra.find(params[:id])
   end
 
   private

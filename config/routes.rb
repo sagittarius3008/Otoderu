@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   namespace :members do
     get 'member/mypage' => 'members#mypage'
-    get 'member/attendance_edit' => 'members#attendance_edit'
+    get 'member/attendance_edit/:id' => 'members#attendance_edit'
     resources :members, only:[:edit, :show, :update, :destroy]
     resources :attendances, only:[:index, :show]
     resources :orchestras, only:[:index, :create]
@@ -25,9 +25,9 @@ Rails.application.routes.draw do
   end
 
   namespace :orchestras do
-    resources :orchestras
+    resources :members, only:[:index, :update]
     resources :instruments, only:[:create, :index, :update]
-    resources :practices, only:[:index, :create, :update, :destroy]
+    resources :practices, only:[:index, :create, :show, :update, :destroy]
   end
 
 end

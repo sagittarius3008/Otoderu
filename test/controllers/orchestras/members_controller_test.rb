@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Orchestras::OrchestrasControllerTest < ActionDispatch::IntegrationTest
+class Orchestras::MembersControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

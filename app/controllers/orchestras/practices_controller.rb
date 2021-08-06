@@ -5,6 +5,10 @@ class Orchestras::PracticesController < ApplicationController
     @practice_index = Practice.where(orchestra_id: current_orchestra.id).order(schedule: :asc)
   end
 
+  def show
+    @practice = Practice.find(params[:id])
+  end
+
   def create
     # 時間データを"2000-01-01 00:00:00"の形に加工
     f_params = practice_params

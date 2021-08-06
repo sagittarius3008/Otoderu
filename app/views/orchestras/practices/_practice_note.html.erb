@@ -1,0 +1,20 @@
+<table class="container">
+    <tbody>
+      <tr>
+        <td>時間</td>
+        <td><%= l practice.start_time, format: :short %>-<%= l practice.end_time, format: :short %></td>
+      </tr>
+      <tr>
+        <td>場所</td>
+        <td><%= practice.place %></td>
+      </tr>
+      <tr>
+        <td>譜面台</td>
+        <td><%= practice.stand? ? "不要" : "要" %></td>
+      </tr>
+      <tr>
+        <td>備考</td>
+        <td><%= practice.note %></td>
+      </tr>
+    </tbody>
+  </table>

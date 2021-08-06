@@ -5,6 +5,7 @@ class Members::PracticesController < ApplicationController
   end
 
   def show
+    @practice = Practice.find(params[:id])
   end
 
 end
