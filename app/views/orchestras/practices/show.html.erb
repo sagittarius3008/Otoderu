@@ -2,7 +2,7 @@
   <div class="row">
     <div class="mt-5 mx-auto col-8">
       <h2><%= "#{@practice.schedule}の練習詳細" %></h2>
-      <%= render 'practice_note', practice: @practice %>
+      <%= render 'practice_note', practice: @practice, attendances: @attendances %>
     </div>
   </div>
 </div>

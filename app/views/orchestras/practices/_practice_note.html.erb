@@ -1,20 +1,44 @@
-<table class="container">
-    <tbody>
-      <tr>
-        <td>時間</td>
-        <td><%= l practice.start_time, format: :short %>-<%= l practice.end_time, format: :short %></td>
-      </tr>
-      <tr>
-        <td>場所</td>
-        <td><%= practice.place %></td>
-      </tr>
-      <tr>
-        <td>譜面台</td>
-        <td><%= practice.stand? ? "不要" : "要" %></td>
-      </tr>
-      <tr>
-        <td>備考</td>
-        <td><%= practice.note %></td>
-      </tr>
-    </tbody>
-  </table>
+<div class="container">
+  <div class="row">
+    <div class="mt-5 mx-auto col-9">
+      <table class="container">
+          <tbody>
+            <tr>
+              <td>時間</td>
+              <td><%= l practice.start_time, format: :short %>-<%= l practice.end_time, format: :short %></td>
+            </tr>
+            <tr>
+              <td>場所</td>
+              <td><%= practice.place %></td>
+            </tr>
+            <tr>
+              <td>譜面台</td>
+              <td><%= practice.stand? ? "不要" : "要" %></td>
+            </tr>
+            <tr>
+              <td>備考</td>
+              <td><%= practice.note %></td>
+            </tr>
+          </tbody>
+        </table>
+        <table border="2" class="table practice_index">
+        <thead>
+          <tr>
+            <th>名前</th>
+            <th>出欠</th>
+            <th>備考</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% attendances.each do |attendance| %>
+            <tr>
+              <td><%= "#{attendance.member.family_name}#{attendance.member.given_name}" %></td>
+              <td><%= attendance.attendance_status %></td>
+              <td><%= attendance.note %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      </div>
+  </div>
+</div>

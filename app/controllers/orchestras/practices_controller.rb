@@ -7,6 +7,7 @@ class Orchestras::PracticesController < ApplicationController
 
   def show
     @practice = Practice.find(params[:id])
+    @attendances = Attendance.where(practice_id: params[:id])
   end
 
   def create
