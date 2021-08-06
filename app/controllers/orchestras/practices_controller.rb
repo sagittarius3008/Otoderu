@@ -21,6 +21,8 @@ class Orchestras::PracticesController < ApplicationController
     )
     if practice.save
       # 所属する全てのmemberに対して、出欠データを作成する。
+      # 後から入団したmemberにはデータが作られていない（要修正）
+      # seedファイル参照？
       members = current_orchestra.belongings.map{|belonging| belonging.member }
       members.each do |member|
         attendance = Attendance.new(practice_id: practice.id)
