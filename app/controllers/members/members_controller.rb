@@ -1,5 +1,9 @@
 class Members::MembersController < ApplicationController
 
+  def show
+    @member = Member.find(params[:id])
+  end
+
   def mypage
     @member = Member.find(current_member.id)
   end

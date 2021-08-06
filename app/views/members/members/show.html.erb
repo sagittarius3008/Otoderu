@@ -1,1 +1,8 @@
-その人の予定一覧を作成
+members_member_path(member)
+<div class="container">
+  <div class="row">
+    <div class="mt-5 mx-auto col-8">
+      <%= render 'members/attendances/my_schedule', member: @member %>
+    </div>
+  </div>
+</div>

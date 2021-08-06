@@ -23,7 +23,7 @@
 ## 設計書
 
 - ER 図
-  ![ER図](https://user-images.githubusercontent.com/83518855/128344752-554fe694-86f1-4b90-83cb-e5cccc266cd2.png)
+  ![ER図](https://user-images.githubusercontent.com/83518855/128526115-24d3d44a-3324-4e72-99c6-84ce346b5047.png)
 - URL
   完成後記載
 - [テーブル定義書](https://docs.google.com/spreadsheets/d/1a9zYIdhUhD_8Z63i26BLWO315mVppMZ7koWDFI5wkVA/edit?usp=sharing)
