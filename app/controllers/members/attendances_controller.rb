@@ -7,5 +7,9 @@ class Members::AttendancesController < ApplicationController
   def show
     @orchestra = Orchestra.find(params[:id])
   end
+  
+  def edit
+    
+  end
 
 end

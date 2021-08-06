@@ -49,30 +49,28 @@ end
 
 # 各団員がランダムに団体に所属する。
 Member.all.each do |member|
-  # rand(1..4).times do
-    orchestras = Orchestra.all.sample(rand(3..5))
-    orchestras.each do |orchestra|
-      Belonging.create(
-        orchestra_id: orchestra.id,
-        member_id: member.id
-      )
-      from = Time.parse("2021/08/01")
-      to = Time.parse("2022/01/01")
-      date = Random.rand(from..to)
-      new_practice = Practice.create(
-        orchestra_id: orchestra.id,
-        schedule: date,
-        start_time: Time.now,
-        end_time: Time.now,
-        place: "#{orchestra.name}#{date}",
-        note: "前中メイン#{orchestra.id}"
-      )
-      orchestra.belongings.each do |our_belonging|
-        Attendance.create(
-          practice_id: new_practice.id,
-          member_id: our_belonging.member.id
-        )
-      end
-    end
-  # end
+  orchestras = Orchestra.all.sample(rand(3..5))
+  orchestras.each do |orchestra|
+    Belonging.create(
+      orchestra_id: orchestra.id,
+      member_id: member.id
+    )
+    # from = Time.parse("2021/08/01")
+    # to = Time.parse("2022/01/01")
+    # date = Random.rand(from..to)
+    # new_practice = Practice.create(
+    #   orchestra_id: orchestra.id,
+    #   schedule: date,
+    #   start_time: Time.now,
+    #   end_time: Time.now,
+    #   place: "#{orchestra.name}",
+    #   note: "前中メイン#{orchestra.id}"
+    # )
+    # orchestra.belongings.each do |our_belonging|
+    #   Attendance.create(
+    #     practice_id: new_practice.id,
+    #     member_id: our_belonging.member.id
+    #   )
+    # end
+  end
 end

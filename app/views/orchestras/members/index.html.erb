@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="mt-5 mx-auto col-8">
+      <h2><%= "#{current_orchestra.name}の団員一覧" %></h2>
+      <table border="2" class="table practice_index">
+        <thead>
+          <tr>
+            <th>楽器</th>
+            <th>トップ</th>
+            <th>名前</th>
+            <th>カナ</th>
+            <th>自己紹介</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @belongings.each do |belonging| %>
+            <tr>
+              <td><%= belonging.member.instrument.name %></td>
+              <td><%= belonging.part_top? ? "〇" : "" %></td>
+              <td><%= "#{belonging.member.family_name} #{belonging.member.given_name}" %></td>
+              <td><%= "#{belonging.member.family_name_kana} #{belonging.member.given_name_kana}" %></td>
+              <td><%= belonging.member.introduction %></td>
+              <td><%= link_to "パートトップ変更", orchestras_member_path(belonging), method: :patch, class:"btn btn-success" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
