@@ -14,18 +14,18 @@ Instrument.create(
     {name: 'Va'},
     {name: 'Vc'},
     {name: 'Cb'},
-    {name: 'Fl'},
-    {name: 'Cl'},
-    {name: 'Fg'},
-    {name: 'Hr'},
-    {name: 'Tp'},
-    {name: 'Tb'},
-    {name: 'Tu'},
-    {name: 'Perc'}
+    # {name: 'Fl'},
+    # {name: 'Cl'},
+    # {name: 'Fg'},
+    # {name: 'Hr'},
+    # {name: 'Tp'},
+    # {name: 'Tb'},
+    # {name: 'Tu'},
+    # {name: 'Perc'}
   ]
 )
 
-5.times do |n|
+4.times do |n|
   Orchestra.create(
     name: "サンプルオーケストラ#{n + 1}",
     email: "orchestra#{n + 1}@test.com",
@@ -34,7 +34,7 @@ Instrument.create(
     )
 end
 
-9.times do |n|
+5.times do |n|
   Member.create(
     instrument_id: rand(1..13),
     family_name: "#{Gimei.last.kanji}",
@@ -47,33 +47,32 @@ end
     )
 end
 
-
-
-# 作成中
-# Member.all.each do |member|
-#   rand(0..3).times do
-#     orchestras = Orchestra.all.sample(rand(1..5))
-#     belongings = []
-#     orachestras.each do |orachestra|
-#       belonging = Belonging.new(
-#         orchesta_id: orachestra.id,
-#         part_top: rand(0..1),
-#         belonging_status: 0
-#       )
-#     end
-
-#     order = Order.create!(
-#       customer_id: customer.id,
-#       price: order_price,
-#       payment_method: rand(0..1),
-#       name: customer.last_name + customer.first_name,
-#       address: customer.address,
-#       postal_code: customer.postal_code
-#     )
-
-#     order_items.each do |order_item|
-#       order_item.order_id = order.id
-#       order_item.save
-#     end
-#   end
-# end
+# 各団員がランダムに団体に所属する。
+Member.all.each do |member|
+  # rand(1..4).times do
+    orchestras = Orchestra.all.sample(rand(3..5))
+    orchestras.each do |orchestra|
+      Belonging.create(
+        orchestra_id: orchestra.id,
+        member_id: member.id
+      )
+      from = Time.parse("2021/08/01")
+      to = Time.parse("2022/01/01")
+      date = Random.rand(from..to)
+      new_practice = Practice.create(
+        orchestra_id: orchestra.id,
+        schedule: date,
+        start_time: Time.now,
+        end_time: Time.now,
+        place: "#{orchestra.name}#{date}",
+        note: "前中メイン#{orchestra.id}"
+      )
+      orchestra.belongings.each do |our_belonging|
+        Attendance.create(
+          practice_id: new_practice.id,
+          member_id: our_belonging.member.id
+        )
+      end
+    end
+  # end
+end
