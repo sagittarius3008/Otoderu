@@ -1,4 +1,3 @@
-団の練習一覧
 <div class="container">
   <div class="row">
     <div class="mt-5 mx-auto col-8">
@@ -19,7 +18,7 @@
         <tbody>
           <% @orchestra.practices.each do |practice| %>
             <tr>
-              <td><%= practice.schedule %></td>
+              <td><%= link_to practice.schedule, members_practice_path(practice) %></td>
               <td><%= l practice.start_time, format: :short %>-<%= l practice.end_time, format: :short %></td>
               <td><%= practice.place %></td>
               <td><%= practice.orchestra.name %></td>

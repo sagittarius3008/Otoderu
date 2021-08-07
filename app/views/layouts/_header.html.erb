@@ -9,8 +9,9 @@
           <li class="nav-item mr-2"><%= link_to "登録楽器一覧", orchestras_instruments_path, class: "btn btn-light" %></li>
           <li class="nav-item mr-2"><%= link_to "ログアウト", destroy_orchestra_session_path, class: "btn btn-light", method: :delete %></li>
         <% elsif member_signed_in? %>
-          <li class="nav-item mr-2"><%= link_to "入団申請", members_orchestras_path, class: "btn btn-light" %></li>
+          <li class="nav-item mr-2"><%= link_to "出欠入力", members_attendances_path, class: "btn btn-light" %></li>
           <li class="nav-item mr-2"><%= link_to "マイページ", members_member_mypage_path, class: "btn btn-light" %></li>
+          <li class="nav-item mr-2"><%= link_to "入団申請", members_orchestras_path, class: "btn btn-light" %></li>
           <li class="nav-item mr-2"><%= link_to "ログアウト", destroy_member_session_path, class: "btn btn-light", method: :delete %></li>
         <% else %>
           <li class="nav-item mr-2"><%= link_to "Otoderuとは", homes_about_path, class: "btn btn-dark" %></li>

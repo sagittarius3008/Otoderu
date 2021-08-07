@@ -1,4 +1,5 @@
 class Members::MembersController < ApplicationController
+# before_action : require'date'
 
   def show
     @member = Member.find(params[:id])
@@ -6,6 +7,19 @@ class Members::MembersController < ApplicationController
 
   def mypage
     @member = Member.find(current_member.id)
+    # 自身の直近の練習情報を取得
+    my_attendances = Attendance.where(member_id: current_member.id)
+    @most_recent_date = my_attendances.first.practice.schedule
+    my_attendances.each do |my_attendance|
+      if (@most_recent_date - Date.today).abs > (my_attendance.practice.schedule - Date.today).abs && my_attendance.practice.schedule - Date.today >= 0
+        # if my_attendance.attendance_status == 0
+          @most_recent_practice = my_attendance.practice
+          @most_recent_date = my_attendance.practice.schedule
+          @most_recent_date_orchestra = my_attendance.practice.orchestra.name
+        # end
+
+      end
+    end
   end
 
   def edit

@@ -6,7 +6,7 @@
         <%= link_to "出欠確認", members_attendances_path, class:"btn" %>
         <%= link_to "プロフィール編集", edit_members_member_path(@member), class:"btn" %>
       </div>
-      直近の練習予定は*/*日　**オーケストラです。
+      直近の練習予定は<%= link_to "#{@most_recent_date} #{@most_recent_date_orchestra} ", members_practice_path(@most_recent_practice) %>です。
       <% @member.belongings.each do |belonging| %>
         <div><%= link_to belonging.orchestra.name, members_attendance_path(belonging.orchestra), class:"btn" %></div>
       <% end %>
