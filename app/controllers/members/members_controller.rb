@@ -1,5 +1,4 @@
 class Members::MembersController < ApplicationController
-# before_action : require'date'
 
   def show
     @member = Member.find(params[:id])
@@ -17,7 +16,6 @@ class Members::MembersController < ApplicationController
           @most_recent_date = my_attendance.practice.schedule
           @most_recent_date_orchestra = my_attendance.practice.orchestra.name
         # end
-
       end
     end
   end

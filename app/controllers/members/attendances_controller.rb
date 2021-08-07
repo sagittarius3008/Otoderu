@@ -6,6 +6,7 @@ class Members::AttendancesController < ApplicationController
 
   def show
     @orchestra = Orchestra.find(params[:id])
+    @members = @orchestra.members
   end
 
   def update
@@ -14,10 +15,11 @@ class Members::AttendancesController < ApplicationController
     attendance.note = params[:attendance][:note]
     if attendance.save
       flash[:notice] = "情報が更新できました。"
-      redirect_to request.referer
+      @member = Member.find_by(id: current_member.id)
+
     else
       flash[:notice] = "更新に失敗しました。"
-      redirect_to request.referer
+
     end
   end
 

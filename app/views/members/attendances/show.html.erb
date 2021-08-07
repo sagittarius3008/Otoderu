@@ -16,16 +16,20 @@
           </tr>
         </thead>
         <tbody>
-          <% @orchestra.practices.each do |practice| %>
+          <% @members.each do |member| %>
             <tr>
-              <td><%= link_to practice.schedule, members_practice_path(practice) %></td>
-              <td><%= l practice.start_time, format: :short %>-<%= l practice.end_time, format: :short %></td>
-              <td><%= practice.place %></td>
-              <td><%= practice.orchestra.name %></td>
-              <td><%= practice.stand? ? "不要" : "要" %></td>
-              <td><%= practice.attendances.find_by(member_id: current_member.id).attendance_status %></td>
-              <td><%= practice.note.truncate(20, omission: '・・・') %></td>
-              <td><%= link_to "変更", url:{controller: "attendances", action: "edit"}, class:"btn" %></td>
+              <td><%= member.family_name %></td>
+              <% @orchestra.practices.each do |practice| %>
+                <td><%= practice.schedule %></td>
+              <td><%#= link_to practice.schedule, members_practice_path(practice) %></td>
+              <td><%#= l practice.start_time, format: :short %>-<%#= l practice.end_time, format: :short %></td>
+              <td><%#= practice.place %></td>
+              <td><%#= practice.orchestra.name %></td>
+              <td><%#= practice.stand? ? "不要" : "要" %></td>
+              <td><%#= practice.attendances.find_by(member_id: current_member.id).attendance_status %></td>
+              <td><%#= practice.note.truncate(20, omission: '・・・') %></td>
+              <td><%#= link_to "変更", url:{controller: "attendances", action: "edit"}, class:"btn" %></td>
+              <% end %>
             </tr>
           <% end %>
         </tbody>

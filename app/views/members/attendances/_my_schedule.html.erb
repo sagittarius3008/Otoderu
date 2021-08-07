@@ -15,19 +15,9 @@
     </thead>
     <tbody>
       <% member.attendances.each do |attendance| %>
-        <%= form_with model: attendance, url: members_attendance_path(attendance), method: :patch, local: true do |f| %>
-          <tr>
-            <td><%= f.submit "更新" , class: "btn btn-success mr-2"%></td>
-            <td><%= f.select :attendance_status, Attendance.attendance_statuses.keys.to_a, {}, class: 'form-control' %></td>
-            <td><%= attendance.attendance_status %></td>
-            <td><%= link_to attendance.practice.schedule, members_practice_path(attendance.practice) %></td>
-            <td><%= l attendance.practice.start_time, format: :short %>-<%= l attendance.practice.end_time, format: :short %></td>
-            <td><%= attendance.practice.place %></td>
-            <td><%= attendance.practice.orchestra.name %></td>
-            <td><%= attendance.practice.stand? ? "不要" : "要" %></td>
-            <td><%= f.text_field :note %></td>
-          </tr>
-        <% end %>
+        <tr>
+          <%= render 'edit_attendance', attendance: attendance %>
+        </tr>
       <% end %>
     </tbody>
   </table>

@@ -10,7 +10,7 @@
             <th>名前</th>
             <th>カナ</th>
             <th>自己紹介</th>
-            <th></th>
+            <th>パートトップ設定</th>
           </tr>
         </thead>
         <tbody>
@@ -21,7 +21,7 @@
               <td><%= "#{belonging.member.family_name} #{belonging.member.given_name}" %></td>
               <td><%= "#{belonging.member.family_name_kana} #{belonging.member.given_name_kana}" %></td>
               <td><%= belonging.member.introduction %></td>
-              <td><%= link_to "パートトップ変更", orchestras_member_path(belonging), method: :patch, class:"btn btn-success" %></td>
+              <td><%= link_to "〇", orchestras_member_path(belonging), method: :patch, class:"btn btn-success" %></td>
             </tr>
           <% end %>
         </tbody>
