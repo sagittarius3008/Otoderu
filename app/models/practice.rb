@@ -1,5 +1,6 @@
 class Practice < ApplicationRecord
   has_many :attendances
+  has_many :members, through: :attendances
   belongs_to :orchestra
 
   with_options presence: true do
