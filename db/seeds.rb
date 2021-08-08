@@ -14,14 +14,14 @@ Instrument.create(
     {name: 'Va'},
     {name: 'Vc'},
     {name: 'Cb'},
-    # {name: 'Fl'},
-    # {name: 'Cl'},
-    # {name: 'Fg'},
-    # {name: 'Hr'},
-    # {name: 'Tp'},
-    # {name: 'Tb'},
-    # {name: 'Tu'},
-    # {name: 'Perc'}
+    {name: 'Fl'},
+    {name: 'Cl'},
+    {name: 'Fg'},
+    {name: 'Hr'},
+    {name: 'Tp'},
+    {name: 'Tb'},
+    {name: 'Tu'},
+    {name: 'Perc'}
   ]
 )
 
@@ -34,43 +34,72 @@ Instrument.create(
     )
 end
 
-5.times do |n|
+3.times do |n|
   Member.create(
     instrument_id: rand(1..13),
     family_name: "#{Gimei.last.kanji}",
     given_name: "#{Gimei.first.kanji}",
     family_name_kana: "#{Gimei.last.katakana}",
     given_name_kana: "#{Gimei.first.katakana}",
-    introduction: "団員#{1}です。よろしくお願いします。",
-    email: "member#{1}@test.com",
+    introduction: "団員#{n}です。よろしくお願いします。",
+    email: "member#{n}@test.com",
     password: "111111"
     )
 end
 
-# 各団員がランダムに団体に所属する。
-Member.all.each do |member|
-  orchestras = Orchestra.all.sample(rand(3..5))
-  orchestras.each do |orchestra|
+Orchestra.all.each do |orchestra|
+  #登録者全員が全団体に入団
+  Member.all.each do |member| 
     Belonging.create(
       orchestra_id: orchestra.id,
       member_id: member.id
     )
-    # from = Time.parse("2021/08/01")
-    # to = Time.parse("2022/01/01")
-    # date = Random.rand(from..to)
-    # new_practice = Practice.create(
-    #   orchestra_id: orchestra.id,
-    #   schedule: date,
-    #   start_time: Time.now,
-    #   end_time: Time.now,
-    #   place: "#{orchestra.name}",
-    #   note: "前中メイン#{orchestra.id}"
-    # )
-    # orchestra.belongings.each do |our_belonging|
-    #   Attendance.create(
-    #     practice_id: new_practice.id,
-    #     member_id: our_belonging.member.id
-    #   )
-    # end
+  end
+  from = Time.parse("2021/08/01")
+  to = Time.parse("2022/01/01")
+  date = Random.rand(from..to)
+  7.times do |n|
+    new_practice = Practice.create(
+      orchestra_id: orchestra.id,
+      schedule: date,
+      start_time: Time.now,
+      end_time: Time.now,
+      place: "#{n}市民センター",
+      note: "今日は#{n}回目の練習です。#{n}楽章中心です。"
+    )
+    orchestra.members.each do |member|
+      Attendance.create(
+        practice_id: new_practice.id,
+        member_id: member.id
+      )
+    end
   end
 end
+# Member.all.each do |member|#登録者全員
+#   Orchestra.all.each do |orchestra|#登録団体全て
+  
+#     Belonging.create(
+#       orchestra_id: orchestra.id,
+#       member_id: member.id
+#     )
+#     from = Time.parse("2021/08/01")
+#     to = Time.parse("2022/01/01")
+#     date = Random.rand(from..to)
+#     4.times do |n|
+#       new_practice = Practice.create(
+#         orchestra_id: orchestra.id,
+#         schedule: date,
+#         start_time: Time.now,
+#         end_time: Time.now,
+#         place: "#{n}市民センター",
+#         note: "今日は#{n}回目の練習です。#{n}楽章中心です。"
+#       )
+#       orchestra.members.each do |member|
+#         Attendance.create(
+#           practice_id: new_practice.id,
+#           member_id: member.id
+#         )
+#       end
+#     end
+#   end
+# end
