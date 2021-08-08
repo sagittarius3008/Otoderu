@@ -7,6 +7,12 @@ class Orchestras::SessionsController < Devise::SessionsController
     orchestras_practices_path
   end
 
+  def guest_sign_in
+    orchestra = Orchestra.guest
+    sign_in orchestra
+    redirect_to orchestras_practices_path, notice: 'ゲストオーケストラとしてログインしました。'
+  end
+  
   # GET /resource/sign_in
   # def new
   #   super
