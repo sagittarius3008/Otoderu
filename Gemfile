@@ -70,3 +70,7 @@ gem 'jquery-rails'
 gem 'bootstrap', '~> 4.5'
 gem 'font-awesome-sass'
 gem 'gimei'
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
