@@ -10,7 +10,7 @@ class Members::MembersController < ApplicationController
     my_attendances = Attendance.where(member_id: current_member.id)
     @most_recent_date = my_attendances.first.practice.schedule
     my_attendances.each do |my_attendance|
-      if (@most_recent_date - Date.today).abs > (my_attendance.practice.schedule - Date.today).abs && my_attendance.practice.schedule - Date.today >= 0
+      if (@most_recent_date - Date.today).abs >= (my_attendance.practice.schedule - Date.today).abs && my_attendance.practice.schedule - Date.today >= 0
         # if my_attendance.attendance_status == 0
           @most_recent_practice = my_attendance.practice
           @most_recent_date = my_attendance.practice.schedule
@@ -28,10 +28,10 @@ class Members::MembersController < ApplicationController
   def update
     member = Member.find(params[:id])
     if member.update(member_params)
-      flash[:notice] = "情報が更新できました。"
+      # flash[:notice] = "情報が更新できました。"
       redirect_to request.referer
     else
-      flash[:notice] = "入力内容を再度ご確認ください。"
+      # flash[:notice] = "入力内容を再度ご確認ください。"
       redirect_to request.referer
     end
   end

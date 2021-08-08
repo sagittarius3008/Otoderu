@@ -16,10 +16,8 @@ class Members::AttendancesController < ApplicationController
     if attendance.save
       flash[:notice] = "情報が更新できました。"
       @member = Member.find_by(id: current_member.id)
-
     else
       flash[:notice] = "更新に失敗しました。"
-
     end
   end
 

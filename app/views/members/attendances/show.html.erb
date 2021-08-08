@@ -5,30 +5,34 @@
       <table border="2" class="table practice_index">
         <thead>
           <tr>
-            <th>日付</th>
-            <th>時間</th>
-            <th>場所</th>
-            <th>団体名</th>
-            <th>譜面台</th>
-            <th>出欠</th>
-            <th>備考</th>
-            <th></th>
+            <th>名前</th>
+            <th>楽器</th>
+            <th>トップ</th>
+            <% @orchestra.practices.each do |practice| %>
+              <th><%= link_to practice.schedule, members_practice_path(practice) %></th>
+            <% end %>
           </tr>
         </thead>
         <tbody>
+          <!--各メンバーにつき一行ずつ作成する-->
           <% @members.each do |member| %>
             <tr>
-              <td><%= member.family_name %></td>
+              <td><%= link_to "#{member.family_name}#{member.given_name}", members_member_path(member) %></td>
+              <td><%= member.instrument.name %></td>
+              <td>
+                <% if member.belongings.find_by(orchestra_id: @orchestra).part_top %>〇
+                <% else member.belongings.find_by(orchestra_id: @orchestra).part_top %>
+                <% end %>
+              </td>
               <% @orchestra.practices.each do |practice| %>
-                <td><%= practice.schedule %></td>
-              <td><%#= link_to practice.schedule, members_practice_path(practice) %></td>
-              <td><%#= l practice.start_time, format: :short %>-<%#= l practice.end_time, format: :short %></td>
-              <td><%#= practice.place %></td>
-              <td><%#= practice.orchestra.name %></td>
-              <td><%#= practice.stand? ? "不要" : "要" %></td>
-              <td><%#= practice.attendances.find_by(member_id: current_member.id).attendance_status %></td>
-              <td><%#= practice.note.truncate(20, omission: '・・・') %></td>
-              <td><%#= link_to "変更", url:{controller: "attendances", action: "edit"}, class:"btn" %></td>
+                <td>
+                  <% if practice.attendances.find_by(member_id: member.id).attendance_status == "未入力" %>-
+                    <% elsif practice.attendances.find_by(member_id: member.id).attendance_status == "出席" %>〇
+                    <% elsif practice.attendances.find_by(member_id: member.id).attendance_status == "欠席" %>×
+                    <% elsif practice.attendances.find_by(member_id: member.id).attendance_status == "遅刻" %>遅
+                    <% else practice.attendances.find_by(member_id: member.id).attendance_status == "早退" %>早
+                  <% end %>
+                </td>
               <% end %>
             </tr>
           <% end %>
