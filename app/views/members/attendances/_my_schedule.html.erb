@@ -2,8 +2,10 @@
   <table border="2" class="table practice_index">
     <thead>
       <tr>
+        <% if member == current_member %>
         <th></th>
         <th></th>
+        <% end %>
         <th>出欠</th>
         <th>日付</th>
         <th>時間</th>
@@ -14,18 +16,30 @@
       </tr>
     </thead>
     <tbody>
-      <% member.attendances.each do |attendance| %>
+      <%# byebug %>
+      <!--orchestra_idが渡ってる-->
+      <!--<%# if member == current_member %>-->
+        <% member.attendances.each do |attendance| %>
+      <!--<%# else %>-->
+        <%# member.attendances.each do |attendance| %>
+      <!--<%# end %>-->
         <tr>
           <%= form_with model: attendance, url: members_attendance_path(attendance), method: :patch, remote: true do |f| %>
-            <td><%= f.submit "更新" , class: "btn btn-success mr-2"%></td>
-            <td><%= f.select :attendance_status, Attendance.attendance_statuses.keys.to_a, {}, class: 'form-control' %></td>
-            <td><%= attendance.attendance_status %></td>
-            <td><%= link_to attendance.practice.schedule, members_practice_path(attendance.practice) %></td>
-            <td><%= l attendance.practice.start_time, format: :short %>-<%= l attendance.practice.end_time, format: :short %></td>
-            <td><%= attendance.practice.place %></td>
-            <td><%= link_to attendance.practice.orchestra.name, members_attendance_path(attendance.practice.orchestra) %></td>
-            <td><%= attendance.practice.stand? ? "不要" : "要" %></td>
-            <td><%= f.text_field :note %></td>
+            <% if member == current_member %>
+              <td><%= f.submit "更新" , class: "btn btn-success mr-2"%></td>
+              <td><%= f.select :attendance_status, Attendance.attendance_statuses.keys.to_a, {}, class: 'form-control' %></td>
+            <% end %>
+              <td><%= attendance.attendance_status %></td>
+              <td><%= link_to attendance.practice.schedule, members_practice_path(attendance.practice) %></td>
+              <td><%= l attendance.practice.start_time, format: :short %>-<%= l attendance.practice.end_time, format: :short %></td>
+              <td><%= attendance.practice.place %></td>
+              <td><%= link_to attendance.practice.orchestra.name, members_attendance_path(attendance.practice.orchestra) %></td>
+              <td><%= attendance.practice.stand? ? "不要" : "要" %></td>
+            <% if member == current_member %>
+              <td><%= f.text_field :note %></td>
+            <% else %>
+              <td><%= attendance.note %></td>
+            <% end %>
           <% end %>
         </tr>
       <% end %>

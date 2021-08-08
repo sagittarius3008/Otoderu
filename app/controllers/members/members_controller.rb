@@ -28,16 +28,10 @@ class Members::MembersController < ApplicationController
   def update
     member = Member.find(params[:id])
     if member.update(member_params)
-      # flash[:notice] = "情報が更新できました。"
       redirect_to request.referer
     else
-      # flash[:notice] = "入力内容を再度ご確認ください。"
       redirect_to request.referer
     end
-  end
-
-  def attendance_edit
-    @orchestra = Orchestra.find(params[:id])
   end
 
   private
