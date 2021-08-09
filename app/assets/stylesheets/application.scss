@@ -23,17 +23,19 @@
   color: #fff;
 }
 
-.logo{
-  height: 50px;
-  width: 50px;
-}
-
 main{
   background-color: #E6d8b3;
 }
 
 header{
   background-color: #9b322d;
+}
+
+.logo{
+  width: 70px;
+  height: 70px;
+  background: image-url("logo.jpg") center center / cover no-repeat;
+  background-size: cover;
 }
 
 footer{

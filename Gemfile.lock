@@ -1,11 +1,11 @@
 GIT
-  remote: https://github.com/manfe/refile.git
-  revision: 46b4178654e60bb5846b1423acf6d0740cdecc25
+  remote: https://github.com/JunichiIto/refile.git
+  revision: 3b076619ddae3e9a3073345e62d43c53b4c12b55
+  branch: use-env-secret-key-base
   specs:
-    refile (0.6.2)
+    refile (0.7.0)
       mime-types
-      rest-client (~> 2)
-      sinatra (~> 2.0.0.beta2)
+      sinatra (>= 2.0.0, <= 3.0.0)
 
 GEM
   remote: https://rubygems.org/
@@ -93,13 +93,12 @@ GEM
       devise (>= 4.8.0)
     devise-i18n-views (0.3.7)
     diff-lcs (1.4.4)
-    domain_name (0.5.20190701)
-      unf (>= 0.0.5, < 1.0.0)
     dotenv (2.7.6)
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
       railties (>= 3.2)
     erubi (1.10.0)
+    eventmachine (1.2.7)
     execjs (2.8.1)
     factory_bot (6.2.0)
       activesupport (>= 5.0.0)
@@ -108,6 +107,13 @@ GEM
       railties (>= 5.0.0)
     faker (2.18.0)
       i18n (>= 1.6, < 2)
+    faraday (0.17.4)
+      multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.10.1)
+      faraday (>= 0.7.4, < 1.0)
+    faye-websocket (0.10.9)
+      eventmachine (>= 0.12.0)
+      websocket-driver (>= 0.5.1)
     ffi (1.15.3)
     font-awesome-sass (5.15.1)
       sassc (>= 1.11)
@@ -115,9 +121,6 @@ GEM
       romaji
     globalid (0.5.1)
       activesupport (>= 5.0)
-    http-accept (1.7.0)
-    http-cookie (1.0.4)
-      domain_name (~> 0.5)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.2)
@@ -157,10 +160,11 @@ GEM
     mini_portile2 (2.5.3)
     minitest (5.14.4)
     msgpack (1.4.2)
+    multi_json (1.15.0)
+    multipart-post (2.1.1)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
     mysql2 (0.5.3)
-    netrc (0.11.0)
     nio4r (2.5.7)
     nokogiri (1.11.7)
       mini_portile2 (~> 2.5.0)
@@ -171,7 +175,7 @@ GEM
     puma (3.12.6)
     racc (1.5.2)
     rack (2.2.3)
-    rack-protection (2.0.8.1)
+    rack-protection (2.1.0)
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -210,11 +214,6 @@ GEM
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
-    rest-client (2.1.0)
-      http-accept (>= 1.7.0, < 2.0)
-      http-cookie (>= 1.0.2, < 2.0)
-      mime-types (>= 1.16, < 4.0)
-      netrc (~> 0.8)
     romaji (0.2.4)
       rake (>= 0.8.0)
     rspec-core (3.10.1)
@@ -255,11 +254,16 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    sinatra (2.0.8.1)
+    sinatra (2.1.0)
       mustermann (~> 1.0)
-      rack (~> 2.0)
-      rack-protection (= 2.0.8.1)
+      rack (~> 2.2)
+      rack-protection (= 2.1.0)
       tilt (~> 2.0)
+    slack-api (1.6.1)
+      faraday (~> 0.11)
+      faraday_middleware (~> 0.10.0)
+      faye-websocket (~> 0.10.6)
+      multi_json (~> 1.0, >= 1.0.3)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -282,9 +286,6 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
-    unf (0.1.4)
-      unf_ext
-    unf_ext (0.0.7.7)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (3.7.0)
@@ -326,6 +327,7 @@ DEPENDENCIES
   refile-mini_magick
   rspec-rails
   sass-rails (~> 5.0)
+  slack-api
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
