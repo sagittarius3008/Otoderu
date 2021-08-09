@@ -37,5 +37,7 @@ Rails.application.routes.draw do
     resources :instruments, only:[:create, :index, :update]
     resources :practices, only:[:index, :create, :show, :update, :destroy]
   end
+  
+  post "/receive"=>"slack#create"
 
 end

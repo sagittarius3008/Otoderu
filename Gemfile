@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.3'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.6'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -38,6 +38,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'sqlite3'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
@@ -57,6 +58,10 @@ group :test do
   gem 'faker'
 end
 
+group :production do
+  gem 'mysql2'
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
@@ -64,13 +69,12 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'kaminari','~> 1.2.1'
-gem "refile", require: "refile/rails", github: 'manfe/refile'
+# NOTE: refileの更新が止まっているため本来はActiveStorage等に移行すべきだが、一次対応としてやむを得ずフォークしたgemを使う
+gem "refile", require: "refile/rails", github: "JunichiIto/refile", branch: "use-env-secret-key-base"
 gem "refile-mini_magick"
 gem 'jquery-rails'
 gem 'bootstrap', '~> 4.5'
 gem 'font-awesome-sass'
 gem 'gimei'
 gem 'dotenv-rails'
-group :production do
-  gem 'mysql2'
-end
+gem 'slack-api'
