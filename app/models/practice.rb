@@ -5,8 +5,9 @@ class Practice < ApplicationRecord
 
   with_options presence: true do
     validates :schedule
+    validates :start_at
+    validates :end_at
     validates :start_time
-    validates :end_time
     validates :place
   end
   validates :stand, inclusion: [true, false]

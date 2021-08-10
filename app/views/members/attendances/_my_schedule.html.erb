@@ -1,4 +1,14 @@
 <h2><%= "#{member.family_name}さんの練習予定" %></h2>
+
+
+<%= month_calendar events: @member.practices do |date, practices| %>
+  <%= date.day %>
+  <% practices.each do |practice| %>
+    <div>
+      <%= practice.orchestra.name %>
+    </div>
+  <% end %>
+<% end %>
   <table border="2" class="table practice_index">
     <thead>
       <tr>
@@ -31,7 +41,7 @@
             <% end %>
               <td><%= attendance.attendance_status %></td>
               <td><%= link_to attendance.practice.schedule, members_practice_path(attendance.practice) %></td>
-              <td><%= l attendance.practice.start_time, format: :short %>-<%= l attendance.practice.end_time, format: :short %></td>
+              <td><%= l attendance.practice.start_at, format: :short %>-<%= l attendance.practice.end_at, format: :short %></td>
               <td><%= attendance.practice.place %></td>
               <td><%= link_to attendance.practice.orchestra.name, members_attendance_path(attendance.practice.orchestra) %></td>
               <td><%= attendance.practice.stand? ? "不要" : "要" %></td>

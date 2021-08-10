@@ -10,6 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require simple_calendar
  *= require_tree .
  *= require_self
  */
@@ -56,4 +57,26 @@ footer{
 
 .practice_index{
   font-size: calc(7px + 0.25vw)
+}
+
+.simple-calendar {
+  .day {}
+
+  .wday-0 {}
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {}
+  .today {}
+  .past {
+    background: #c89146;
+  }
+  .future {}
+  .start-date {}
+  .prev-month {}
+  .next-month { }
+  .current-month {}
+  .has-events {}
 }

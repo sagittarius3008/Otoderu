@@ -73,11 +73,12 @@ ActiveRecord::Schema.define(version: 2021_08_03_020934) do
     t.datetime "updated_at", null: false
     t.integer "orchestra_id", null: false
     t.date "schedule", null: false
-    t.time "start_time", null: false
-    t.time "end_time", null: false
+    t.time "start_at", null: false
+    t.time "end_at", null: false
     t.string "place", null: false
     t.text "note", null: false
     t.boolean "stand", default: false, null: false
+    t.datetime "start_time", null: false
   end
 
 end
