@@ -1,31 +1,21 @@
 <div class="container">
   <div class="row">
     <div class="mx-auto mt-5">
-    <h2>団体ログイン</h2>
+    <h2 class="text-center">団体ログイン</h2>
     <%= form_with model: @orchestra, url: orchestra_session_path, local: true do |f| %>
       <%= render "members/shared/error_messages", resource: resource %>
-      <table>
-        <tr>
-          <td>アドレス</td>
-          <td><%= f.text_field :email, autofocus: true %></td>
-        </tr>
-        <tr>
-          <td>パスワード</td>
-          <td><%= f.password_field :password, autocomplete: "new-password" %></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td><%= f.submit "マイページへ" , class: "btn btn-success"%></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>ご登録がまだの場合は<%= link_to "こちら", new_orchestra_registration_path %></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>個人登録の方は<%= link_to "こちら", new_member_registration_path %></td>
-        </tr>
-      </table>
+      <div class="row d-flex justify-content-center mb-2">
+        <%= f.email_field :email, autocomplete: "email", placeholder: "メールアドレス",size: 40 %>
+      </div>
+      <div class="row d-flex justify-content-center mb-2">
+        <%= f.password_field :password, placeholder: "パスワード",size: 40 %>
+      </div>
+      <div class="row d-flex justify-content-center mb-2">
+        ご登録がまだの場合は<%= link_to "こちら", new_orchestra_registration_path %>
+      </div>
+      <div class="row d-flex justify-content-center mb-2">
+        個人登録の方は<%= link_to "こちら", new_member_registration_path %>
+      </div>
     <% end %>
     </div>
   </div>

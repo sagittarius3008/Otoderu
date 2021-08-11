@@ -1,31 +1,24 @@
 <div class="container">
   <div class="row">
     <div class="mx-auto mt-5">
-    <h2>ログイン</h2>
+    <h2 class="text-center mb-4">ログイン</h2>
     <%= form_with model: @member, url: member_session_path, local: true do |f| %>
       <%= render "members/shared/error_messages", resource: resource %>
-      <table>
-        <tr>
-          <td>アドレス</td>
-          <td><%= f.email_field :email, autofocus: true, autocomplete: "email", size: 40 %></td>
-        </tr>
-        <tr>
-          <td>パスワード</td>
-          <td><%= f.password_field :password, autocomplete: "new-password" %></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td><%= f.submit "マイページへ" , class: "btn btn-success"%></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>ご登録がまだの方は<%= link_to "こちら", new_member_registration_path %></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>団体アカウントの方は<%= link_to "こちら", new_orchestra_session_path %></td>
-        </tr>
-      </table>
+      <div class="row d-flex justify-content-center mb-2">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", size: 40 %>
+      </div>
+      <div class="row d-flex justify-content-center mb-2">
+        <%= f.password_field :password, placeholder: "パスワード", size: 40 %>
+      </div>
+      <div class="text-center m-2">
+        <%= f.submit "マイページへ" , class: "btn btn-success" %>
+      </div>
+      <div class="text-center m-2">
+        ご登録がまだの方は<%= link_to "こちら", new_member_registration_path %>
+      </div>
+      <div class="text-center m-2">
+        団体アカウントの方は<%= link_to "こちら", new_orchestra_session_path %>
+      </div>
     <% end %>
     </div>
   </div>

@@ -1,15 +1,13 @@
 <h2><%= "#{member.family_name}さんの練習予定" %></h2>
-
-
 <%= month_calendar events: @member.practices do |date, practices| %>
   <%= date.day %>
   <% practices.each do |practice| %>
-    <div>
-      <%= practice.orchestra.name %>
+    <div class="small-font float1">
+      <%= link_to practice.orchestra.name, members_practice_path(practice), class:"practice-font" %>
     </div>
   <% end %>
 <% end %>
-  <table border="2" class="table practice_index">
+  <table border="2" class="table small-font">
     <thead>
       <tr>
         <% if member == current_member %>
