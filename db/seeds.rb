@@ -62,10 +62,11 @@ Orchestra.all.each do |orchestra|
     new_practice = Practice.create(
       orchestra_id: orchestra.id,
       schedule: date,
-      start_time: Time.now,
-      end_time: Time.now,
+      start_at: Time.now,
+      end_at: Time.now,
       place: "#{n}市民センター",
-      note: "今日は#{n}回目の練習です。#{n}楽章中心です。"
+      note: "今日は#{n}回目の練習です。#{n}楽章中心です。",
+      start_time: date
     )
     orchestra.members.each do |member|
       Attendance.create(
