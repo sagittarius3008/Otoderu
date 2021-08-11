@@ -10,7 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery3
+//= require jquery
 //= require popper
 //= require bootstrap-sprockets
 
@@ -19,12 +19,18 @@
 //= require turbolinks
 //= require_tree .
 /*global $*/
-$(".openbtn").click(function () {//ボタンがクリックされたら
-	$(this).toggleClass('active');//ボタン自身に activeクラスを付与し
-  $("#g-nav").toggleClass('panelactive');//ナビゲーションにpanelactiveクラスを付与
-});
 
-$("#g-nav a").click(function () {//ナビゲーションのリンクがクリックされたら
-  $(".openbtn").removeClass('active');//ボタンの activeクラスを除去し
-  $("#g-nav").removeClass('panelactive');//ナビゲーションのpanelactiveクラスも除去
+// ハンバーガーメニュー→navの表示のためclassを付与
+$(document).on('turbolinks:load', function() {
+  $('.openbtn').on('click', function(){
+    $(this).toggleClass('active');
+     $("#g-nav").toggleClass('panelactive');
+  });
+});
+// nav→ハンバーガーのためclassを外す
+$(document).on('turbolinks:load', function() {
+  $("#g-nav a").click(function () {
+      $(".openbtn").removeClass('active');
+      $("#g-nav").removeClass('panelactive');
+  });
 });

@@ -1,38 +1,29 @@
 <header>
-  <nav class="navbar">
-    <div class="container">
-      <%= link_to "", root_path, class: "mr-auto logo" %>
-      <ul class="navbar-nav flex-row">
-        <% if orchestra_signed_in? %>
-          <li class="nav-item mr-2"><%= link_to "練習登録", orchestras_practices_path, class: "btn btn-dark" %></li>
-          <li class="nav-item mr-2"><%= link_to "団員一覧", orchestras_members_path, class: "btn btn-dark" %></li>
-          <li class="nav-item mr-2"><%= link_to "登録楽器一覧", orchestras_instruments_path, class: "btn btn-dark" %></li>
-          <li class="nav-item mr-2"><%= link_to "ログアウト", destroy_orchestra_session_path, class: "btn btn-dark", method: :delete %></li>
-        <% elsif member_signed_in? %>
-          <li class="nav-item mr-2"><%= link_to "出欠入力", members_attendances_path, class: "btn btn-dark" %></li>
-          <li class="nav-item mr-2"><%= link_to "マイページ", members_member_mypage_path, class: "btn btn-dark" %></li>
-          <li class="nav-item mr-2"><%= link_to "入団申請", members_orchestras_path, class: "btn btn-dark" %></li>
-          <li class="nav-item mr-2"><%= link_to "ログアウト", destroy_member_session_path, class: "btn btn-dark", method: :delete %></li>
-        <% else %>
-          <!--<li class="nav-item mr-2"><%#= link_to "Otoderuとは", homes_about_path, class: "btn btn-dark" %></li>-->
-<div class="openbtn"><span></span><span></span><span></span></div>
-<nav id="g-nav">
-<ul>
-<li><a href="#">Top</a></li>
-<li><a href="#">About</a></li>
-<li><a href="#">Service</a></li>
-<li><a href="#">Contact</a></li>
-</ul>
-</nav>
-
-          <!--<li class="nav-item mr-2"><%#= link_to "ログイン", new_member_session_path, class: "btn btn-dark" %></li>-->
-          <!--<li class="nav-item mr-2"><%#= link_to "新規登録", new_member_registration_path, class: "btn btn-dark" %></li>-->
-          <!--<li class="nav-item mr-2"><%#= link_to "ログイン", new_orchestra_session_path, class: "btn btn-dark" %></li>-->
-          <!--<li class="nav-item mr-2"><%#= link_to "新規登録", new_orchestra_registration_path, class: "btn btn-dark" %></li>-->
-          <!--<li class="nav-item mr-2"><%#= link_to 'ゲストログイン（個人）', members_guest_sign_in_path, method: :post, class: "btn btn-dark" %></li>-->
-          <!--<li class="nav-item mr-2"><%#= link_to 'ゲストログイン（団体）', orchestras_guest_sign_in_path, method: :post, class: "btn btn-dark" %></li>-->
-        <% end %>
-      </ul>
-    </div>
-  </nav>
+  <div class="container"><%= link_to "a", root_path, class: "mx-auto logo" %></div>
 </header>
+  <div class="openbtn"><span></span><span></span><span></span></div>
+  <nav id="g-nav">
+    <ul>
+      <% if orchestra_signed_in? %>
+        <li><%= link_to "練習登録", orchestras_practices_path %></li>
+        <li><%= link_to "団員一覧", orchestras_members_path %></li>
+        <li><%= link_to "登録楽器一覧", orchestras_instruments_path %></li>
+        <li><%= link_to "ログアウト", destroy_orchestra_session_path, method: :delete %></li>
+      <% elsif member_signed_in? %>
+        <li><%= link_to "出欠入力", members_attendances_path %></li>
+        <li><%= link_to "マイページ", members_member_mypage_path %></li>
+        <li><%= link_to "入団申請", members_orchestras_path %></li>
+        <li><%= link_to "ログアウト", destroy_member_session_path, method: :delete %></li>
+      <% else %>
+        <li class="font-weight-bold">─────────────────個人─────────────────</li>
+        <li><%= link_to "ログイン", new_member_session_path %></li>
+        <li><%= link_to "新規登録", new_member_registration_path %></li>
+        <li class="font-weight-bold">─────────────────団体─────────────────</li>
+        <li><%= link_to "ログイン", new_orchestra_session_path %></li>
+        <li><%= link_to "新規登録", new_orchestra_registration_path %></li>
+        <li class="font-weight-bold">──────────────ゲストログイン──────────────</li>
+        <li><%= link_to '個人', members_guest_sign_in_path, method: :post %></li>
+        <li><%= link_to '団体', orchestras_guest_sign_in_path, method: :post %></li>
+      <% end %>
+    </ul>
+  </nav>
