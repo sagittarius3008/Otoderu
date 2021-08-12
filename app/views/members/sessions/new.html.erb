@@ -1,25 +1,29 @@
-<div class="container">
-  <div class="row">
-    <div class="mx-auto mt-5">
-    <h2 class="text-center mb-4">ログイン</h2>
-    <%= form_with model: @member, url: member_session_path, local: true do |f| %>
-      <%= render "members/shared/error_messages", resource: resource %>
-      <div class="row d-flex justify-content-center mb-2">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", size: 40 %>
+<div class="flute photo">
+  <div class="container">
+    <div class="row">
+      <div class="mx-auto m-5 col-5 p-0 wrapper">
+        <div class="card">
+        <h2 class="text-center mb-4">ログイン</h2>
+        <%= form_with model: @member, url: member_session_path, local: true do |f| %>
+          <%= render "members/shared/error_messages", resource: resource %>
+          <div class="row d-flex justify-content-center mb-3">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", size: 40 %>
+          </div>
+          <div class="row d-flex justify-content-center mb-3">
+            <%= f.password_field :password, placeholder: "パスワード", size: 40 %>
+          </div>
+          <div class="text-center m-3">
+            <%= f.submit "マイページへ" , class: "btn btn-success" %>
+          </div>
+          <div class="text-center m-3">
+            ご登録がまだの方は<%= link_to "こちら", new_member_registration_path %>
+          </div>
+          <div class="text-center m-3">
+            団体アカウントの方は<%= link_to "こちら", new_orchestra_session_path %>
+          </div>
+        <% end %>
+        </div>
       </div>
-      <div class="row d-flex justify-content-center mb-2">
-        <%= f.password_field :password, placeholder: "パスワード", size: 40 %>
-      </div>
-      <div class="text-center m-2">
-        <%= f.submit "マイページへ" , class: "btn btn-success" %>
-      </div>
-      <div class="text-center m-2">
-        ご登録がまだの方は<%= link_to "こちら", new_member_registration_path %>
-      </div>
-      <div class="text-center m-2">
-        団体アカウントの方は<%= link_to "こちら", new_orchestra_session_path %>
-      </div>
-    <% end %>
     </div>
   </div>
 </div>
