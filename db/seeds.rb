@@ -29,8 +29,7 @@ Instrument.create(
   Orchestra.create(
     name: "サンプルオーケストラ#{n + 1}",
     email: "orchestra#{n + 1}@test.com",
-    password: "111111",
-    image_id: File.open("app/assets/images/img/no_image.png")
+    password: "111111"
     )
 end
 

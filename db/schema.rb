@@ -63,7 +63,6 @@ ActiveRecord::Schema.define(version: 2021_08_03_020934) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name", null: false
-    t.string "image_id", null: false
     t.index ["email"], name: "index_orchestras_on_email", unique: true
     t.index ["reset_password_token"], name: "index_orchestras_on_reset_password_token", unique: true
   end

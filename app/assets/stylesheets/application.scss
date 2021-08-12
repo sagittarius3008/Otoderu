@@ -118,17 +118,6 @@ footer{
 	z-index:999;
 }
 
-/*ナビゲーションの縦スクロール*/
-// #g-nav.panelactive #g-nav-list{
-//     /*ナビの数が増えた場合縦スクロール*/
-//     position: fixed;
-//     z-index: 999;
-//     width: 100%;
-//     height: 100vh;/*表示する高さ*/
-//     overflow: auto;
-//     -webkit-overflow-scrolling: touch;
-// }
-
 /*ナビゲーション*/
 #g-nav ul {
     display: none;
@@ -212,4 +201,80 @@ footer{
     left: 18px;
     transform: translateY(-6px) rotate(45deg);
     width: 30%;
+}
+
+/*==================================================
+スタート時は要素自体を透過0にするためのopacity:0;を指定する
+===================================*/
+
+.box{
+	opacity: 0;
+}
+
+/*==================================================
+動かしたい動き（今回は” ふわっ” を採用）
+===================================*/
+
+.fadeUp {
+animation-name:fadeUpAnime;
+animation-duration:0.5s;
+animation-fill-mode:forwards;
+opacity: 0;
+}
+
+@keyframes fadeUpAnime{
+  from {
+    opacity: 0;
+	transform: translateY(100px);
+  }
+
+  to {
+    opacity: 1;
+	transform: translateY(0);
+  }
+}
+
+// ボタンに影をつける
+// .btn-shadow {
+//   box-shadow: 0 3px 0 #047c71, 0 6px 0 rgba(0,0,0,.2);
+// 	transition: color .3s, background.3s, box-shadow .3s, transform .3s;
+// }
+// .btn-shadow:active {
+// 	transition-duration: .1s;
+// }
+// hoverで色をかえる
+.only-background {
+　background: skyblue;
+　padding: 16px;
+　color: white;
+　transition: background 1s;
+}
+
+.only-background:hover {
+　background: red;
+}
+
+.hover05{
+	overflow: hidden;
+	transition: color .3s ease;
+}
+.hover05:before{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	transform: scale(0,1);
+	transform-origin: right top;
+	background-color: #e5a400;
+	transition: transform .3s ease;
+	opacity: 0.3;
+}
+.hover05:hover{
+	color: #fff;
+}
+.hover05:hover:before{
+	transform-origin: left top;
+	transform: scale(1,1);
 }

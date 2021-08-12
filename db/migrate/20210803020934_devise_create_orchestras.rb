@@ -38,7 +38,6 @@ class DeviseCreateOrchestras < ActiveRecord::Migration[5.2]
       t.string :name, null: false
       t.string :email, null: false
       t.string :encrypted_password, null: false
-      t.string :image_id, null: false
     end
 
     add_index :orchestras, :email,                unique: true
