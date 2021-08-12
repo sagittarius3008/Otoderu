@@ -1,16 +1,20 @@
 <div class="container">
   <div class="row">
     <div class="mt-5 mx-auto col-8">
-      <h2>マイページ</h2>
-      <div class="d-flex">
-        <%= link_to "出欠確認", members_attendances_path, class:"btn" %>
-        <%= link_to "プロフィール編集", edit_members_member_path(@member), class:"btn" %>
+      <h2 class="text-center">マイページ</h2>
+      <div class="d-flex justify-content-center">
+        <%= link_to "出欠確認", members_attendances_path, class:"btn btn-success mr-3" %>
+        <%= link_to "プロフィール編集", edit_members_member_path(@member), class:"btn btn-success mr-3" %>
+        <%= link_to "入団申請", members_orchestras_path, class:"btn btn-success" %>
       </div>
-      直近の練習予定は<%= link_to "#{@most_recent_date} #{@most_recent_date_orchestra} ", members_practice_path(@most_recent_practice) %>です。
-      <% @member.belongings.each do |belonging| %>
-        <div><%= link_to belonging.orchestra.name, members_attendance_path(belonging.orchestra), class:"btn" %></div>
+      <div class="text-center">
+        直近の練習予定は<%= link_to "#{@most_recent_date} #{@most_recent_practice.orchestra.name} ", members_practice_path(@most_recent_practice) %>です。
+      </div>
+      <% @member.orchestras.each do |orchestra| %>
+        <div class="text-center delayScroll">
+          <%= link_to orchestra.name, members_attendance_path(orchestra), class:"btn box hover05" %>
+        </div>
       <% end %>
-      <%= link_to "入団申請", members_orchestras_path, class:"btn" %>
     </div>
   </div>
 </div>

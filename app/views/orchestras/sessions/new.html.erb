@@ -11,6 +11,9 @@
         <%= f.password_field :password, placeholder: "パスワード",size: 40 %>
       </div>
       <div class="row d-flex justify-content-center mb-2">
+        <%= f.submit "マイページへ" , class: "btn btn-success" %>
+      </div>
+      <div class="row d-flex justify-content-center mb-2">
         ご登録がまだの場合は<%= link_to "こちら", new_orchestra_registration_path %>
       </div>
       <div class="row d-flex justify-content-center mb-2">
