@@ -1,28 +1,32 @@
-<div class="container">
-  <div class="row">
-    <div class="mx-auto mt-5">
-    <h2 class="text-center">新規団体登録</h2>
-    <%= form_with model: @orchestra, url: orchestra_registration_path, local: true do |f| %>
-      <%= render "members/shared/error_messages", resource: resource %>
-      <div class="row d-flex justify-content-center mb-2">
-        <%= f.text_field :name, autofocus: true, placeholder: "団体名",size: 40 %>
+<div class="stage-left photo">
+  <div class="container">
+    <div class="row">
+      <div class="mx-auto m-5 col-5 p-0 wrapper">
+        <div class="card">
+        <h2 class="text-center m-4 light">新規団体登録</h2>
+        <%= form_with model: @orchestra, url: orchestra_registration_path, local: true do |f| %>
+          <%= render "members/shared/error_messages", resource: resource %>
+          <div class="row d-flex justify-content-center mb-3">
+            <%= f.text_field :name, autofocus: true, placeholder: "団体名",size: 40 %>
+          </div>
+          <div class="row d-flex justify-content-center mb-3">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス",size: 40 %>
+          </div>
+          <div class="row d-flex justify-content-center mb-3">
+            <%= f.password_field :password, placeholder: "パスワード",size: 40 %>
+          </div>
+          <div class="row d-flex justify-content-center mb-3">
+            <%= f.submit "新規登録" , class: "btn btn-success", size: 40%>
+          </div>
+          <div class="row d-flex justify-content-center mb-3">
+            ご登録済みの方は<%= link_to "こちら", new_member_session_path %>
+          </div>
+          <div class="row d-flex justify-content-center mb-3">
+            団体登録の方は<%= link_to "こちら", new_orchestra_registration_path %>
+          </div>
+        <% end %>
+        </div>
       </div>
-      <div class="row d-flex justify-content-center mb-2">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス",size: 40 %>
-      </div>
-      <div class="row d-flex justify-content-center mb-2">
-        <%= f.password_field :password, placeholder: "パスワード",size: 40 %>
-      </div>
-      <div class="row d-flex justify-content-center mb-2">
-        <%= f.submit "新規登録" , class: "btn btn-success", size: 40%>
-      </div>
-      <div class="row d-flex justify-content-center mb-2">
-        ご登録済みの方は<%= link_to "こちら", new_member_session_path %>
-      </div>
-      <div class="row d-flex justify-content-center mb-2">
-        団体登録の方は<%= link_to "こちら", new_orchestra_registration_path %>
-      </div>
-    <% end %>
     </div>
   </div>
 </div>

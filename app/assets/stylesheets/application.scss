@@ -234,26 +234,7 @@ opacity: 0;
   }
 }
 
-// ボタンに影をつける
-// .btn-shadow {
-//   box-shadow: 0 3px 0 #047c71, 0 6px 0 rgba(0,0,0,.2);
-// 	transition: color .3s, background.3s, box-shadow .3s, transform .3s;
-// }
-// .btn-shadow:active {
-// 	transition-duration: .1s;
-// }
-// hoverで色をかえる
-.only-background {
-　background: skyblue;
-　padding: 16px;
-　color: white;
-　transition: background 1s;
-}
-
-.only-background:hover {
-　background: red;
-}
-
+// ボタン：hoverさせるとかぶさる
 .hover05{
 	overflow: hidden;
 	transition: color .3s ease;
@@ -277,4 +258,43 @@ opacity: 0;
 .hover05:hover:before{
 	transform-origin: left top;
 	transform: scale(1,1);
+}
+//
+
+// 影をつける
+.wrapper{
+  margin: 1rem auto;
+  width: 100%;
+}
+.wrapper:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 7px 8px 0 rgba(0,0,0,.08);
+  transition: all .5s;
+}
+.card {
+  border-radius: 5px;
+  box-shadow: 0 2px 5px #ccc;
+}
+
+// 背景写真
+.photo{
+  background-size: cover;
+  background-color:rgba(255,255,255,0.1);
+  background-blend-mode:lighten;
+}
+.stage-right{
+  background: image-url("img/stage-right.jpg") center center / cover no-repeat;
+  background-position: 25% 20%;
+}
+.flute{
+  background: image-url("img/flute.jpg") center center / cover no-repeat;
+  background-position: 0% 10%;
+}
+.orchestra{
+  background: image-url("img/orchestra.jpg") center center / cover no-repeat;
+}
+.stage-left{
+  background: image-url("img/stage-left.jpg") center center / cover no-repeat;
+  background-position: 40% 35%;
+
 }
