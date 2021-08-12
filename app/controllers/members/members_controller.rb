@@ -2,6 +2,7 @@ class Members::MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
+    @orchestra = Orchestra.find(params[:orchestra][:id])
   end
 
   def mypage

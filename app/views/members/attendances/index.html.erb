@@ -1,7 +1,47 @@
 <div class="container">
   <div class="row">
     <div id="attend" class="mt-5 mx-auto">
-      <%= render 'my_schedule', member: @member %>
+      <h2><%= "#{@member.family_name}さんの練習予定" %></h2>
+      <%= month_calendar events: @member.practices do |date, practices| %>
+        <%= date.day %>
+        <% practices.each do |practice| %>
+          <div class="small-font float1">
+            <%= link_to practice.orchestra.name, members_practice_path(practice), class:"practice-font" %>
+          </div>
+        <% end %>
+      <% end %>
+      <table border="2" class="table small-font">
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+            <th>出欠</th>
+            <th>日付</th>
+            <th>時間</th>
+            <th>場所</th>
+            <th>団体名</th>
+            <th>譜面台</th>
+            <th>備考</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @member.attendances.each do |attendance| %>
+          <tr>
+            <%= form_with model: attendance, url: members_attendance_path(attendance), method: :patch, remote: true do |f| %>
+                <td><%= f.submit "更新" , class: "btn btn-success mr-2"%></td>
+                <td><%= f.select :attendance_status, Attendance.attendance_statuses.keys.to_a, {}, class: 'form-control' %></td>
+                <td><%= attendance.attendance_status %></td>
+                <td><%= link_to attendance.practice.schedule, members_practice_path(attendance.practice) %></td>
+                <td><%= l attendance.practice.start_at, format: :short %>-<%= l attendance.practice.end_at, format: :short %></td>
+                <td><%= attendance.practice.place %></td>
+                <td><%= link_to attendance.practice.orchestra.name, members_attendance_path(attendance.practice.orchestra) %></td>
+                <td><%= attendance.practice.stand? ? "不要" : "要" %></td>
+                <td><%= f.text_field :note %></td>
+            <% end %>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
