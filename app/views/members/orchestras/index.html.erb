@@ -1,18 +1,27 @@
-<div class="container">
-  <div class="row">
-    <div class="mt-5 mx-auto col-8">
-      <h2>入団申請画面</h2>
-        <% @orchestras.each do |orchestra| %>
-          <div>
-            <%= orchestra.name %>
-            <%= form_with model: orchestra, url: members_orchestras_path, method: :post, local: true do |f| %>
-              <%= hidden_field_tag :orchestra_id, orchestra.id %>
-              <% unless orchestra.belongings.exists?(member_id: current_member.id) %>
-                <%= f.submit "申請", class:"btn btn-success"  %>
-              <% end  %>
-            <% end  %>
+<div class="stage-right kamaishi  photo">
+  <div class="container">
+    <div class="row">
+      <div class="mx-auto m-5 col-5 p-0 wrapper">
+        <div class="card">
+          <h2 class="text-center m-4">入団申請画面</h2>
+            <% @orchestras.each do |orchestra| %>
+              <div class="d-flex justify-content-center delayScroll">
+                <div class="m-3"><%= orchestra.name %></div>
+                <%= form_with model: orchestra, url: members_orchestras_path, method: :post, local: true do |f| %>
+                  <%= hidden_field_tag :orchestra_id, orchestra.id %>
+                  <% if orchestra.belongings.exists?(member_id: current_member.id) %>
+                  <!--dependent destroyはアソシエーションが通ってない-->
+                    <!--<div class="m-3"><%#= f.submit "退団", class:"btn btn-danger"  %></div>-->
+                  <% else  %>
+                    <div class="m-3"><%= f.submit "申請", class:"btn btn-success"  %></div>
+                  <% end  %>
+                <% end  %>
+              </div>
+            <% end %>
+            <div class="m-3 mx-auto"><%= link_to "マイページへ", members_member_mypage_path %></div>
           </div>
-        <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -1,7 +1,8 @@
-<div class="container">
-  <div class="row">
-    <div class="mt-5 mx-auto col-9">
-      <table class="container">
+  <div class="container">
+    <div class="row">
+      <div class="m-5 mx-auto col-6 card">
+        <h2 class="text-center m-4"><%= "#{@practice.schedule}の練習詳細" %></h2>
+        <table>
           <tbody>
             <tr>
               <td>時間</td>
@@ -21,24 +22,24 @@
             </tr>
           </tbody>
         </table>
-        <table border="2" class="table practice_index">
-        <thead>
-          <tr>
-            <th>名前</th>
-            <th>出欠</th>
-            <th>備考</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% attendances.each do |attendance| %>
-            <tr>
-              <td><%= "#{attendance.member.family_name}#{attendance.member.given_name}" %></td>
-              <td><%= attendance.attendance_status %></td>
-              <td><%= attendance.note %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+        <table border="2" class="table practice_index small-font mb-5">
+            <thead>
+              <tr>
+                <th>名前</th>
+                <th>出欠</th>
+                <th>備考</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% attendances.each do |attendance| %>
+                <tr>
+                  <td><%= "#{attendance.member.family_name}#{attendance.member.given_name}" %></td>
+                  <td><%= attendance.attendance_status %></td>
+                  <td><%= attendance.note %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
       </div>
+    </div>
   </div>
-</div>
