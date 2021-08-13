@@ -16,12 +16,24 @@
  */
 @import "bootstrap";
 
+@font-face{
+  font-family: 'ipaexm';
+  src: font-url('ipaexm.ttf') format('truetype');
+}
+body{
+  font-family: ipaexm;
+}
+
 .red{
   color: #d44346;
 }
 
 .white{
   color: #fff;
+}
+
+.practice-font{
+  color: #000;
 }
 
 main{
@@ -57,9 +69,6 @@ footer{
 
 .small-font{
   font-size: calc(7px + 0.25vw)
-}
-.practice-font{
-  color: #000;
 }
 
 // カレンダーの色振り

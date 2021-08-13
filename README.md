@@ -1,4 +1,4 @@
-# Otoderu?
+# Otoderu
 
 ## サイト概要
 
@@ -24,8 +24,7 @@
 
 - ER 図
   ![ER図](https://user-images.githubusercontent.com/83518855/128526115-24d3d44a-3324-4e72-99c6-84ce346b5047.png)
-- URL
-  完成後記載
+- [URL](https://otoderu.com)  
 - [テーブル定義書](https://docs.google.com/spreadsheets/d/1a9zYIdhUhD_8Z63i26BLWO315mVppMZ7koWDFI5wkVA/edit?usp=sharing)
 - [アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1lXLAcZVtGDKtB71RUtqQRwT3cMNWfw1PctalsSpCccA/edit?usp=sharing)
 
@@ -34,18 +33,16 @@
 https://docs.google.com/spreadsheets/d/1yHLfj2vTUaqEzmE4-0uya6wkFhEpDJf8KrDFfRTXmSc/edit?usp=sharing
 
 ## 開発環境
-
-以下作成後に記載
-
 - OS：Linux(CentOS)
-- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- 言語：HTML,CSS,JavaScript,Ruby
 - フレームワーク：Ruby on Rails
 - JS ライブラリ：jQuery
 - IDE：Cloud9
 
+## 素材提供
+- fotofolly
+- Musica Promenade
+- 
+
 ## 使用素材
-
-以下作成後に記載
-
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名と URL を明記してください。
-- 使用しない場合は、使用素材の項目を README から削除してください。
+- [OSDN（IPAフォント）](https://ja.osdn.net/)  
