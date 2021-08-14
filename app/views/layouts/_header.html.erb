@@ -4,6 +4,7 @@
       <% if orchestra_signed_in? %>
         <li><%= link_to "練習登録", orchestras_practices_path %></li>
         <li><%= link_to "団員一覧", orchestras_members_path %></li>
+        <li><%= link_to "入団承認", orchestras_applies_path %></li>
         <li><%= link_to "登録楽器一覧", orchestras_instruments_path %></li>
         <li><%= link_to "ログアウト", destroy_orchestra_session_path, method: :delete %></li>
       <% elsif member_signed_in? %>

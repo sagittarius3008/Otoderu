@@ -146,6 +146,7 @@ footer{
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
 	font-weight: bold;
+	font-size: 22px;
 }
 
 // ハンバーガーメニュー
@@ -280,23 +281,37 @@ opacity: 0;
   background-color:rgba(255,255,255,0.1);
   background-blend-mode:lighten;
 }
+// 個人サインイン
 .stage-right{
   background: image-url("img/stage-right.jpg") center center / cover no-repeat;
   background-position: 25% 20%;
+  padding-top: calc(80 / 1000 * 100%);
+  padding-bottom: calc(70 / 1000 * 100%);
 }
+// 個人ログイン
 .flute{
   background: image-url("img/flute.jpg") center center / cover no-repeat;
   background-position: 0% 10%;
+  padding-top: calc(100 / 1000 * 100%);
+  padding-bottom: calc(70 / 1000 * 100%);
 }
+// 団体ログイン
 .orchestra{
   background: image-url("img/orchestra.jpg") center center / cover no-repeat;
+  padding-top: calc(100 / 1000 * 100%);
+  padding-bottom: calc(70 / 1000 * 100%);
 }
+// 団体サインイン
 .stage-left{
   background: image-url("img/stage-left.jpg") center center / cover no-repeat;
   background-position: 40% 35%;
+  padding-top: calc(100 / 1000 * 100%);
+  padding-bottom: calc(80 / 1000 * 100%);
 }
 .kamaishi{
   background: image-url("img/kamaishi.jpg") center center / cover no-repeat;
+  padding-top: calc(50 / 1000 * 100%);
+  padding-bottom: calc(80 / 1000 * 100%);
 }
 .tutti{
   background: image-url("img/tutti.jpg") center center / cover no-repeat;

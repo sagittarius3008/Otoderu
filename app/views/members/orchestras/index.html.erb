@@ -7,15 +7,19 @@
             <% @orchestras.each do |orchestra| %>
               <div class="d-flex justify-content-center delayScroll">
                 <div class="m-3"><%= orchestra.name %></div>
-                <%= form_with model: orchestra, url: members_orchestras_path, method: :post, local: true do |f| %>
-                  <%= hidden_field_tag :orchestra_id, orchestra.id %>
-                  <% if orchestra.belongings.exists?(member_id: current_member.id) %>
-                  <!--dependent destroyはアソシエーションが通ってない-->
-                    <!--<div class="m-3"><%#= f.submit "退団", class:"btn btn-danger"  %></div>-->
-                  <% else  %>
-                    <div class="m-3"><%= f.submit "申請", class:"btn btn-success"  %></div>
+                  <% unless orchestra.member_belonging?(current_member) %>
+                    <% if orchestra.applies.find_by(member_id: current_member) %>
+                      <% path = orchestra.applies.find_by(member_id: current_member) %>
+                      <%= form_with model: orchestra, url: members_apply_path(path), method: :delete, local: true do |f| %>
+                        <%= f.submit '申請取消' %>
+                      <% end %>
+                    <% else %>
+                      <%= form_with model: orchestra, url: members_applies_path, method: :post, local: true do |f| %>
+                        <%= f.hidden_field :orchestra_id, value: orchestra.id %>
+                        <%= f.submit '入団申請' %>
+                      <% end %>
+                    <% end %>
                   <% end  %>
-                <% end  %>
               </div>
             <% end %>
             <div class="m-3 mx-auto"><%= link_to "マイページへ", members_member_mypage_path %></div>

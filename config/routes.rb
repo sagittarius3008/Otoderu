@@ -28,16 +28,18 @@ Rails.application.routes.draw do
     get 'member/mypage' => 'members#mypage'
     resources :members, only:[:edit, :show, :update]
     resources :attendances, only:[:index, :show, :update]
-    resources :orchestras, only:[:index, :create]
     resources :practices, only:[:show]
+    resources :orchestras, only:[:index, :create]
+    resources :applies, only: [:index, :create, :destroy]
   end
 
   namespace :orchestras do
     resources :members, only:[:index, :update]
     resources :instruments, only:[:create, :index, :update]
     resources :practices, only:[:index, :create, :show, :update, :destroy]
+    resources :applies, only: [:index]
   end
-  
+
   post "/receive"=>"slack#create"
 
 end

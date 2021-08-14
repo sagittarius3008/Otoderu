@@ -1,0 +1,18 @@
+<div class="container applicant-wrapper">
+    <h3>承認待ち一覧</h3>
+    <div class="row">
+        <% @applies.each do |apply| %>
+        <div class="col-6">
+            <%= "#{apply.member.family_name}#{apply.member.given_name}" %>
+            <%= "#{apply.member.family_name_kana}#{apply.member.given_name_kana}" %>
+            <%= apply.member.instrument.name %>
+            <%= form_with model: apply.member, url: members_orchestras_path, method: :post, local: true do |f| %>
+              <%= f.hidden_field :member_id, value: apply.member.id %>
+              <%= f.hidden_field :apply_id, value: apply.id %>
+              <%= f.submit "登録" %>
+            <% end %>
+            <%= link_to "却下", members_apply_path(apply), method: :delete, class:"mini-red-link-btn font-bold text-line-none" %>
+        </div>
+        <% end %>
+    </div>
+</div>
