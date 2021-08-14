@@ -71,6 +71,38 @@ footer{
   font-size: calc(7px + 0.25vw)
 }
 
+.d_table {
+	width:100%;
+	display: table;
+	border-collapse: collapse;
+	text-align:center;
+	margin:0;
+	}
+.d_thead  {
+	display:table-header-group;
+	background:lightgreen;
+	font-weight:bold;
+	}
+.d_tbody {
+	display:table-row-group;
+	}
+.d_tr {
+// 	display: table-row;
+	}
+.d_th,.d_td,.d_td1 {
+	display: table-cell;
+	padding: 5px 0;
+	border: 1px solid #999;
+	vertical-align: middle;
+	width:20%;
+	}
+	.a-table{
+	  width: 100%;
+	}
+	.submit{
+	  width: 20px;
+	}
+
 // カレンダーの色振り
 .simple-calendar {
   .day {
@@ -153,11 +185,11 @@ footer{
 .openbtn{
 	position:fixed;
   z-index: 9999;
-	top: 10px;
-	right: 14px;
+	top: 25px;
+	right: 25px;
 	cursor: pointer;
-  width: 50px;
-  height:50px;
+  width: 55px;
+  height: 55px;
 }
 .openbtn::after{
   position: absolute;
@@ -232,33 +264,6 @@ opacity: 0;
 	transform: translateY(0);
   }
 }
-
-// ボタン：hoverさせるとかぶさる
-.hover05{
-	overflow: hidden;
-	transition: color .3s ease;
-}
-.hover05:before{
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	transform: scale(0,1);
-	transform-origin: right top;
-	background-color: #e5a400;
-	transition: transform .3s ease;
-	opacity: 0.3;
-}
-.hover05:hover{
-	color: #fff;
-}
-.hover05:hover:before{
-	transform-origin: left top;
-	transform: scale(1,1);
-}
-//
 
 // 影をつける
 .wrapper{
