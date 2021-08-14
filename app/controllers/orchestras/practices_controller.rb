@@ -6,8 +6,17 @@ class Orchestras::PracticesController < ApplicationController
   end
 
   def show
-    @practice = Practice.find(params[:id])
-    @attendances = Attendance.where(practice_id: params[:id])
+    respond_to do |format|
+      format.html do
+        @practice = Practice.find(params[:id])
+        @attendances = Attendance.where(practice_id: params[:id])
+      end
+      format.csv do
+        practice = Practice.find(params[:id])
+        @attendances = Attendance.where(practice_id: params[:id])
+        send_data render_to_string, filename: "#{practice.schedule}.csv", type: :csv
+      end
+    end
   end
 
   def create
