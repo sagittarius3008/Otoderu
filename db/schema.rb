@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_03_020934) do
+ActiveRecord::Schema.define(version: 2021_08_13_232033) do
+
+  create_table "applies", force: :cascade do |t|
+    t.integer "member_id", null: false
+    t.integer "orchestra_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "attendances", force: :cascade do |t|
     t.datetime "created_at", null: false

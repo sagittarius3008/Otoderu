@@ -22,7 +22,6 @@
                   <%= f.hidden_field :id, value: params[:id] %>
                   <%= f.submit "#{member.family_name}#{member.given_name}" %>
                 <% end %>
-                <%#= link_to "#{member.family_name}#{member.given_name}", members_member_path(member) %>
               </td>
               <td><%= member.instrument.name %></td>
               <td>

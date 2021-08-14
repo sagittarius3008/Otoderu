@@ -6,6 +6,7 @@ class Member < ApplicationRecord
 
   has_many :attendances
   has_many :belongings
+  has_many :applies
   has_many :orchestras, through: :belongings
   has_many :practices, through: :attendances
   belongs_to :instrument

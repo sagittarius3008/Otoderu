@@ -5,6 +5,7 @@ class Orchestra < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :belongings
+  has_many :applies
   has_many :practices
   has_many :members, through: :belongings
 
@@ -21,6 +22,11 @@ class Orchestra < ApplicationRecord
       orchestra.name = "Musica Promenade"
       orchestra.image_id = File.open("app/assets/images/img/no_image.png")
     end
+  end
+  
+  # 団体に所属していればtrue
+  def member_belonging?(member)
+    members.include?(member)
   end
 
 end
