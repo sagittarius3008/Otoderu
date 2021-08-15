@@ -36,9 +36,14 @@ body{
   color: #000;
 }
 
-main{
+.main-color{
   background-color: #E6d8b3;
 }
+
+// .jumbo{
+//   background-color: #6a5d5a;
+//   color: #000;
+// }
 
 header{
   background-color: #9b322d;
@@ -321,3 +326,23 @@ opacity: 0;
 .tutti{
   background: image-url("img/tutti.jpg") center center / cover no-repeat;
 }
+
+
+.img-shadow1{
+  width: 33vw;
+  height: 20.625vw;
+  // background: image-url("img/tutti.jpg") center center / cover no-repeat;
+}
+.round{
+  border-radius: 10px;
+}
+
+.about-text{
+  display: flex;
+  justiffy-content: center;
+  flex-direction: column;
+  width: 33vw;
+  height: 20.625vw;
+}
+
+
