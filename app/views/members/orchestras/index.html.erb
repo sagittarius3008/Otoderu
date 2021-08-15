@@ -1,30 +1,33 @@
 <div class="kamaishi  photo">
   <div class="container">
     <div class="row">
-      <div class="mx-auto m-5 col-5 p-0 wrapper">
-        <div class="card">
-          <h2 class="text-center m-4">入団申請画面</h2>
-            <% @orchestras.each do |orchestra| %>
-              <div class="d-flex justify-content-center delayScroll">
-                <div class="m-3"><%= orchestra.name %></div>
-                  <% unless orchestra.member_belonging?(current_member) %>
-                    <% if orchestra.applies.find_by(member_id: current_member) %>
-                      <% path = orchestra.applies.find_by(member_id: current_member) %>
-                      <%= form_with model: orchestra, url: members_apply_path(path), method: :delete, local: true do |f| %>
-                        <%= f.submit '申請取消' %>
-                      <% end %>
-                    <% else %>
-                      <%= form_with model: orchestra, url: members_applies_path, method: :post, local: true do |f| %>
-                        <%= f.hidden_field :orchestra_id, value: orchestra.id %>
-                        <%= f.submit '入団申請' %>
-                      <% end %>
-                    <% end %>
-                  <% end  %>
-              </div>
-            <% end %>
-            <div class="m-3 mx-auto"><%= link_to "マイページへ", members_member_mypage_path %></div>
+      <div class="mx-auto m-5 col-5 p-0 wrapper card">
+        <h2 class="text-center mt-4">入団申請画面</h2>
+        <%= form_with url: {controller:"members/orchestras", action:"search"}, method: :get, local: true do |f| %>
+          <div class="text-center">
+            <%= f.text_field :search, placeholder: "団名を入力してください" %>
+            <%= f.submit "検索", name: nil %>
           </div>
-        </div>
+        <% end %>
+          <% @orchestras.each do |orchestra| %>
+            <div class="d-flex justify-content-center delayScroll">
+              <div class="m-3"><%= orchestra.name %></div>
+                <% unless orchestra.member_belonging?(current_member) %>
+                  <% if orchestra.applies.find_by(member_id: current_member) %>
+                    <% path = orchestra.applies.find_by(member_id: current_member) %>
+                    <%= form_with model: orchestra, url: members_apply_path(path), method: :delete, local: true do |f| %>
+                      <%= f.submit '申請取消' %>
+                    <% end %>
+                  <% else %>
+                    <%= form_with model: orchestra, url: members_applies_path, method: :post, local: true do |f| %>
+                      <%= f.hidden_field :orchestra_id, value: orchestra.id %>
+                      <%= f.submit '入団申請' %>
+                    <% end %>
+                  <% end %>
+                <% end  %>
+            </div>
+          <% end %>
+        <div class="m-3 mx-auto"><%= link_to "マイページへ", members_member_mypage_path %></div>
       </div>
     </div>
   </div>

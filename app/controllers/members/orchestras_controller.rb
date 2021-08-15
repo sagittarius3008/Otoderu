@@ -19,9 +19,13 @@ class Members::OrchestrasController < ApplicationController
       Apply.find(params[:member][:apply_id]).destroy!
       redirect_to request.referer
     else
-
       redirect_to request.referer
     end
+  end
+
+  def search
+    @orchestras = Orchestra.search(params[:search])
+    render 'index'
   end
 
 end
