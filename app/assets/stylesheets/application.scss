@@ -40,22 +40,6 @@ body{
   background-color: #E6d8b3;
 }
 
-// .jumbo{
-//   background-color: #6a5d5a;
-//   color: #000;
-// }
-
-header{
-  background-color: #9b322d;
-  height: 70px;
-  a{
-    width: 70px;
-    height: 70px;
-    background: image-url("logo.jpg") center center / cover no-repeat;
-    background-size: cover;
-  }
-}
-
 footer{
   background-color: #1A0807;
   height: 50px;
@@ -73,8 +57,15 @@ footer{
 }
 
 .small-font{
-  font-size: calc(7px + 0.25vw)
+  font-size: calc(9px + 0.25vw)
 }
+.table-th1{width: 70px;}
+.table-th2{width: 60px;}
+.table-th3{width: 100px;}
+.table-th4{width: 150px;}
+.table-th5{width: 300px;}
+.table-height{height: 20px;}
+
 
 .d_table {
 	width:100%;
@@ -108,7 +99,7 @@ footer{
 	  width: 20px;
 	}
 
-// カレンダーの色振り
+// カレンダーの設定
 .simple-calendar {
   .day {
     background: #fff9ee;
@@ -127,7 +118,7 @@ footer{
     color: #5984dc;
   }
   .today {
-    background: #E6d8b3;
+    background: #FFA0A0;
   }
   .past {}
   .future {}
@@ -137,12 +128,12 @@ footer{
   .current-month {}
   .has-events {}
 }
-
 .calendar-table tr td:hover {
   background-color: #FFFF8c;    /* マウスオーバー時の行の背景色 */
 }
+// -----------------------------------------------------------------
 
-// ナビゲーションの表示
+// ナビゲーションのメニュー
 #g-nav{
   /*position:fixed;にし、z-indexの数値を小さくして最背面へ*/
   position:fixed;
@@ -237,19 +228,12 @@ footer{
     transform: translateY(-6px) rotate(45deg);
     width: 30%;
 }
+// -----------------------------------------------------
 
-
-/*==================================================
-スタート時は要素自体を透過0にするためのopacity:0;を指定する
-===================================*/
-
+// マイページ等フェードイン浮かび上がる動き
 .box{
 	opacity: 0;
 }
-
-/*==================================================
-動かしたい動き（今回は” ふわっ” を採用）
-===================================*/
 
 .fadeUp {
 animation-name:fadeUpAnime;
@@ -269,6 +253,7 @@ opacity: 0;
 	transform: translateY(0);
   }
 }
+// -----------------------------------------------
 
 // 影をつける
 .wrapper{
@@ -323,9 +308,6 @@ opacity: 0;
   padding-top: calc(50 / 1000 * 100%);
   padding-bottom: calc(80 / 1000 * 100%);
 }
-.tutti{
-  background: image-url("img/tutti.jpg") center center / cover no-repeat;
-}
 
 
 .img-shadow1{
@@ -344,5 +326,3 @@ opacity: 0;
   width: 33vw;
   height: 20.625vw;
 }
-
-

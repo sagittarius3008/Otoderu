@@ -1,48 +1,51 @@
-<div class="container">
-  <div class="row">
-    <div class="mt-5 mx-auto col-8">
-      <h2><%= @orchestra.name %></h2>
-      <table border="2" class="table practice_index">
-        <thead>
-          <tr>
-            <th>名前</th>
-            <th>楽器</th>
-            <th>トップ</th>
-            <% @orchestra.practices.each do |practice| %>
-              <th><%= link_to practice.schedule, members_practice_path(practice) %></th>
-            <% end %>
-          </tr>
-        </thead>
-        <tbody>
-          <!--各メンバーにつき一行ずつ作成する-->
-          <% @members.each do |member| %>
-            <tr>
-              <td>
-                <%= form_with model: @orchestra, url: members_member_path(member), method: :get, local: true do |f| %>
-                  <%= f.hidden_field :id, value: params[:id] %>
-                  <%= f.submit "#{member.family_name}#{member.given_name}" %>
-                <% end %>
-              </td>
-              <td><%= member.instrument.name %></td>
-              <td>
-                <% if member.belongings.find_by(orchestra_id: @orchestra).part_top %>〇
-                <% else member.belongings.find_by(orchestra_id: @orchestra).part_top %>
-                <% end %>
-              </td>
+<div class="kamaishi  photo">
+  <div class="container">
+    <div class="row">
+      <div class="mx-auto m-5 col-10 wrapper card">
+          <h2 class="text-center m-4"><%= @orchestra.name %></h2>
+        <table border="2" class="table practice_index">
+          <thead>
+            <tr class="text-center">
+              <th class="table-th1 table-height align-middle p-2">名前</th>
+              <th class="table-th2 align-middle p-2">楽器</th>
+              <th class="table-th2 align-middle p-2">Top</th>
               <% @orchestra.practices.each do |practice| %>
-                <td>
-                  <% if practice.attendances.find_by(member_id: member.id).attendance_status == "未入力" %>-
-                  <% elsif practice.attendances.find_by(member_id: member.id).attendance_status == "出席" %>〇
-                  <% elsif practice.attendances.find_by(member_id: member.id).attendance_status == "欠席" %>×
-                  <% elsif practice.attendances.find_by(member_id: member.id).attendance_status == "遅刻" %>遅
-                  <% else practice.attendances.find_by(member_id: member.id).attendance_status == "早退" %>早
-                  <% end %>
-                </td>
+                <% practice_date = l practice.schedule, format: :short %><!--日付の形式を成形-->
+                <th class="table-th2 align-middle p-2"><%= link_to practice_date, members_practice_path(practice) %></th>
               <% end %>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <!--各メンバーにつき一行ずつ作成する-->
+            <% @members.each do |member| %>
+              <tr>
+                <td class="align-middle text-center p-1">
+                  <%= form_with model: @orchestra, url: members_member_path(member), method: :get, local: true do |f| %>
+                    <%= f.hidden_field :id, value: params[:id] %>
+                    <%= f.submit "#{member.family_name}#{member.given_name}" %>
+                  <% end %>
+                </td>
+                <td class="align-middle text-center p-1"><%= member.instrument.name %></td>
+                <td class="align-middle text-center p-1">
+                  <% if member.belongings.find_by(orchestra_id: @orchestra).part_top %>〇
+                  <% else member.belongings.find_by(orchestra_id: @orchestra).part_top %>
+                  <% end %>
+                </td>
+                <% @orchestra.practices.each do |practice| %>
+                  <td class="align-middle text-center p-1">
+                    <% if practice.attendances.find_by(member_id: member.id).attendance_status == "未入力" %>-
+                    <% elsif practice.attendances.find_by(member_id: member.id).attendance_status == "出席" %>〇
+                    <% elsif practice.attendances.find_by(member_id: member.id).attendance_status == "欠席" %>×
+                    <% elsif practice.attendances.find_by(member_id: member.id).attendance_status == "遅刻" %>遅
+                    <% else practice.attendances.find_by(member_id: member.id).attendance_status == "早退" %>早
+                    <% end %>
+                  </td>
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

@@ -1,31 +1,33 @@
-<div class="container">
-  <div class="row">
-    <div class="mt-5 mx-auto col-8">
-      <h2><%= "#{current_orchestra.name}の団員一覧" %></h2>
-      <table border="2" class="table practice_index">
-        <thead>
-          <tr>
-            <th>楽器</th>
-            <th>トップ</th>
-            <th>名前</th>
-            <th>カナ</th>
-            <th>自己紹介</th>
-            <th>パートトップ設定</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @belongings.each do |belonging| %>
-            <tr>
-              <td><%= belonging.member.instrument.name %></td>
-              <td><%= belonging.part_top? ? "〇" : "" %></td>
-              <td><%= "#{belonging.member.family_name} #{belonging.member.given_name}" %></td>
-              <td><%= "#{belonging.member.family_name_kana} #{belonging.member.given_name_kana}" %></td>
-              <td><%= belonging.member.introduction %></td>
-              <td><%= link_to "〇", orchestras_member_path(belonging), method: :patch, class:"btn btn-success" %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+<div class="kamaishi  photo">
+  <div class="container">
+    <div class="row">
+      <div class="mx-auto m-5 col-10 wrapper card">
+          <h2 class="text-center m-4"><%= "#{current_orchestra.name}の団員一覧" %></h2>
+          <table border="2" class="table practice_index">
+            <thead>
+              <tr class="text-center">
+                <th class="table-th1 table-height align-middle">楽器</th>
+                <th class="table-th2 align-middle">Top</th>
+                <th class="table-th3 align-middle">名前</th>
+                <th class="table-th4 align-middle">カナ</th>
+                <th class="table-th5 align-middle">自己紹介</th>
+                <th class="table-th3 align-middle p-1">PartTop<br>設定</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @belongings.each do |belonging| %>
+                <tr class="text-center">
+                  <td class="align-middle table-height"><%= belonging.member.instrument.name %></td>
+                  <td class="align-middle"><%= belonging.part_top? ? "〇" : "" %></td>
+                  <td class="align-middle"><%= "#{belonging.member.family_name} #{belonging.member.given_name}" %></td>
+                  <td class="align-middle"><%= "#{belonging.member.family_name_kana} #{belonging.member.given_name_kana}" %></td>
+                  <td class="align-middle"><%= belonging.member.introduction %></td>
+                  <td class="align-middle p-2"><%= link_to "〇", orchestras_member_path(belonging), method: :patch, class:"btn btn-success" %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+      </div>
     </div>
   </div>
 </div>
