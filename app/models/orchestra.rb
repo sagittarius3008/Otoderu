@@ -23,10 +23,18 @@ class Orchestra < ApplicationRecord
       orchestra.image_id = File.open("app/assets/images/img/no_image.png")
     end
   end
-  
+
   # 団体に所属していればtrue
   def member_belonging?(member)
     members.include?(member)
+  end
+
+  def self.search(search)
+    if search != ""
+      Orchestra.where('name LIKE(?)', "%#{search}%")
+    else
+      Orchestra.all
+    end
   end
 
 end

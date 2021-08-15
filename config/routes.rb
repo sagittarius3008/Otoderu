@@ -29,7 +29,11 @@ Rails.application.routes.draw do
     resources :members, only:[:edit, :show, :update]
     resources :attendances, only:[:index, :show, :update]
     resources :practices, only:[:show]
-    resources :orchestras, only:[:index, :create]
+    resources :orchestras, only:[:index, :create] do
+      collection do
+        get 'search'
+      end
+    end
     resources :applies, only: [:index, :create, :destroy]
   end
 
