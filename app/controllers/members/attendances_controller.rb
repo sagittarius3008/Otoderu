@@ -2,6 +2,21 @@ class Members::AttendancesController < ApplicationController
 
   def index
     @member = Member.find_by(id: current_member.id)
+    # セレクトボックス作成のため
+    @names = []
+    @member.orchestras.each do |orchestra|
+      @names << orchestra.name
+    end
+  end
+
+  def search
+    @member = Member.find_by(id: current_member.id)
+    @orchestra = Orchestra.search(params[:search])
+    @names = []
+    @member.orchestras.each do |orchestra|
+      @names << orchestra.name
+    end
+    render 'index'
   end
 
   def show
