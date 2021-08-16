@@ -1,17 +1,20 @@
 <div class="kamaishi  photo">
   <div class="container">
     <div class="row">
-      <div class="mx-auto m-5 col-5 p-0 wrapper card">
+      <div class="mx-auto m-5 col-5 p-0 card">
         <h2 class="text-center mt-4">入団申請画面</h2>
         <%= form_with url: {controller: "members/orchestras", action: "search"}, method: :get, local: true do |f| %>
           <div class="text-center m-2">
-            <%= f.text_field :search, placeholder: "団名を入力してください" %>
-            <%= f.submit "検索", name: nil %>
+            <%= f.text_field :search, placeholder: "団名を入力してください", size: 25 %>
+            <%= button_tag :class =>"icon" do %>
+              <%= image_tag "img/icon/search.png", class: "search-icon", name: nil %>
+            <% end %>
           </div>
         <% end %>
           <% @orchestras.each do |orchestra| %>
             <div class="d-flex justify-content-center delayScroll">
-              <div class="m-3"><%= orchestra.name %></div>
+              <div class="m-3 d-flex">
+                <%= orchestra.name %>
                 <% unless orchestra.member_belonging?(current_member) %>
                   <% if orchestra.applies.find_by(member_id: current_member) %>
                     <% path = orchestra.applies.find_by(member_id: current_member) %>
@@ -24,10 +27,16 @@
                       <%= f.submit '入団申請' %>
                     <% end %>
                   <% end %>
-                <% end  %>
+                <% end %>
+              </div>
             </div>
           <% end %>
-        <div class="m-3 mx-auto"><%= link_to "マイページへ", members_member_mypage_path %></div>
+        <div class="m-3 mx-auto">
+          <%= link_to members_member_mypage_path, class: "icon" do %>
+            <%= image_tag "img/icon/Piano.png", class: "img-icon" %>
+            <div>マイページへ</div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
