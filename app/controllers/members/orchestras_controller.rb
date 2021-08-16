@@ -16,16 +16,17 @@ class Members::OrchestrasController < ApplicationController
         attendance = Attendance.new(practice_id: practice.id, member_id: member_id)
         attendance.save
       end
+      # 申請一覧から削除する
       Apply.find(params[:member][:apply_id]).destroy!
       redirect_to request.referer
     else
       redirect_to request.referer
     end
   end
-
+  
   def search
     @orchestras = Orchestra.search(params[:search])
     render 'index'
   end
-
+  
 end
