@@ -1,7 +1,7 @@
 <div class="orchestra photo">
   <div class="container">
     <div class="row">
-      <div class="mx-auto m-5 col-5 p-0 wrapper">
+      <div class="mx-auto m-5 col-5 p-0">
         <div class="card">
           <h2 class="text-center m-5">団体ログイン</h2>
           <%= form_with model: @orchestra, url: orchestra_session_path, local: true do |f| %>
@@ -13,7 +13,10 @@
             <%= f.password_field :password, placeholder: "パスワード",size: 40 %>
           </div>
           <div class="row d-flex justify-content-center mb-4">
-            <%= f.submit "マイページへ" , class: "btn btn-success" %>
+            <%= button_tag :class =>"wrapper icon w-25" do %>
+              <%= image_tag "img/icon/Tp.png", class: "img-icon" %>
+              <div>奏でる</div>
+            <% end %>
           </div>
           <div class="row d-flex justify-content-center mb-4">
             ご登録がまだの場合は<%= link_to "こちら", new_orchestra_registration_path %>

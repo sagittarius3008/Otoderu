@@ -1,8 +1,7 @@
 <div class="flute photo">
   <div class="container">
     <div class="row">
-      <div class="mx-auto m-5 col-5 p-0 wrapper mb-5">
-        <div class="card">
+      <div class="mx-auto card m-5 col-5 p-0 mb-5">
         <h2 class="text-center m-5">団員ログイン</h2>
         <%= form_with model: @member, url: member_session_path, local: true do |f| %>
           <%= render "members/shared/error_messages", resource: resource %>
@@ -13,7 +12,10 @@
             <%= f.password_field :password, placeholder: "パスワード", size: 40 %>
           </div>
           <div class="text-center m-4">
-            <%= f.submit "マイページへ" , class: "btn btn-success" %>
+            <%= button_tag :class =>"wrapper icon w-25" do %>
+              <%= image_tag "img/icon/Tp.png", class: "img-icon" %>
+              <div>奏でる</div>
+            <% end %>
           </div>
           <div class="text-center m-3">
             ご登録がまだの方は<%= link_to "こちら", new_member_registration_path %>
@@ -22,7 +24,6 @@
             団体アカウントの方は<%= link_to "こちら", new_orchestra_session_path %>
           </div>
         <% end %>
-        </div>
       </div>
     </div>
   </div>

@@ -64,7 +64,7 @@ class Members::RegistrationsController < Devise::RegistrationsController
   # end
 
   def sign_up_params
-    params.require(:member).permit(:family_name,:family_name_kana,:given_name, :given_name_kana,:instrument_id, :email, :password, :password_confirmation)
+    params.require(:member).permit(:family_name, :family_name_kana, :given_name, :given_name_kana, :instrument_id, :email, :password, :password_confirmation)
   end
 
 end

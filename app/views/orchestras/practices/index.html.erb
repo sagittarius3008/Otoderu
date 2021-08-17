@@ -1,6 +1,6 @@
-<div class="stage-right kamaishi photo">
+<div class="kamaishi photo">
   <div class="container">
-    <div class="row">
+    <div class="row d-flex mx-auto m-5 p-0">
       <div class="d-flex mx-auto m-5 p-0">
         <div class="col-5 card mr-3">
           <h2 class="text-center m-4">練習登録</h2>
@@ -32,7 +32,12 @@
                 </tr>
                 <tr>
                   <td></td>
-                  <td><%= f.submit "登録", class: 'btn btn-success m-2', size: 30 %></td>
+                  <td>
+                    <%= button_tag :class =>"wrapper icon w-50 ml-5" do %>
+                      <%= image_tag "img/icon/Hr.png", class: "img-icon" %>
+                      <div>登録する</div>
+                    <% end %>
+                  </td>
                 </tr>
               </tbody>
             </table>

@@ -4,16 +4,14 @@
     <span class="calendar-title"><%= start_date.year %> <%= t('date.month_names')[start_date.month] %></span>
     <%= link_to "来月", calendar.url_for_next_view %>
   </div>
-
   <table class="table table-striped calendar-table">
     <thead>
       <tr>
         <% date_range.slice(0, 7).each do |day| %>
-          <th class="pt-0 pb-0 text-center"><%= t('date.abbr_day_names')[day.wday] %></th>
+          <th class="table-th4 pt-0 pb-0 text-center"><%= t('date.abbr_day_names')[day.wday] %></th>
         <% end %>
       </tr>
     </thead>
-
     <tbody>
       <% date_range.each_slice(7) do |week| %>
         <tr>
