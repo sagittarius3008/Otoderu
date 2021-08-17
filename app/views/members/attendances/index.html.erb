@@ -9,6 +9,7 @@
           </div>
         <% end %>
       <% end %>
+    <!--絞り込みフォーム-->
     <%= form_with url: {controller:"members/attendances", action: "search"}, method: :get, local: true do |f| %>
       <div class="text-center d-flex m-2">
         <div><%= f.select :search, @names, {}, class: 'form-control' %></div>

@@ -1,7 +1,7 @@
 class Members::OrchestrasController < ApplicationController
 
   def index
-    @orchestras = Orchestra.all
+    @orchestras = Orchestra.page(params[:page]).per(5)
   end
 
   # 入団処理
@@ -23,10 +23,10 @@ class Members::OrchestrasController < ApplicationController
       redirect_to request.referer
     end
   end
-  
+
   def search
     @orchestras = Orchestra.search(params[:search])
     render 'index'
   end
-  
+
 end
