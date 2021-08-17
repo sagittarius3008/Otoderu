@@ -3,17 +3,29 @@
     <div class="row">
       <div class="mx-auto m-5 col-5 p-0 card">
         <h2 class="text-center m-4">マイページ</h2>
-        <div class="text-center m-3">
-          直近の練習予定は<%= link_to "#{@most_recent_date} #{@most_recent_practice.orchestra.name} ", members_practice_path(@most_recent_practice) %>です。
-        </div>
+        <% unless @most_recent_date == nil %>
+          <div class="text-center m-3 ">
+            次の練習は<%= link_to "#{l @most_recent_date, format: :short} #{@most_recent_practice.orchestra.name} ", members_practice_path(@most_recent_practice), class: "text-dark next-practice" %>です。
+          </div>
+        <% end %>
         <div class="d-flex justify-content-center m-3">
-          <%= link_to "出欠確認", members_attendances_path, class:"btn btn-success mr-4" %>
-          <%= link_to "プロフィール編集", edit_members_member_path(@member), class:"btn btn-success mr-4" %>
-          <%= link_to "入団申請", members_orchestras_path, class:"btn btn-success" %>
+          <%= link_to members_attendances_path, class: "text-dark mr-5" do %>
+            <%= image_tag "img/icon/Cb.png", class: "img-icon" %>
+            <div class="text-right">出欠一覧</div>
+          <% end %>
+          <%= link_to edit_members_member_path(@member), class: "text-dark mr-5" do %>
+            <%= image_tag "img/icon/Harp.png", class: "img-icon ml-4" %>
+            <div>プロフィール編集</div>
+          <% end %>
+          <%= link_to members_orchestras_path, class: "text-dark" do %>
+            <%= image_tag "img/icon/Tb.png", class: "img-icon" %>
+            <div>入団申請</div>
+          <% end %>
         </div>
+        <div class="text-center mt-3">───────────練習予定───────────</div>
         <% @member.orchestras.each do |orchestra| %>
           <div class="text-center delayScroll wrapper mb-2">
-            <%= link_to orchestra.name, members_attendance_path(orchestra), class:"btn box hover05 m-3" %>
+            <%= link_to orchestra.name, members_attendance_path(orchestra), class:"btn box hover05 m-2" %>
           </div>
         <% end %>
       </div>

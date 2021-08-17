@@ -37,7 +37,7 @@ body{
 }
 
 .main-color{
-  background-color: #E6d8b3;
+  background-color: #efe4c9;
 }
 
 footer{
@@ -64,8 +64,15 @@ footer{
 .table-th3{width: 100px;}
 .table-th4{width: 150px;}
 .table-th5{width: 300px;}
+.table-th6{width: 80x;}
 .table-height{height: 20px;}
 
+.table tr:hover {
+  background-color: #FFFFb2;    /* マウスオーバー時の行の背景色 */
+}
+.table tr td:hover {
+  background-color: #FFFF00;    /* マウスオーバー時の行の背景色 */
+}
 
 .d_table {
 	width: 100%;
@@ -258,6 +265,7 @@ opacity: 0;
 // 影をつける
 .wrapper{
   margin: 1rem auto;
+  border-width: 3px;
   border-radius: 10px;
 }
 
@@ -344,4 +352,22 @@ opacity: 0;
   flex-direction: column;
   width: 33vw;
   height: 20.625vw;
+}
+
+.btn-none{
+  -webkit-appearance:none;
+  background-color: #FFF;
+  border-color: #FFF;
+  border-width: 0px;
+  text-decoration: none;
+  color: #000;
+}
+
+.next-practice{
+  border-line: none;
+  background: linear-gradient(transparent 60%, yellow 60%);
+}
+.next-practice:hover{
+  text-decoration: none;
+  font-size: 1.1rem;
 }

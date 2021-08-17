@@ -14,7 +14,7 @@
           <% @orchestras.each do |orchestra| %>
             <div class="d-flex justify-content-center delayScroll">
               <div class="m-3 d-flex">
-                <%= orchestra.name %>
+                <div class="mr-3"><%= orchestra.name %></div>
                 <% unless orchestra.member_belonging?(current_member) %>
                   <% if orchestra.applies.find_by(member_id: current_member) %>
                     <% path = orchestra.applies.find_by(member_id: current_member) %>
@@ -33,7 +33,7 @@
           <% end %>
         <div class="m-3 mx-auto">
           <%= link_to members_member_mypage_path, class: "icon" do %>
-            <%= image_tag "img/icon/Piano.png", class: "img-icon" %>
+            <%= image_tag "img/icon/Piano.png", class: "img-icon ml-2" %>
             <div>マイページへ</div>
           <% end %>
         </div>
