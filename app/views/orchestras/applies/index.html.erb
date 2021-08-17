@@ -1,18 +1,41 @@
-<div class="container applicant-wrapper">
-    <h3>承認待ち一覧</h3>
+<div class="kamaishi photo">
+  <div class="container">
     <div class="row">
-        <% @applies.each do |apply| %>
-        <div class="col-6">
-            <%= "#{apply.member.family_name}#{apply.member.given_name}" %>
-            <%= "#{apply.member.family_name_kana}#{apply.member.given_name_kana}" %>
-            <%= apply.member.instrument.name %>
-            <%= form_with model: apply.member, url: members_orchestras_path, method: :post, local: true do |f| %>
-              <%= f.hidden_field :member_id, value: apply.member.id %>
-              <%= f.hidden_field :apply_id, value: apply.id %>
-              <%= f.submit "登録" %>
-            <% end %>
-            <%= link_to "却下", members_apply_path(apply), method: :delete, class:"mini-red-link-btn font-bold text-line-none" %>
-        </div>
-        <% end %>
-    </div>
+      <div class="mx-auto m-5 col-10 card">
+      <h2 class="text-center m-4">承認待ち一覧</h2>
+      <table border="2" class="table small-font">
+        <thead>
+          <tr class="text-center">
+            <th class="table-th2 table-height align-middle">申請日</th>
+            <th class="table-th1 align-middle">名前</th>
+            <th class="table-th3 align-middle">カナ</th>
+            <th class="table-th2 align-middle">楽器</th>
+            <th class="table-th5 align-middle">自己紹介</th>
+            <th class="table-th1 align-middle p-1"></th>
+            <th class="table-th1 align-middle p-1"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @applies.each do |apply| %>
+            <tr class="text-center">
+              <td class="align-middle table-height p-0"><%= l apply.created_at, format: :schedule %></td>
+              <td class="align-middle p-0"><%= "#{apply.member.family_name}#{apply.member.given_name}" %></td>
+              <td class="align-middle p-0"><%= "#{apply.member.family_name_kana}#{apply.member.given_name_kana}" %></td>
+              <td class="align-middle p-0"><%= apply.member.instrument.name %></td>
+              <td class="align-middle p-0"><%= apply.member.introduction %></td>
+              <td class="align-middle p-0">
+                <%= form_with model: apply.member, url: members_orchestras_path, method: :post, local: true do |f| %>
+                  <%= f.hidden_field :member_id, value: apply.member.id %>
+                  <%= f.hidden_field :apply_id, value: apply.id %>
+                  <%= f.submit "登録" %>
+                <% end %>
+              </td>
+              <td class="align-middle">
+                <%= link_to "却下", members_apply_path(apply), method: :delete, class:"mini-red-link-btn font-bold text-line-none" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+  </div>
 </div>

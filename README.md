@@ -23,8 +23,8 @@
 ## 設計書
 
 - ER 図
-  ![ER図](https://user-images.githubusercontent.com/83518855/128526115-24d3d44a-3324-4e72-99c6-84ce346b5047.png)
-- [URL](https://otoderu.com)  
+  ![ER図](https://user-images.githubusercontent.com/83518855/129730921-1d76384f-7787-4f0f-b098-88af53a7f5c7.png)
+- [URL](https://otoderu.com)
 - [テーブル定義書](https://docs.google.com/spreadsheets/d/1a9zYIdhUhD_8Z63i26BLWO315mVppMZ7koWDFI5wkVA/edit?usp=sharing)
 - [アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1lXLAcZVtGDKtB71RUtqQRwT3cMNWfw1PctalsSpCccA/edit?usp=sharing)
 
@@ -42,7 +42,7 @@ https://docs.google.com/spreadsheets/d/1yHLfj2vTUaqEzmE4-0uya6wkFhEpDJf8KrDFfRTX
 ## 素材提供
 - fotofolly
 - Musica Promenade
-- 
+-
 
 ## 使用素材
-- [OSDN（IPAフォント）](https://ja.osdn.net/)  
+- [OSDN（IPAフォント）](https://ja.osdn.net/)
