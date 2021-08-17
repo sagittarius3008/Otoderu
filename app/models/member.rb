@@ -17,7 +17,17 @@ class Member < ApplicationRecord
     validates :family_name_kana
     validates :given_name_kana
     validates :email
+    validates :instrument_id
   end
+
+  validates :email, uniqueness: true
+
+  VALID_NAME_REGEX = /^[ぁ-んァ-ヶー一-龠]+$/
+  validates :family_name, length: { maximum: 5 }, format: { with: VALID_NAME_REGEX, :multiline => true }
+  validates :given_name, length: { maximum: 17 }, format: { with: VALID_NAME_REGEX, :multiline => true }
+  VALID_NAME_KANA_REGEX = /[ァ-ヴ]/
+  validates :family_name_kana, format: { with: VALID_NAME_KANA_REGEX, :multiline => true }
+  validates :given_name_kana, format: { with: VALID_NAME_KANA_REGEX, :multiline => true }
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |member|
