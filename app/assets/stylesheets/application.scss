@@ -365,9 +365,13 @@ opacity: 0;
 
 .next-practice{
   border-line: none;
-  background: linear-gradient(transparent 60%, yellow 60%);
 }
 .next-practice:hover{
   text-decoration: none;
-  font-size: 1.1rem;
+}
+.linear{
+  background: linear-gradient(transparent 60%, yellow 60%);
+}
+.icon-border{
+  border-width: 0px;
 }

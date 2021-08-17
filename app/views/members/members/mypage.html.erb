@@ -5,19 +5,19 @@
         <h2 class="text-center m-4">マイページ</h2>
         <% unless @most_recent_date == nil %>
           <div class="text-center m-3 ">
-            次の練習は<%= link_to "#{l @most_recent_date, format: :short} #{@most_recent_practice.orchestra.name} ", members_practice_path(@most_recent_practice), class: "text-dark next-practice" %>です。
+            次の練習は<%= link_to "#{l @most_recent_date, format: :short} #{@most_recent_practice.orchestra.name} ", members_practice_path(@most_recent_practice), class: "text-dark next-practice linear" %>です。
           </div>
         <% end %>
         <div class="d-flex justify-content-center m-3">
-          <%= link_to members_attendances_path, class: "text-dark mr-5" do %>
+          <%= link_to members_attendances_path, class: "text-dark mr-5 wrapper" do %>
             <%= image_tag "img/icon/Cb.png", class: "img-icon" %>
-            <div class="text-right">出欠一覧</div>
+            <div class="text-right">出欠入力</div>
           <% end %>
-          <%= link_to edit_members_member_path(@member), class: "text-dark mr-5" do %>
+          <%= link_to edit_members_member_path(@member), class: "text-dark mr-5 wrapper" do %>
             <%= image_tag "img/icon/Harp.png", class: "img-icon ml-4" %>
             <div>プロフィール編集</div>
           <% end %>
-          <%= link_to members_orchestras_path, class: "text-dark" do %>
+          <%= link_to members_orchestras_path, class: "text-dark wrapper" do %>
             <%= image_tag "img/icon/Tb.png", class: "img-icon" %>
             <div>入団申請</div>
           <% end %>
