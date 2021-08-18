@@ -28,24 +28,24 @@ RSpec.describe Orchestra, type: :model do
         expect(Orchestra.reflect_on_association(:belongings).macro).to eq :has_many
       end
     end
-    
+
     context 'applyモデルとの関係' do
       it '1:Nとなっている' do
         expect(Orchestra.reflect_on_association(:applies).macro).to eq :has_many
       end
     end
-    
+
     context 'practiceモデルとの関係' do
       it '1:Nとなっている' do
         expect(Orchestra.reflect_on_association(:practices).macro).to eq :has_many
       end
-    end  
-    
+    end
+
     context 'memberモデルとの関係' do
       it '1:Nとなっている' do
         expect(Orchestra.reflect_on_association(:members).macro).to eq :has_many
       end
     end
-    
+
   end
 end

@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Memberモデルのテスト', type: :model do
+  
   describe 'バリデーション' do
     let(:member) { build(:member) }
   #   subject { member.valid? }
