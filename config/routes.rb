@@ -44,7 +44,7 @@ Rails.application.routes.draw do
   namespace :orchestras do
     resources :members, only:[:index, :update]
     resources :instruments, only:[:create, :index, :update]
-    resources :practices, only:[:index, :create, :show, :update, :destroy]
+    resources :practices, only:[:index, :create, :show, :edit, :update, :destroy]
     resources :applies, only: [:index]
   end
 

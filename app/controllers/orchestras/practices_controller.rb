@@ -24,6 +24,7 @@ class Orchestras::PracticesController < ApplicationController
     f_params = practice_params
     start_at = Date.current.strftime('%Y-%m-%d') + " #{f_params[:'start_time(4i)']}:" + "#{f_params[:'start_time(5i)']}"
     end_at = Date.current.strftime('%Y-%m-%d') + " #{f_params[:'end_time(4i)']}:" + "#{f_params[:'end_time(5i)']}"
+    # byebug
     practice = Practice.new(
       orchestra_id: current_orchestra.id,
       schedule: f_params[:schedule],
@@ -35,9 +36,6 @@ class Orchestras::PracticesController < ApplicationController
       end_at: end_at.in_time_zone
     )
     if practice.save
-      # 所属する全てのmemberに対して、出欠データを作成する。
-      # 後から入団したmemberにはデータが作られていない（要修正）
-      # seedファイル参照？
       members = current_orchestra.belongings.map{|belonging| belonging.member }
       members.each do |member|
         attendance = Attendance.new(practice_id: practice.id)
@@ -52,16 +50,37 @@ class Orchestras::PracticesController < ApplicationController
     end
   end
 
+  def edit
+    @practice = Practice.find(params[:id])
+  end
+
   def update
+    practice = Practice.find(params[:id])
+    f_params = practice_params
+    start_at = Date.current.strftime('%Y-%m-%d') + " #{f_params[:'start_time(4i)']}:" + "#{f_params[:'start_time(5i)']}"
+    end_at = Date.current.strftime('%Y-%m-%d') + " #{f_params[:'end_time(4i)']}:" + "#{f_params[:'end_time(5i)']}"
+    practice.update(
+      schedule: f_params[:schedule],
+      start_time: f_params[:schedule],
+      place: f_params[:place],
+      stand: f_params[:stand],
+      note: f_params[:note],
+      start_at: start_at.in_time_zone,
+      end_at: end_at.in_time_zone
+    )
+    redirect_to orchestras_practices_path
   end
 
   def destroy
+    practice = Practice.find(params[:id])
+    practice.destroy
+    redirect_to orchestras_practices_path
   end
 
   private
 
     def practice_params
-      params.require(:practice).permit(:schedule, :'start_at(4i)', :'start_at(5i)', :"end_at(4i)", :"end_at(5i)", :place, :stand, :note)
+      params.require(:practice).permit(:schedule, :'start_time(4i)', :'start_time(5i)', :"end_time(4i)", :"end_time(5i)", :place, :stand, :note)
     end
 
 end
