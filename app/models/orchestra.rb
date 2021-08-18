@@ -15,6 +15,7 @@ class Orchestra < ApplicationRecord
   end
 
   validates :name, uniqueness: true
+  validates :email, uniqueness: true
 
   def self.guest
     find_or_create_by!(email: 'guest_orchestra@example.com') do |orchestra|

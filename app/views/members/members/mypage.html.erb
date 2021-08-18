@@ -24,7 +24,7 @@
         </div>
         <div class="text-center mt-3">───────────練習予定───────────</div>
         <% @member.orchestras.each do |orchestra| %>
-          <div class="text-center delayScroll wrapper mb-2">
+          <div class="text-center delayScroll wrapper mb-1">
             <%= link_to orchestra.name, members_attendance_path(orchestra), class:"btn box hover05 m-2" %>
           </div>
         <% end %>
