@@ -43,6 +43,14 @@
                 <% end %>
               </tr>
             <% end %>
+            <tfoot>
+              <tr class="text-center">
+                <th colspan=3></th>
+                <% @orchestra.practices.each do |practice| %>
+                <th><%= practice.attendances.where(attendance_status:1).count %>人</th>
+                <% end %>
+              </tr>
+            </tfoot>
           </tbody>
         </table>
       </div>

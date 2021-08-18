@@ -1,31 +1,35 @@
 <div class="container">
   <div class="row">
-    <div class="m-5 mx-auto col-6 card">
+    <div class="m-5 mx-auto col-7 card">
       <h2 class="text-center m-4"><%= "#{practice.schedule}の練習詳細" %></h2>
- 
       <table>
         <tbody>
           <tr>
-            <td>時間</td>
+            <td class="text-center">時間</td>
             <td><%= l practice.start_at, format: :short %>-<%= l practice.end_at, format: :short %></td>
           </tr>
           <tr>
-            <td>場所</td>
+            <td class="text-center">場所</td>
             <td><%= practice.place %></td>
           </tr>
           <tr>
-            <td>譜面台</td>
+            <td class="text-center">譜面台</td>
             <td><%= practice.stand? ? "不要" : "要" %></td>
           </tr>
           <tr>
-            <td>備考</td>
+            <td class="text-center">備考</td>
             <td><%= practice.note %></td>
+          </tr>
+          <tr>
+            <td class="text-center">出席人数</td>
+            <td><%= practice.attendances.where(attendance_status:1).count %>人</td>
           </tr>
         </tbody>
       </table>
       <table border="2" class="table practice_index small-font mb-5">
         <thead>
           <tr class="text-center">
+            <th class="table-th1 align-middle">楽器</th>
             <th class="table-th4 align-middle">名前</th>
             <th class="table-th3 align-middle">出欠</th>
             <th class="table-th5 align-middle">備考</th>
@@ -34,6 +38,7 @@
         <tbody>
           <% attendances.each do |attendance| %>
             <tr class="text-center">
+              <td><%= attendance.member.instrument.name %></td>
               <td><%= "#{attendance.member.family_name}#{attendance.member.given_name}" %></td>
               <td><%= attendance.attendance_status %></td>
               <td><%= attendance.note %></td>
