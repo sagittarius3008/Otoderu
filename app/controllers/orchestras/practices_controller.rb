@@ -1,4 +1,6 @@
 class Orchestras::PracticesController < ApplicationController
+  include Nav
+  before_action :new_apply
 
   def index
     @practice = Practice.new

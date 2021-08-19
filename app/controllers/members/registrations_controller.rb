@@ -12,10 +12,6 @@ class Members::RegistrationsController < Devise::RegistrationsController
     super
   end
 
-  # POST /resource
-  # def create
-  #   super
-  # end
   # save失敗した際に@instrumentsを渡すよう変更
   def create
     build_resource(sign_up_params)

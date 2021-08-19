@@ -1,4 +1,6 @@
 class Orchestras::InstrumentsController < ApplicationController
+  include Nav
+  before_action :new_apply
 
   def index
     @instruments = Instrument.all

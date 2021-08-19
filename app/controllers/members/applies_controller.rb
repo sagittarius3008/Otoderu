@@ -1,4 +1,5 @@
 class Members::AppliesController < ApplicationController
+  before_action :authenticate_member!
 
   def create
     apply = Apply.new(orchestra_id: params[:orchestra][:orchestra_id], member_id: current_member.id)
