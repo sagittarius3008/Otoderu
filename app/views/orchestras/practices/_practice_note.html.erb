@@ -46,10 +46,12 @@
           <% end %>
         </tbody>
       </table>
+      <% if orchestra_signed_in? %>
       <div class="d-flex justify-content-between">
         <div><%= link_to "予定の編集", edit_orchestras_practice_path(practice) %></div>
         <div><%= link_to "日程削除", {controller: 'orchestras/practices', action: 'destroy' }, method: :delete, class: "m-3", data: { confirm: "\n削除すると元に戻せません。\nよろしいですか？" } %></div>
       </div>
+      <% end %>
       <%= link_to "CSV出力", orchestras_practice_path(format: :csv), class: "btn btn-primary m-3" %>
     </div>
   </div>
