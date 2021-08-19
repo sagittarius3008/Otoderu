@@ -26,7 +26,7 @@
             <td class="p-1 align-middle"><%= l practice.start_at, format: :short %>-<%= l practice.end_at, format: :short %></td>
             <td class="p-1 align-middle"><%= practice.place %></td>
             <td class="p-1 align-middle"><%= link_to practice.orchestra.name, members_attendance_path(practice.orchestra) %></td>
-            <td class="p-1 align-middle"><%= practice.attendances.where(attendance_status:1).count %>人</td>
+            <td class="p-1 align-middle"><%= "#{practice.attendances.where(attendance_status:1).count + practice.attendances.where(attendance_status:3).count + practice.attendances.where(attendance_status:4).count}" %>人</td>
             <td class="p-1 align-middle"><%= practice.stand? ? "不要" : "要" %></td>
             <td class="p-1 align-middle"><%= f.text_field :note %></td>
         <% end %>

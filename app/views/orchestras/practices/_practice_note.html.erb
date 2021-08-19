@@ -22,7 +22,7 @@
           </tr>
           <tr>
             <td class="text-center">出席人数</td>
-            <td><%= practice.attendances.where(attendance_status:1).count %>人</td>
+            <td><%= "#{practice.attendances.where(attendance_status:1).count + practice.attendances.where(attendance_status:3).count + practice.attendances.where(attendance_status:4).count}" %>人</td>
           </tr>
         </tbody>
       </table>
