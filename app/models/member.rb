@@ -21,10 +21,13 @@ class Member < ApplicationRecord
   end
 
   validates :email, uniqueness: true
-
+  
+  # 全角で入力されていること
   VALID_NAME_REGEX = /^[ぁ-んァ-ヶー一-龠]+$/
   validates :family_name, length: { maximum: 5 }, format: { with: VALID_NAME_REGEX, :multiline => true }
   validates :given_name, length: { maximum: 9 }, format: { with: VALID_NAME_REGEX, :multiline => true }
+  
+  # 全角カタカナで入力されていること
   VALID_NAME_KANA_REGEX = /[ァ-ヴ]/
   validates :family_name_kana, format: { with: VALID_NAME_KANA_REGEX, :multiline => true }
   validates :given_name_kana, format: { with: VALID_NAME_KANA_REGEX, :multiline => true }

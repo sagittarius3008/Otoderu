@@ -21,7 +21,6 @@ class Orchestra < ApplicationRecord
     find_or_create_by!(email: 'guest_orchestra@example.com') do |orchestra|
       orchestra.password = SecureRandom.urlsafe_base64
       orchestra.name = "Musica Promenade"
-      orchestra.image_id = File.open("app/assets/images/img/no_image.png")
     end
   end
 
