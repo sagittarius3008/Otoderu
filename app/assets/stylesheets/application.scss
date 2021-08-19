@@ -431,7 +431,7 @@ opacity: 0;
 
 // kaminariのレイアウト
 /*ページネーション自体のデザイン*/
-.pagination>span>a {
+.pagination>li>a {
   border: none;     /*枠線をなくす*/
   color: #696969;   /*文字の色を変える*/
 }
@@ -443,6 +443,13 @@ opacity: 0;
 }
 
 /*ホバー時のデザイン*/
-.pagination>span>a:hover {
+.pagination>li>a:hover {
   border-radius: 15px;    /*角を丸くする*/
+}
+
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: #18426d;
+  border-color: #007bff;
 }
