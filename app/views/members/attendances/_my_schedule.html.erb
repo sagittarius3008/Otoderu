@@ -1,7 +1,7 @@
 <table border="2" class="table small-font">
   <thead>
     <tr class="text-center table-height align-middle">
-      <th class="table-th1 p-2"></th>
+      <th class="table-th1 p-2">更新</th>
       <th class="table-th6 p-2"></th>
       <th class="table-th2 p-2">出欠</th>
       <th class="table-th6 p-2">日付</th>
@@ -19,11 +19,15 @@
       <% attendance = practice.attendances.find_by(member_id: member.id) %>
       <tr class="text-center table-height">
         <%= form_with model: attendance, url: members_attendance_path(attendance), method: :patch, remote: true do |f| %>
-            <td class="p-1 align-middle"><%= f.submit "更新" , class: "btn btn-success mr-2"%></td>
+            <td class="p-1 align-middle">
+              <%= button_tag :class =>"wrapper icon" do %>
+                <%= image_tag "img/icon/Tp-mini.png", class: "wide-icon" %>
+              <% end %>
+            </td>
             <td class="p-1 align-middle"><%= f.select :attendance_status, Attendance.attendance_statuses.keys.to_a, {}, class: 'form-control' %></td>
             <td class="p-1 align-middle"><%= attendance.attendance_status %></td>
             <td class="p-1 align-middle"><%= link_to practice.schedule, members_practice_path(practice) %></td>
-            <td class="p-1 align-middle"><%= l practice.start_at, format: :short %>-<%= l practice.end_at, format: :short %></td>
+            <td class="p-1 align-middle tooltip1"><span class="tooltip-text"><%= practice.note %></span><%= l practice.start_at, format: :short %>-<%= l practice.end_at, format: :short %></td>
             <td class="p-1 align-middle"><%= practice.place %></td>
             <td class="p-1 align-middle"><%= link_to practice.orchestra.name, members_attendance_path(practice.orchestra) %></td>
             <td class="p-1 align-middle"><%= "#{practice.attendances.where(attendance_status:1).count + practice.attendances.where(attendance_status:3).count + practice.attendances.where(attendance_status:4).count}" %>人</td>
@@ -42,7 +46,7 @@
               <td><%= f.select :attendance_status, Attendance.attendance_statuses.keys.to_a, {}, class: 'form-control' %></td>
               <td><%= attendance.attendance_status %></td>
               <td><%= link_to practice.schedule, members_practice_path(practice) %></td>
-              <td><%= l practice.start_at, format: :short %>-<%= l practice.end_at, format: :short %></td>
+              <td class="tooltip1"><span class="tooltip-text"><%= practice.note %></span><%= l practice.start_at, format: :short %>-<%= l practice.end_at, format: :short %></td>
               <td><%= practice.place %></td>
               <td><%= link_to practice.orchestra.name, members_attendance_path(practice.orchestra) %></td>
               <td><%= practice.attendances.where(attendance_status:1).count %>人</td>

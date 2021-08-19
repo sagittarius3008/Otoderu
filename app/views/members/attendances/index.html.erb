@@ -1,23 +1,29 @@
-<div class="container font-weight-bold">
-  <div class="row">
-    <h2 class="mx-auto m-3"><%= "#{@member.family_name}さんの練習予定" %></h2>
-      <%= month_calendar events: @member.practices do |date, practices| %>
-        <%= date.day %>
-        <% practices.each do |practice| %>
-          <div class="small-font float1">
-            <%= link_to practice.orchestra.name, members_practice_path(practice), class:"practice-font" %>
+<!--雪を降らせるやつのように音符を降らせる予定-->
+<div id="particles-js"></div>
+  <div id="wrapper">
+    <div class="container">
+      <div class="row">
+        <h2 class="mx-auto m-3"><%= "#{@member.family_name}さんの練習予定" %></h2>
+          <%= month_calendar events: @member.practices do |date, practices| %>
+            <%= date.day %>
+            <% practices.each do |practice| %>
+              <div class="small-font float1 tooltip1">
+                <%= link_to practice.orchestra.name, members_practice_path(practice), class:"practice-font" %>
+                <span class="tooltip-text"><%= practice.note %></span>
+              </div>
+            <% end %>
+          <% end %>
+        <!--団体絞り込みフォーム-->
+        <%= form_with url: {controller:"members/attendances", action: "search"}, method: :get, local: true do |f| %>
+          <div class="text-center d-flex m-2">
+            <div><%= f.select :search, @names, {}, class: 'form-control' %></div>
+            <div class="m-1"><%= f.submit "団体別に表示", name: nil %></div>
+            <div class="m-1"><%= link_to "解除",members_attendances_path %></div>
           </div>
         <% end %>
-      <% end %>
-    <!--団体絞り込みフォーム-->
-    <%= form_with url: {controller:"members/attendances", action: "search"}, method: :get, local: true do |f| %>
-      <div class="text-center d-flex m-2">
-        <div><%= f.select :search, @names, {}, class: 'form-control' %></div>
-        <div class="m-1"><%= f.submit "団体別に表示", name: nil %></div>
+        <div id="attend" class="a-table mx-auto">
+          <%= render 'my_schedule', member: @member %>
+        </div>
       </div>
-    <% end %>
-    <div id="attend" class="a-table mx-auto">
-      <%= render 'my_schedule', member: @member %>
     </div>
   </div>
-</div>
