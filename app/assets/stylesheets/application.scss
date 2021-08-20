@@ -36,6 +36,11 @@ body{
   color: #000;
 }
 
+.text-darkblue{
+  color: #18426d;
+  text-decoration: underline;
+}
+
 .main-color{
   background-color: #efe4c9;
 }
@@ -379,48 +384,28 @@ opacity: 0;
 .icon-border{
   border-width: 0px;
 }
-// html,body{
-// 	height: 100%;/*高さを100%にして描画エリアをとる*/
-// }
-// #particles-js{
-// 	position:fixed;/*描画固定*/
-// 	z-index:-1;/*描画を一番下に*/
-// 	width: 100%;
-// 	height: 100%;
-// 	background-color:#FEE7E7;/*背景色*/
-// }
-// #wrapper{
-// 	position: relative;/*描画を#particles-jsよりも上にするためposition:relative;を指定*/
-// 	z-index: 1;/*z-indexの数字を大きくすることで描画を#particles-jsよりも上に*/
-// 	width:100%;
-// 	height: 100%;
-// }
 
-
-// Tooltip
-/* カーソルを重ねる要素 */
+// ツールチップ
 .tooltip1 {
-  position: relative; /* ツールチップの位置の基準に */
-  cursor: pointer; /* カーソルを当てたときにポインターに */
+  position: relative;
+  cursor: pointer;
 }
-
-/* ツールチップのテキスト */
 .tooltip-text {
-  opacity: 0; /* はじめは隠しておく */
-  visibility: hidden; /* はじめは隠しておく */
-  position: absolute; /* 絶対配置 */
-  left: 50%; /* 親に対して中央配置 */
-  transform: translateX(-50%); /* 親に対して中央配置 */
-  bottom: -30px; /* 親要素下からの位置 */
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -30px;
   display: inline-block;
-  padding: 5px; /* 余白 */
-  white-space: nowrap; /* テキストを折り返さない */
-  font-size: 0.8rem; /* フォントサイズ */
-  line-height: 1.3; /* 行間 */
-  background: #333; /* 背景色 */
-  color: #fff; /* 文字色 */
-  border-radius: 3px; /* 角丸 */
-  transition: 0.3s ease-in; /* アニメーション */
+  padding: 5px;
+  white-space: nowrap;
+  font-size: 0.8rem;
+  line-height: 1.3;
+  background: #333;
+  color: #fff;
+  border-radius: 3px;
+  transition: 0.3s ease-in;
 }
 
 /* ホバー時にツールチップの非表示を解除 */
@@ -428,32 +413,29 @@ opacity: 0;
   opacity: 1;
   visibility: visible;
 }
+// ツールチップ終わり
 
 // kaminariのレイアウト
-/*ページネーション自体のデザイン*/
 .pagination>li>a {
-  border: none;     /*枠線をなくす*/
-  color: #696969;   /*文字の色を変える*/
+  border: none;
+  color: #696969;
 }
-
-/* 表示しているページ番号のデザイン */
 .pagination>.active>a {
-  background: #93c9ff;     /*背景の色を変える*/
-  border-radius: 15px;     /*角を丸くする*/
+  background: #93c9ff;
+  border-radius: 15px;
 }
-
-/*ホバー時のデザイン*/
 .pagination>li>a:hover {
-  border-radius: 15px;    /*角を丸くする*/
+  border-radius: 15px;
 }
-
 .page-item.active .page-link {
   z-index: 3;
   color: #fff;
   background-color: #18426d;
   border-color: #007bff;
 }
+// kaminari終わり
 
+// 行頭のTIPS表示
 .circle {
   background: #18426d;
   border-radius: 50%;
@@ -464,7 +446,7 @@ opacity: 0;
   text-align: center;
   line-height: 30px;
 }
-
+// 小さいTIPS表示
 .circle1 {
   background: #18426d;
   border-radius: 95%;

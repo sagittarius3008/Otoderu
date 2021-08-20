@@ -23,7 +23,7 @@
           <div class="text-center d-flex m-2">
             <div><%= f.select :search, @names, {}, class: 'form-control' %></div>
             <div class="m-1"><%= f.submit "団体別に表示", name: nil %></div>
-            <div class="m-1"><%= link_to "解除",members_attendances_path %></div>
+            <div class="m-1"><%= link_to "解除",members_attendances_path, class: "text-darkblue" %></div>
           </div>
         <% end %>
         <div id="attend" class="a-table mx-auto">

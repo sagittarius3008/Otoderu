@@ -4,15 +4,24 @@
       <th class="table-th1 p-2">更新</th>
       <th class="table-th6 p-2"></th>
       <th class="table-th2 p-2">出欠</th>
-      <th class="table-th6 p-2">日付</th>
+      <th class="table-th6 p-2">
+        日付
+        <span class="tooltip1 circle1">Tips
+          <span class="tooltip-text">クリックすると日付毎の出欠状況を表示します。</span>
+        </span>
+      </th>
       <th class="table-th4 p-2">
         時間
         <span class="tooltip1 circle1">Tips
-            <span class="tooltip-text">カーソルを合わせると詳細予定が表示されます。</span>
+          <span class="tooltip-text">カーソルを合わせると詳細予定が表示されます。</span>
         </span>
       </th>
       <th class="table-th6 p-2">場所</th>
-      <th class="table-th4 p-2">団体名</th>
+      <th class="table-th4 p-2">団体名
+        <span class="tooltip1 circle1">Tips
+          <span class="tooltip-text">クリックすると団体全体の出欠状況を表示します。</span>
+        </span>
+      </th>
       <th class="table-th1 p-2">出席</th>
       <th class="table-th6 p-2">譜面台</th>
       <th class="table-th4 p-2">備考</th>
@@ -31,10 +40,10 @@
             </td>
             <td class="p-1 align-middle"><%= f.select :attendance_status, Attendance.attendance_statuses.keys.to_a, {}, class: 'form-control' %></td>
             <td class="p-1 align-middle"><%= attendance.attendance_status %></td>
-            <td class="p-1 align-middle"><%= link_to practice.schedule, members_practice_path(practice) %></td>
+            <td class="p-1 align-middle"><%= link_to practice.schedule, members_practice_path(practice), class: "text-darkblue" %></td>
             <td class="p-1 align-middle tooltip1"><span class="tooltip-text"><%= practice.note %></span><%= l practice.start_at, format: :short %>-<%= l practice.end_at, format: :short %></td>
             <td class="p-1 align-middle"><%= practice.place %></td>
-            <td class="p-1 align-middle"><%= link_to practice.orchestra.name, members_attendance_path(practice.orchestra) %></td>
+            <td class="p-1 align-middle"><%= link_to practice.orchestra.name, members_attendance_path(practice.orchestra), class: "text-darkblue" %></td>
             <td class="p-1 align-middle"><%= "#{practice.attendances.where(attendance_status:1).count + practice.attendances.where(attendance_status:3).count + practice.attendances.where(attendance_status:4).count}" %>人</td>
             <td class="p-1 align-middle"><%= practice.stand? ? "不要" : "要" %></td>
             <td class="p-1 align-middle"><%= f.text_field :note %></td>
@@ -51,7 +60,7 @@
               <td><%= f.select :attendance_status, Attendance.attendance_statuses.keys.to_a, {}, class: 'form-control' %></td>
               <td><%= attendance.attendance_status %></td>
               <td><%= link_to practice.schedule, members_practice_path(practice) %></td>
-              <td class="tooltip1"><span class="tooltip-text"><%= practice.note %></span><%= l practice.start_at, format: :short %>-<%= l practice.end_at, format: :short %></td>
+              <td class="tooltip1"><span class="tooltip-text"><%= simple_format(practice.note) %></span><%= l practice.start_at, format: :short %>-<%= l practice.end_at, format: :short %></td>
               <td><%= practice.place %></td>
               <td><%= link_to practice.orchestra.name, members_attendance_path(practice.orchestra) %></td>
               <td><%= practice.attendances.where(attendance_status:1).count %>人</td>

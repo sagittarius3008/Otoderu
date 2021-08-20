@@ -7,7 +7,7 @@
           <div class="text-center m-3 ">
             次の練習は<%= link_to "#{l @most_recent_date, format: :short} #{@most_recent_practice.orchestra.name} ", members_practice_path(@most_recent_practice), class: "text-dark next-practice linear" %>です。
           </div>
-          <div class="text-center m-3 ">
+          <div class="text-center m-3">
             出欠未入力が<%= @member.attendances.where(attendance_status:0).count %>件あります。
           </div>
         <% end %>
