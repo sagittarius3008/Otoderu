@@ -70,6 +70,7 @@ footer{
 .table-th4{width: 150px;}
 .table-th5{width: 300px;}
 .table-th6{width: 80x;}
+.table-th7{width: 200px;}
 .table-height{height: 20px;}
 
 .table tr:hover {
@@ -79,37 +80,12 @@ footer{
   background-color: #cfcfcf;    /* マウスオーバー時の行の背景色 */
 }
 
-// .d_table {
-// 	width: 100%;
-// 	display: table;
-// 	border-collapse: collapse;
-// 	text-align:center;
-// 	margin:0;
-// 	}
-// .d_thead  {
-// 	display:table-header-group;
-// 	background:lightgreen;
-// 	font-weight:bold;
-// 	}
-// .d_tbody {
-// 	display:table-row-group;
-// 	}
-// .d_tr {
-// // 	display: table-row;
-// 	}
-// .d_th,.d_td,.d_td1 {
-// 	display: table-cell;
-// 	padding: 5px 0;
-// 	border: 1px solid #999;
-// 	vertical-align: middle;
-// 	width:20%;
-// 	}
-	.a-table{
-	  width: 100%;
-	}
-	.submit{
-	  width: 20px;
-	}
+.a-table{
+  width: 100%;
+}
+.submit{
+  width: 20px;
+}
 
 // カレンダーの設定
 .simple-calendar {
@@ -456,4 +432,43 @@ opacity: 0;
   font-size: 12px;
   text-align: center;
   line-height: 20px;
+}
+
+// DivTable
+.divTable{
+	display: table;
+	width: 100%;
+}
+.divTableRow {
+	display: table-row;
+	text-align: center;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+	text-align: center;
+}
+.divTableCell, .divTableHead {
+	border: 1px solid #999999;
+	display: table-cell;
+	padding: 3px 10px;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+	font-weight: bold;
+}
+.divTableFoot {
+	background-color: #EEE;
+	display: table-footer-group;
+	font-weight: bold;
+}
+.divTableBody {
+	display: table-row-group;
+}
+.divTable .divTableRow:hover {
+  background-color: #e3e3e3;    /* マウスオーバー時の行の背景色 */
+}
+.divTable .divTableRow .divTableCell:hover {
+  background-color: #cfcfcf;    /* マウスオーバー時の行の背景色 */
 }
