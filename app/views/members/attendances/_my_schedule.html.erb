@@ -1,7 +1,6 @@
 <div class="divTable small-font">
   <div class="divTableBody">
     <div class="divTableHeading">
-      <div class="divTableCell align-middle table-th3">更新</div>
       <div class="divTableCell align-middle table-th3"></div>
       <div class="divTableCell align-middle table-th3">出欠</div>
       <div class="divTableCell align-middle table-th3">日付
@@ -21,8 +20,8 @@
         </span>
       </div>
       <div class="divTableCell align-middle table-th2">出席</div>
-      <div class="divTableCell align-middle table-th2">譜面台</div>
-      <div class="divTableCell align-middle table-th7">備考</div>
+      <div class="divTableCell align-middle table-th1">譜面台</div>
+      <div class="divTableCell align-middle table-th5">備考</div>
     </div>
     <% if @orchestra == nil %>
     <% member.practices.sort{|a, b| a[:schedule] <=> b[:schedule]}.each do |practice| %>
@@ -32,7 +31,6 @@
         <div class="divTableCell align-middle table-th3">
           <%= button_tag :class =>"wrapper icon" do %><%= image_tag "img/icon/Tp-mini.png", class: "wide-icon" %><% end %>
         </div>
-        <div class="divTableCell align-middle table-th3"><%= f.submit "更新" , class: "btn btn-success mr-2"%></div>
         <div class="divTableCell align-middle table-th3">
           <%= f.select :attendance_status, Attendance.attendance_statuses.keys.to_a, {}, class: 'form-control' %>
         </div>
@@ -43,19 +41,20 @@
         <div class="divTableCell align-middle table-th3"><%= practice.place %></div>
         <div class="divTableCell align-middle table-th4"><%= link_to practice.orchestra.name, members_attendance_path(practice.orchestra), class: "text-darkblue" %></div>
         <div class="divTableCell align-middle table-th2"><%= "#{practice.attendances.where(attendance_status:1).count + practice.attendances.where(attendance_status:3).count + practice.attendances.where(attendance_status:4).count}" %>人</div>
-        <div class="divTableCell align-middle table-th2"><%= practice.stand? ? "不要" : "要" %></div>
-        <div class="divTableCell align-middle table-th7"><%= f.text_field :note %></div>
+        <div class="divTableCell align-middle table-th1"><%= practice.stand? ? "不要" : "要" %></div>
+        <div class="divTableCell align-middle table-th5"><%= f.text_field :note, size:30 %></div>
       </div>
       <% end %>
       <% end %>
     <% else %>
     <% id = @orchestra.ids %>
     <% member.practices.where(orchestra_id: id).sort{|a, b| a[:schedule] <=> b[:schedule]}.each do |practice| %>
+    <% attendance = practice.attendances.find_by(member_id: member.id) %>
+    <%= form_with model: attendance, url: members_attendance_path(attendance), method: :patch, remote: true do |f| %>
       <div class="divTableRow">
         <div class="divTableCell align-middle table-th3">
           <%= button_tag :class =>"wrapper icon" do %><%= image_tag "img/icon/Tp-mini.png", class: "wide-icon" %><% end %>
         </div>
-        <div class="divTableCell align-middle table-th3"><%= f.submit "更新" , class: "btn btn-success mr-2"%></div>
         <div class="divTableCell align-middle table-th3">
           <%= f.select :attendance_status, Attendance.attendance_statuses.keys.to_a, {}, class: 'form-control' %>
         </div>
@@ -66,10 +65,11 @@
         <div class="divTableCell align-middle table-th3"><%= practice.place %></div>
         <div class="divTableCell align-middle table-th4"><%= link_to practice.orchestra.name, members_attendance_path(practice.orchestra), class: "text-darkblue" %></div>
         <div class="divTableCell align-middle table-th2"><%= "#{practice.attendances.where(attendance_status:1).count + practice.attendances.where(attendance_status:3).count + practice.attendances.where(attendance_status:4).count}" %>人</div>
-        <div class="divTableCell align-middle table-th2"><%= practice.stand? ? "不要" : "要" %></div>
-        <div class="divTableCell align-middle table-th7"><%= f.text_field :note %></div>
+        <div class="divTableCell align-middle table-th1"><%= practice.stand? ? "不要" : "要" %></div>
+        <div class="divTableCell align-middle table-th5"><%= f.text_field :note, size:30 %></div>
       </div>
       <% end %>
     <% end %>
+  <% end %>
   </div>
 </div>
