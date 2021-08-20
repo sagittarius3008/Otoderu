@@ -2,7 +2,12 @@
   <div class="container">
     <div class="row">
       <div class="mx-auto m-5 col-10 card">
-        <h2 class="text-center m-4"><%= "#{current_orchestra.name}の団員一覧" %></h2>
+        <div class="d-flex mx-auto">
+          <h2 class="text-center mt-4 mb-4"><%= "#{current_orchestra.name}の団員一覧" %></h2>
+          <div class="tooltip1 circle">Tips
+            <span class="tooltip-text"><%= "PartTopの設定を行うと抽出して表示させることができます。現在工事中" %></span>
+          </div>
+        </div>
         <table border="2" class="table">
           <thead>
             <tr class="text-center">

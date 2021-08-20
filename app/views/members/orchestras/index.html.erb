@@ -2,12 +2,17 @@
   <div class="container">
     <div class="row">
       <div class="mx-auto m-5 col-5 p-0 card">
-        <h2 class="text-center mt-4">入団申請画面</h2>
+        <div class="d-flex mx-auto">
+          <h2 class="text-center mt-4 mb-4">入団申請画面</h2>
+          <div class="tooltip1 circle">Tips
+            <span class="tooltip-text">入団申請が受理されると出欠入力ができるようになります。<br>早速所属する団体を検索しましょう！</span>
+          </div>
+        </div>
         <%= form_with url: {controller: "members/orchestras", action: "search"}, method: :get, local: true do |f| %>
           <div class="text-center m-2">
             <%= f.text_field :search, placeholder: "団名を入力してください", size: 25 %>
-            <%= button_tag :class =>"icon" do %>
-              <%= image_tag "img/icon/search.png", class: "search-icon", name: nil %>
+            <%= button_tag class: "icon" do %>
+              <i class="fas fa-search fa-lg"></i>
             <% end %>
           </div>
         <% end %>

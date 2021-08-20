@@ -1,6 +1,6 @@
 <table border="2" class="table practice_index small-font">
   <thead>
-    <tr class="text-center table-height align-middle">
+    <tr class="text-center">
       <th class="table-th3 p-2">日付</th>
       <th class="table-th4 p-2">時間</th>
       <th class="table-th4 p-2">場所</th>
@@ -10,12 +10,15 @@
   </thead>
   <tbody>
     <% practice_index.each do |practice| %>
-      <tr>
-        <td><%= link_to practice.schedule, orchestras_practice_path(practice) %></td>
-        <td><%= l practice.start_at, format: :short %>-<%= l practice.end_at, format: :short %></td>
-        <td><%= practice.place %></td>
-        <td><%= practice.stand? ? "不要" : "要" %></td>
-        <td><%= practice.note.truncate(20, omission: '・・・') %></td>
+      <tr class="text-center">
+        <td class="align-middle"><%= link_to practice.schedule, orchestras_practice_path(practice) %></td>
+        <td class="align-middle"><%= l practice.start_at, format: :short %>-<%= l practice.end_at, format: :short %></td>
+        <td class="align-middle"><%= practice.place %></td>
+        <td class="align-middle"><%= practice.stand? ? "不要" : "要" %></td>
+        <td class="align-middle tooltip1">
+          <%= practice.note.truncate(20, omission: '・・・') %>
+          <span class="tooltip-text"><%= simple_format(practice.note) %></span>
+        </td>
       </tr>
     <% end %>
   </tbody>

@@ -1,7 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="m-5 mx-auto col-7 card">
-      <h2 class="text-center m-4"><%= "#{practice.schedule}の練習詳細" %></h2>
+      <div class="d-flex mx-auto">
+        <h2 class="text-center m-4"><%= "#{practice.schedule}の練習詳細" %></h2>
+        <div class="tooltip1 circle">Tips
+          <span class="tooltip-text"><%= "[CSV出力]をクリックすると参加者リストがダウンロードできます。" %></span>
+        </div>
+      </div>
       <table>
         <tbody>
           <tr>
@@ -18,7 +23,7 @@
           </tr>
           <tr>
             <td class="text-center">備考</td>
-            <td><%= practice.note %></td>
+            <td><%= simple_format(practice.note) %></td>
           </tr>
           <tr>
             <td class="text-center">出席人数</td>
@@ -41,7 +46,7 @@
               <td><%= attendance.member.instrument.name %></td>
               <td><%= "#{attendance.member.family_name}#{attendance.member.given_name}" %></td>
               <td><%= attendance.attendance_status %></td>
-              <td><%= attendance.note %></td>
+              <td><%= simple_format(attendance.note) %></td>
             </tr>
           <% end %>
         </tbody>
@@ -52,7 +57,7 @@
         <div><%= link_to "日程削除", {controller: 'orchestras/practices', action: 'destroy' }, method: :delete, class: "m-3", data: { confirm: "\n削除すると元に戻せません。\nよろしいですか？" } %></div>
       </div>
       <% end %>
-      <%= link_to "CSV出力", orchestras_practice_path(format: :csv), class: "btn btn-primary m-3" %>
+      <%= link_to "CSV出力", orchestras_practice_path(format: :csv), class: "btn btn-primary m-3 w-100 mx-auto" %>
     </div>
   </div>
 </div>

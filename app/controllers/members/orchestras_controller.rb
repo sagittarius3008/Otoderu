@@ -25,7 +25,7 @@ class Members::OrchestrasController < ApplicationController
   end
 
   def search
-    @orchestras = Orchestra.search(params[:search])
+    @orchestras = Orchestra.search(params[:search]).page(params[:page]).per(5)
     render 'index'
   end
 

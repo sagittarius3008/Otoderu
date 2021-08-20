@@ -6,7 +6,12 @@
         <li><%= link_to "団員一覧", orchestras_members_path %></li>
         <li class="d-flex vertical-align-center">
           <%= link_to "入団承認", orchestras_applies_path %>
-          <div class="font-weight-bold"><%= @nav_applies.count %></div>
+          <% unless @nav_applies.empty? %>
+            <div class="font-weight-bold tooltip1">
+              <%= @nav_applies.count %>
+              <span class="tooltip-text"><%= "新規入団申請が届いています。" %></span>
+            </div>
+          <% end %>
         </li>
         <li><%= link_to "登録楽器一覧", orchestras_instruments_path %></li>
         <li><%= link_to "ログアウト", destroy_orchestra_session_path, method: :delete %></li>

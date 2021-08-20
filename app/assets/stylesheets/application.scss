@@ -36,9 +36,9 @@ body{
   color: #000;
 }
 
-// .main-color{
-//   background-color: #efe4c9;
-// }
+.main-color{
+  background-color: #efe4c9;
+}
 
 footer{
   background-color: #1A0807;
@@ -68,37 +68,37 @@ footer{
 .table-height{height: 20px;}
 
 .table tr:hover {
-  background-color: #FFFFb2;    /* マウスオーバー時の行の背景色 */
+  background-color: #e3e3e3;    /* マウスオーバー時の行の背景色 */
 }
 .table tr td:hover {
-  background-color: #FFFF00;    /* マウスオーバー時の行の背景色 */
+  background-color: #cfcfcf;    /* マウスオーバー時の行の背景色 */
 }
 
-.d_table {
-	width: 100%;
-	display: table;
-	border-collapse: collapse;
-	text-align:center;
-	margin:0;
-	}
-.d_thead  {
-	display:table-header-group;
-	background:lightgreen;
-	font-weight:bold;
-	}
-.d_tbody {
-	display:table-row-group;
-	}
-.d_tr {
-// 	display: table-row;
-	}
-.d_th,.d_td,.d_td1 {
-	display: table-cell;
-	padding: 5px 0;
-	border: 1px solid #999;
-	vertical-align: middle;
-	width:20%;
-	}
+// .d_table {
+// 	width: 100%;
+// 	display: table;
+// 	border-collapse: collapse;
+// 	text-align:center;
+// 	margin:0;
+// 	}
+// .d_thead  {
+// 	display:table-header-group;
+// 	background:lightgreen;
+// 	font-weight:bold;
+// 	}
+// .d_tbody {
+// 	display:table-row-group;
+// 	}
+// .d_tr {
+// // 	display: table-row;
+// 	}
+// .d_th,.d_td,.d_td1 {
+// 	display: table-cell;
+// 	padding: 5px 0;
+// 	border: 1px solid #999;
+// 	vertical-align: middle;
+// 	width:20%;
+// 	}
 	.a-table{
 	  width: 100%;
 	}
@@ -452,4 +452,26 @@ opacity: 0;
   color: #fff;
   background-color: #18426d;
   border-color: #007bff;
+}
+
+.circle {
+  background: #18426d;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  color: #fff;
+  font-size: 6px;
+  text-align: center;
+  line-height: 30px;
+}
+
+.circle1 {
+  background: #18426d;
+  border-radius: 95%;
+  width: 20px;
+  height: 20px;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  line-height: 20px;
 }
