@@ -23,7 +23,7 @@
             <%= f.password_field :password_confirmation, placeholder: "パスワード（確認用）", size: 46 %>
           </div>
           <div class="row d-flex justify-content-center mb-3">
-            <%= f.select :instrument_id, @instruments.map{ |instrument| [instrument.name, instrument.id] }, {include_blank: '担当楽器を教えてください。'} %>
+            <%= f.select :instrument_id, @instruments.map{ |instrument| [instrument.name, instrument.id] }, {include_blank: '担当楽器を教えてください。'}, id: "member[instrument_id]" %>
           </div>
           <div class="text-center m-2">
             <%= button_tag :class =>"wrapper icon w-25" do %>
