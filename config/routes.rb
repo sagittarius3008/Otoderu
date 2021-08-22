@@ -47,6 +47,7 @@ Rails.application.routes.draw do
     resources :applies, only: [:index]
   end
 
+  get '/map_request', to: 'maps#map', as: 'map_request'
   post "/receive"=>"slack#create"
 
 end
