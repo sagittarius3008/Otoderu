@@ -1,6 +1,4 @@
 class Orchestras::PracticesController < ApplicationController
-  include Nav
-  before_action :new_apply
 
   def index
     @practice = Practice.new
@@ -10,8 +8,10 @@ class Orchestras::PracticesController < ApplicationController
   def show
     respond_to do |format|
       format.html do
-        @practice = Practice.find(params[:id])
         @attendances = Attendance.where(practice_id: params[:id])
+        @practice = Practice.find(params[:id])
+        results = Geocoder.search("#{@practice.place}")
+        @latlng = results.first.coordinates
       end
       format.csv do
         practice = Practice.find(params[:id])

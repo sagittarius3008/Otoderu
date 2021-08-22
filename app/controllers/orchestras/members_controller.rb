@@ -1,6 +1,4 @@
 class Orchestras::MembersController < ApplicationController
-  include Nav
-  before_action :new_apply
 
   def index
     @orchestra = Orchestra.find(current_orchestra.id)

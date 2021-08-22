@@ -1,6 +1,5 @@
 class Orchestras::AppliesController < ApplicationController
-include Nav
-before_action :new_apply
+before_action :authenticate_orchestra!
 
   def index
     @applies = Apply.where(orchestra_id: current_orchestra)
