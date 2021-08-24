@@ -31,7 +31,8 @@
           </tr>
         </tbody>
       </table>
-      <table border="2" class="table practice_index small-font mb-5">
+      <div style="height:500px; width:100%; overflow-y:scroll;">
+        <table border="2" class="table small-font mb-5">
         <thead>
           <tr class="text-center">
             <th class="table-th1 align-middle">楽器</th>
@@ -43,14 +44,15 @@
         <tbody>
           <% attendances.each do |attendance| %>
             <tr class="text-center">
-              <td><%= attendance.member.instrument.name %></td>
-              <td><%= "#{attendance.member.family_name}#{attendance.member.given_name}" %></td>
-              <td><%= attendance.attendance_status %></td>
-              <td><%= simple_format(attendance.note) %></td>
+              <td class="p-2"><%= attendance.member.instrument.name %></td>
+              <td class="p-2"><%= "#{attendance.member.family_name}#{attendance.member.given_name}" %></td>
+              <td class="p-2"><%= attendance.attendance_status %></td>
+              <td class="p-2"><%= simple_format(attendance.note) %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
+      </div>
       <% if orchestra_signed_in? %>
       <div class="d-flex justify-content-between">
         <div><%= link_to "予定の編集", edit_orchestras_practice_path(practice) %></div>
@@ -59,7 +61,7 @@
       <% end %>
       <%= link_to "CSV出力", orchestras_practice_path(format: :csv), class: "btn btn-primary m-3 w-100 mx-auto" %>
     </div>
-    <div class="m-5 mx-auto col-6 card">
+    <div class="m-5 mx-auto card col-6">
       <%= form_with url: map_request_path, method: :get do |f|%>
         <%= f.text_field :address, class:"m-2" %>
         <%= f.submit '地図検索' %>
@@ -72,6 +74,7 @@
 <!--googlemapの初期値を練習場所に指定-->
 <script type="text/javascript">
   let mapInstance
+
   function initMap() {
     var test ={lat: <%= @latlng[0] %>, lng: <%= @latlng[1] %>};
     mapInstance = new google.maps.Map(document.getElementById('map'), {
@@ -88,5 +91,4 @@
        infowindow.open(mapInstance, marker);
      });
   }
-
 </script>

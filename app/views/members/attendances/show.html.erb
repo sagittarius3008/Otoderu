@@ -1,23 +1,32 @@
 <div class="kamaishi photo">
   <div class="container">
     <div class="row">
-      <div class="mx-auto m-5 col-10 card">
+      <div class="mx-auto card m-5 col-10">
+        <div class="d-flex mx-auto">
           <h2 class="text-center m-4"><%= @orchestra.name %></h2>
-        <table border="2" class="table practice_index">
-          <thead>
-            <tr class="text-center">
-              <th class="table-th1 table-height align-middle p-2">名前</th>
-              <th class="table-th2 align-middle p-2">楽器</th>
-              <th class="table-th2 align-middle p-2">Top</th>
-              <% @orchestra.practices.each do |practice| %>
-                <% practice_date = l practice.schedule, format: :short %><!--日付の形式を成形-->
-                <th class="table-th2 align-middle p-2"><%= link_to practice_date, members_practice_path(practice), class: "text-dark" %></th>
-              <% end %>
-            </tr>
-          </thead>
-          <tbody>
-            <!--各メンバーにつき一行ずつ作成する-->
-            <% @members.sort{|a, b| a[:instrument_id] <=> b[:instrument_id]}.each do |member| %>
+          <div class="tooltip1 circle mt-2">Tips
+            <span class="tooltip-text">団員名と日付から各詳細を確認できます。</span>
+          </div>
+        </div>
+        <div style="height:600px; width:100%; overflow:scroll;">
+          <table border="2" class="table">
+            <thead>
+              <tr class="text-center">
+                <th class="table-th1 align-middle p-2">名前</th>
+                <th class="table-th2 align-middle p-2">楽器</th>
+                <th class="table-th2 align-middle p-2">Top</th>
+                <% @orchestra.practices.sort{|a, b| a[:schedule] <=> b[:schedule]}.each do |practice| %>
+                  <% practice_date = l practice.schedule, format: :short %><!--日付の形式を成形-->
+                  <th class="table-th2 align-middle p-2">
+                    <%= link_to practice_date, members_practice_path(practice), class: "text-dark" %><br>
+                    出席<%= "#{practice.attendances.where(attendance_status:1).count + practice.attendances.where(attendance_status:3).count + practice.attendances.where(attendance_status:4).count}" %>人
+                  </th>
+                <% end %>
+              </tr>
+            </thead>
+            <tbody>
+              <!--各メンバーにつき一行ずつ作成する-->
+              <% @members.sort{|a, b| a[:instrument_id] <=> b[:instrument_id]}.each do |member| %>
               <tr>
                 <td class="align-middle text-center p-1">
                   <%= form_with model: @orchestra, url: members_member_path(member), method: :get, local: true do |f| %>
@@ -42,17 +51,10 @@
                   </td>
                 <% end %>
               </tr>
-            <% end %>
-            <tfoot>
-              <tr class="text-center">
-                <th colspan=3></th>
-                <% @orchestra.practices.each do |practice| %>
-                <th><%= practice.attendances.where(attendance_status:1).count %>人</th>
-                <% end %>
-              </tr>
-            </tfoot>
-          </tbody>
-        </table>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
