@@ -20,7 +20,7 @@ class Orchestra < ApplicationRecord
   def self.guest
     find_or_create_by!(email: 'guest_orchestra@example.com') do |orchestra|
       orchestra.password = SecureRandom.urlsafe_base64
-      orchestra.name = "Musica Promenade"
+      orchestra.name = "Musicasa"
     end
   end
 

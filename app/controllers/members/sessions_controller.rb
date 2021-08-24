@@ -2,11 +2,11 @@
 
 class Members::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-  
+
   def after_sign_in_path_for(resource)
     members_attendances_path
   end
-  
+
   def guest_sign_in
     member = Member.guest
     sign_in member
