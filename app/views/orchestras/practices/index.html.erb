@@ -14,8 +14,8 @@
                 <tr>
                   <td><%= f.label "時間",class: 'm-2' %></td>
                   <td>
-                    <%= f.time_select :start_time, {prompt:'--'}, class: 'form-control　col-3 m-2' %>-
-                    <%= f.time_select :end_time, {prompt:'--'}, class: 'form-control　col-3 m-2' %>
+                    <%= f.time_select :start_time, {:include_blank => true, :minute_step => 10}, class: 'form-control　col-3 m-2' %>-
+                    <%= f.time_select :end_time, {:include_blank => true, :minute_step => 10}, class: 'form-control　col-3 m-2' %>
                   </td>
                 </tr>
                 <tr>

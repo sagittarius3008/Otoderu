@@ -17,6 +17,9 @@ class Orchestra < ApplicationRecord
   validates :name, uniqueness: true
   validates :email, uniqueness: true
 
+  # パスワードには半角英数字6文字以上（deviseの初期設定）を用いる
+  # 重大な個人情報を取り扱わないため
+
   def self.guest
     find_or_create_by!(email: 'guest_orchestra@example.com') do |orchestra|
       orchestra.password = SecureRandom.urlsafe_base64
