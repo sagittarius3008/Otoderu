@@ -26,7 +26,6 @@ class Orchestras::PracticesController < ApplicationController
     f_params = practice_params
     start_at = Date.current.strftime('%Y-%m-%d') + " #{f_params[:'start_time(4i)']}:" + "#{f_params[:'start_time(5i)']}"
     end_at = Date.current.strftime('%Y-%m-%d') + " #{f_params[:'end_time(4i)']}:" + "#{f_params[:'end_time(5i)']}"
-    # byebug
     practice = Practice.new(
       orchestra_id: current_orchestra.id,
       schedule: f_params[:schedule],
@@ -70,12 +69,14 @@ class Orchestras::PracticesController < ApplicationController
       start_at: start_at.in_time_zone,
       end_at: end_at.in_time_zone
     )
+    flash[:notice] = "練習内容を更新"
     redirect_to orchestras_practices_path
   end
 
   def destroy
     practice = Practice.find(params[:id])
     practice.destroy
+    flash[:notice] = "練習を削除しました。"
     redirect_to orchestras_practices_path
   end
 

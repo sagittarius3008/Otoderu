@@ -19,6 +19,7 @@ class Members::OrchestrasController < ApplicationController
       end
       # 申請一覧から削除する
       Apply.find(params[:member][:apply_id]).destroy!
+      flash[:notice] = "入団おめでとうございます！"
       redirect_to request.referer
     else
       redirect_to request.referer
