@@ -29,8 +29,10 @@ class Members::MembersController < ApplicationController
   def update
     member = Member.find(params[:id])
     if member.update(member_params)
+      flash[:notice] = "情報を更新しました"
       redirect_to request.referer
     else
+      flash[:notice] = "内容を再度確認してください"
       redirect_to request.referer
     end
   end
