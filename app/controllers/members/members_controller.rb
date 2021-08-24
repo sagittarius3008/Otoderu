@@ -8,17 +8,14 @@ class Members::MembersController < ApplicationController
   def mypage
     @member = Member.find(current_member.id)
     # 自身の直近の練習情報を取得
-    unless @member.practices == [] #練習予定がなければ無視する
+    unless @member.practices == []
       @most_recent_date = @member.practices.first.schedule
       @member.practices.each do |my_practice|
-        if (@most_recent_date - Date.today).abs >= (my_practice.schedule - Date.today).abs
-          # if my_practice.schedule - Date.today >= 0
-            # byebug
-          # if my_attendance.attendance_status == 0
+        if my_practice.schedule - Date.today >= 0
+          if (@most_recent_date - Date.today).abs >= (my_practice.schedule - Date.today).abs
             @most_recent_practice = my_practice
             @most_recent_date = my_practice.schedule
-          # end
-          # end
+          end
         end
       end
     end

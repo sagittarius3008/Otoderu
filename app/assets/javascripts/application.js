@@ -111,7 +111,7 @@ $(window).on('load', function () {
 });
 
 
-// #page-topをクリックした際の設定
+// #page-topをボタン
 $('#page-top').click(function () {
     $('body,html').animate({
         scrollTop: 0//ページトップまでスクロール
@@ -124,7 +124,7 @@ $(document).on('turbolinks:load', function() {
 	particlesJS("particles-js", {
 		"particles":{
 			"number":{
-				"value":5,
+				"value":7,
 				"density":{
 					"enable":true,
 					"value_area":1121.6780303333778
@@ -160,7 +160,7 @@ $(document).on('turbolinks:load', function() {
 				"anim":{
 					"enable":false,
 					"speed":4,
-					"size_min":1,
+					"size_min":3,
 					"sync":false
 				}
 			},
@@ -171,7 +171,7 @@ $(document).on('turbolinks:load', function() {
 				"enable":true,
 				"speed":4,//この数値を小さくするとゆっくりな動きになる
 				"direction":"bottom",//右下に向かって落ちる
-				"random":false,//動きはランダムにしない
+				"random":true,//動きはランダムにしない
 				"straight":false,//動きをとどめない
 				"out_mode":"out",//画面の外に出るように描写
 				"bounce":true,//跳ね返りなし

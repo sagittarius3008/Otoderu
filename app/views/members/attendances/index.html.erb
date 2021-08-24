@@ -13,7 +13,7 @@
             <% practices.each do |practice| %>
               <div class="small-font float1 tooltip1">
                 <%= link_to practice.orchestra.name, members_practice_path(practice), class:"practice-font" %>
-                <span class="tooltip-text"><%= simple_format(practice.note) %></span>
+                <span class="tooltip-text1"><%= simple_format(practice.note) %></span>
               </div>
             <% end %>
           <% end %>
@@ -22,7 +22,7 @@
           <div class="text-center d-flex m-2">
             <div><%= f.select :search, @names, {}, class: 'form-control' %></div>
             <div class="m-1"><%= f.submit "団体別に表示", name: nil %></div>
-            <div class="m-1"><%= link_to "解除",members_attendances_path, class: "text-darkblue" %></div>
+            <div class="mt-2"><%= link_to "解除",members_attendances_path, class: "text-darkblue" %></div>
           </div>
         <% end %>
         <div id="attend" class="a-table mx-auto">

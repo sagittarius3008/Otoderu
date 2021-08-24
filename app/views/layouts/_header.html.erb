@@ -5,7 +5,7 @@
         <li><%= link_to "練習登録", orchestras_practices_path %></li>
         <li><%= link_to "団員一覧", orchestras_members_path %></li>
         <li class="d-flex vertical-align-center">
-          <%= link_to "入団承認", orchestras_applies_path %>
+          <%= link_to "入団承認", orchestras_applies_path, class: "mx-auto" %>
           <% unless @nav_applies.empty? %>
             <div class="font-weight-bold tooltip1">
               <%= @nav_applies.count %>

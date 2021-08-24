@@ -2,57 +2,16 @@
   <div id="wrapper1">
     <div class="container">
       <div class="row">
-      <h2><%= "#{@member.family_name}さんの練習予定" %></h2>
+      <h2 class="mx-auto"><%= "#{@member.family_name}さんの練習予定" %></h2>
       <%= month_calendar events: @orchestra.practices do |date, practices| %>
         <%= date.day %>
         <% practices.each do |practice| %>
-          <div class="small-font float1">
+          <div class="small-font">
             <%= link_to practice.orchestra.name, members_practice_path(practice), class:"practice-font" %>
           </div>
         <% end %>
       <% end %>
-      <%= link_to @orchestra.name, members_attendance_path(@orchestra) %>
-        <table border="2" class="table small-font">
-          <thead>
-            <tr class="text-center table-height align-middle">
-              <% if @member == current_member %>
-              <th class="table-th1 p-2"></th>
-              <th class="table-th6 p-2"></th>
-              <% end %>
-              <th class="table-th2 p-2">出欠</th>
-              <th class="table-th4 p-2">日付</th>
-              <th class="table-th4 p-2">時間</th>
-              <th class="table-th5 p-2">場所</th>
-              <th class="table-th2 p-2">譜面台</th>
-              <th class="table-th5 p-2">備考</th>
-            </tr>
-          </thead>
-          <tbody>
-          <% @member.practices.sort{|a, b| a[:schedule] <=> b[:schedule]}.each do |practice| %>
-          <% attendance = practice.attendances.find_by(member_id: @member.id) %>
-            <% if practice.orchestra_id == @orchestra.id %>
-              <tr class="text-center table-height">
-                <%= form_with model: attendance, url: members_attendance_path(attendance), method: :patch, remote: true do |f| %>
-                  <% if @member == current_member %>
-                    <td class="p-1 align-middle"><%= f.submit "更新" , class: "btn btn-success mr-2"%></td>
-                    <td class="p-1 align-middle"><%= f.select :attendance_status, Attendance.attendance_statuses.keys.to_a, {}, class: 'form-control' %></td>
-                  <% end %>
-                    <td class="p-1 align-middle"><%= attendance.attendance_status %></td>
-                    <td class="p-1 align-middle"><%= link_to practice.schedule, members_practice_path(practice) %></td>
-                    <td class="p-1 align-middle"><%= l practice.start_at, format: :short %>-<%= l practice.end_at, format: :short %></td>
-                    <td class="p-1 align-middle"><%= practice.place %></td>
-                    <td class="p-1 align-middle"><%= practice.stand? ? "不要" : "要" %></td>
-                  <% if @member == current_member %>
-                    <td class="p-1 align-middle"><%= f.text_field :note %></td>
-                  <% else %>
-                    <td class="p-1 align-middle"><%= attendance.note %></td>
-                  <% end %>
-                <% end %>
-              </tr>
-            <% end %>
-          <% end %>
-          </tbody>
-        </table>
+      <%= render 'members/attendances/other_schedule', id: @orchestra.id, member: @member %>
       </div>
     </div>
   </div>

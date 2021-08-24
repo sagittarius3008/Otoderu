@@ -1,7 +1,7 @@
-<div class="stage-right kamaishi  photo">
+<div class="kamaishi photo">
   <div class="container">
     <div class="row">
-      <div class="mx-auto m-5 col-5 p-0 card">
+      <div class="mx-auto m-3 col-5 card">
         <h2 class="text-center m-4">マイページ</h2>
         <% unless @most_recent_date == nil %>
           <div class="text-center m-3 ">
@@ -11,24 +11,24 @@
             出欠未入力が<%= @member.attendances.where(attendance_status:0).count %>件あります。
           </div>
         <% end %>
-        <div class="d-flex justify-content-center m-3">
-          <%= link_to members_attendances_path, class: "text-dark mr-5 wrapper" do %>
-            <%= image_tag "img/icon/Cb.png", class: "img-icon" %>
-            <div class="text-right">出欠入力</div>
+        <div class="d-flex justify-content-center text-center m-3">
+          <%= link_to members_attendances_path, class: "text-dark mr-5 wrapper link-button" do %>
+            <%= image_tag "img/icon/Cb-cut.png", class: "img-icon" %>
+            <div>出欠入力</div>
           <% end %>
-          <%= link_to edit_members_member_path(@member), class: "text-dark mr-5 wrapper" do %>
+          <%= link_to edit_members_member_path(@member), class: "text-dark mr-5 wrapper link-button" do %>
             <%= image_tag "img/icon/Harp.png", class: "img-icon ml-4" %>
             <div>プロフィール編集</div>
           <% end %>
-          <%= link_to members_orchestras_path, class: "text-dark wrapper" do %>
-            <%= image_tag "img/icon/Tb.png", class: "img-icon" %>
+          <%= link_to members_orchestras_path, class: "text-dark wrapper link-button" do %>
+            <%= image_tag "img/icon/Tb-cut.png", class: "img-icon" %>
             <div>入団申請</div>
           <% end %>
         </div>
         <div class="text-center mt-3">───────────練習予定───────────</div>
         <% @member.orchestras.each do |orchestra| %>
           <div class="text-center delayScroll wrapper mb-1">
-            <%= link_to orchestra.name, members_attendance_path(orchestra), class:"btn box hover05 m-2" %>
+            <%= link_to orchestra.name, members_attendance_path(orchestra), class:"btn box" %>
           </div>
         <% end %>
       </div>

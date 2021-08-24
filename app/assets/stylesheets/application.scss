@@ -20,18 +20,19 @@
   font-family: 'ipaexm';
   src: font-url('ipaexm.ttf') format('truetype');
 }
-body{
-  font-family: ipaexm;
+
+.error{
+    position: sticky;
+    top: 0px;
 }
 
-.red{
-  color: #d44346;
+body{
+  font-family: ipaexm;
 }
 
 .white{
   color: #fff;
 }
-
 .practice-font{
   color: #000;
 }
@@ -39,6 +40,9 @@ body{
 .text-darkblue{
   color: #18426d;
   text-decoration: underline;
+}
+.text-dark:hover{
+  text-decoration: none;
 }
 
 .main-color{
@@ -77,14 +81,7 @@ footer{
   background-color: #e3e3e3;    /* マウスオーバー時の行の背景色 */
 }
 .table tr td:hover {
-  background-color: #cfcfcf;    /* マウスオーバー時の行の背景色 */
-}
-
-.a-table{
-  width: 100%;
-}
-.submit{
-  width: 20px;
+  background-color: #cfcfcf;    /* マウスオーバー時のセルの背景色 */
 }
 
 // カレンダーの設定
@@ -274,43 +271,35 @@ opacity: 0;
   background-size: cover;
   background-color:rgba(255,255,255,0.1);
   background-blend-mode:lighten;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
 }
 // 個人サインイン
 .stage-right{
-  background: image-url("img/stage-right.jpg") center center / cover no-repeat;
-  background-position: 25% 20%;
-  padding-top: calc(80 / 1000 * 100%);
-  padding-bottom: calc(70 / 1000 * 100%);
+  background: image-url("img/stage-right.jpg")
+    center / cover;
 }
 // 個人ログイン
 .flute{
-  background: image-url("img/flute.jpg") center center / cover no-repeat;
-  background-position: 0% 10%;
-  padding-top: calc(100 / 1000 * 100%);
-  padding-bottom: calc(70 / 1000 * 100%);
+  background: image-url("img/flute.jpg")
+    center / cover;
 }
 // 団体ログイン
 .orchestra{
-  background: image-url("img/orchestra.jpg") center center / cover no-repeat;
-  padding-top: calc(100 / 1000 * 100%);
-  padding-bottom: calc(70 / 1000 * 100%);
+  background: image-url("img/orchestra.jpg")
+    center / cover;
 }
 // 団体サインイン
 .stage-left{
-  background: image-url("img/stage-left.jpg") center center / cover no-repeat;
-  background-position: 40% 35%;
-  padding-top: calc(100 / 1000 * 100%);
-  padding-bottom: calc(80 / 1000 * 100%);
+  background: image-url("img/stage-left.jpg")
+    center / cover;
 }
 .kamaishi{
-  background: image-url("img/kamaishi.jpg") center center / cover no-repeat;
-  padding-top: calc(50 / 1000 * 100%);
-  padding-bottom: calc(80 / 1000 * 100%);
+  background: image-url("img/kamaishi.jpg")
+    center / cover;
 }
-.search-icon{
-  width: 40px;
-  height: 40px;
-}
+
 .img-icon{
   width: 80px;
   height: 80px;
@@ -331,29 +320,15 @@ opacity: 0;
   border-radius: 10px;
 }
 
-.about-text{
-  display: flex;
-  justiffy-content: center;
-  flex-direction: column;
-  width: 33vw;
-  height: 20.625vw;
-}
-
 .btn-none{
   -webkit-appearance:none;
-  background-color: #FFF;
+  background-color: transparent;
   border-color: #FFF;
   border-width: 0px;
   text-decoration: none;
   color: #000;
 }
 
-.next-practice{
-  border-line: none;
-}
-.next-practice:hover{
-  text-decoration: none;
-}
 .linear{
   background: linear-gradient(transparent 60%, yellow 60%);
 }
@@ -372,7 +347,7 @@ opacity: 0;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: -30px;
+  bottom: -40px;
   display: inline-block;
   padding: 5px;
   white-space: nowrap;
@@ -498,8 +473,8 @@ opacity: 0;
 /*リンクを右下に固定*/
 #page-top {
 	position: fixed;
-	right: 10px;
-	bottom:10px;
+	right: 20px;
+	bottom:20px;
 	z-index: 2;
     /*はじめは非表示*/
 	opacity: 0;
@@ -548,10 +523,6 @@ opacity: 0;
   text-align:center;
 }
 
-a{
-  color: #333;
-}
-
 /*========= particle js を描画するエリア設定 ===============*/
 
 html,body{
@@ -575,5 +546,17 @@ html,body{
 
 #map {
   width: 100%;
+  height: 700px;
+}
+
+.attendance-table{
+  overflow: scroll;
+  width: 100%;
   height: 500px;
+}
+
+.link-button{
+  border-bottom: 2px solid #000;
+  border-right:
+  2px solid #888;
 }
