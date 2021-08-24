@@ -72,6 +72,7 @@
 <!--googlemapの初期値を練習場所に指定-->
 <script type="text/javascript">
   let mapInstance
+
   function initMap() {
     var test ={lat: <%= @latlng[0] %>, lng: <%= @latlng[1] %>};
     mapInstance = new google.maps.Map(document.getElementById('map'), {

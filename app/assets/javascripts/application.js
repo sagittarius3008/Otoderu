@@ -197,14 +197,3 @@ $(document).on('turbolinks:load', function() {
 		"retina_detect":false
 	});
 });
-
-// googlemapapi
-/*global google*/
-// let mapInstance;
-// // let lat =
-// function initMap() {
-//   mapInstance = new google.maps.Map(document.getElementById("map"), {
-//     center: { lat: 35.681236, lng: 139.767125 },
-//     zoom: 15,
-//   });
-// }
