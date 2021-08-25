@@ -4,7 +4,11 @@ class Members::PracticesController < ApplicationController
     @practice = Practice.find(params[:id])
     @attendances = Attendance.where(practice_id: params[:id])
     results = Geocoder.search("#{@practice.place}")
-    @latlng = results.first.coordinates
+    # unless results == []
+      @latlng = results.first.coordinates
+    # else
+      # byebug
+    # end
   end
 
 end
