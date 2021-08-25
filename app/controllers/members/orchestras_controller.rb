@@ -1,4 +1,5 @@
 class Members::OrchestrasController < ApplicationController
+  
 
   def index
     # @orchestras = (Orchestra.all - current_member.orchestras)

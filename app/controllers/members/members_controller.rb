@@ -1,4 +1,6 @@
 class Members::MembersController < ApplicationController
+  include Nav
+  before_action :un_answered
 
   def show
     @member = Member.find(params[:id])

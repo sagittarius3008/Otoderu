@@ -1,4 +1,6 @@
 class Members::AttendancesController < ApplicationController
+  include Nav
+  before_action :un_answered
 
   def index
     @member = Member.find_by(id: current_member.id)
