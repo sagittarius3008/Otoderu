@@ -19,7 +19,7 @@
             担当楽器<%= f.select :instrument_id, @instruments.map{ |instrument| [instrument.name, instrument.id] }, {include_blank: '担当楽器を教えてください。'} %>
           </div>
           <div class="row justify-content-center">
-            <%= f.text_field :introduction, autofocus: true, size: 46 %>
+            <%= f.text_field :introduction, autofocus: true, placeholder: "自己紹介", size: 46 %>
           </div>
           <div class="row justify-content-center mb-3">
             ※入団申請した団体へ表示されます。
@@ -29,13 +29,13 @@
               <%= image_tag "img/icon/Tp.png", class: "img-icon" %>
               <div>編集する</div>
             <% end %>
-            <%= link_to members_member_mypage_path, class: "wrapper icon w-25" do %>
-              <%= image_tag "img/icon/Tb.png", class: "img-icon next-practice" %>
+            <%= link_to members_member_mypage_path, class: "wrapper icon w-25 back" do %>
+              <%= image_tag "img/icon/Tb.png", class: "img-icon" %>
               <div>戻る</div>
             <% end %>
           </div>
       <% end %>
+      </div>
     </div>
   </div>
-</div>
 </div>

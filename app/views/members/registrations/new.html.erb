@@ -1,39 +1,39 @@
 <div class="stage-right photo">
   <div class="container">
     <div class="row">
-      <div class="mx-auto card m-5 col-5 p-0">
-        <h2 class="text-center m-4 light">新規団員登録</h2>
-        <%= form_with model: @member, url: member_registration_path, local: true do |f| %>
-          <%= render "members/shared/error_messages", resource: resource %>
-          <div class="row d-flex justify-content-center mb-3">
-            <div class="pr-4"><%= f.text_field :family_name, autofocus: true, placeholder: "姓" %></div>
-            <div><%= f.text_field :given_name, placeholder: "名" %></div>
-          </div>
-          <div class="row d-flex justify-content-center mb-3">
-            <div class="pr-4"><%= f.text_field :family_name_kana, placeholder: "セイ" %></div>
-            <div><%= f.text_field :given_name_kana, placeholder: "メイ" %></div>
-          </div>
-          <div class="row d-flex justify-content-center mb-3">
-            <%= f.email_field :email, autocomplete: "email", placeholder: "メールアドレス", size: 46 %>
-          </div>
-          <div class="row d-flex justify-content-center mb-3">
-            <%= f.password_field :password, placeholder: "パスワード", size: 46 %>
-          </div>
-          <div class="row d-flex justify-content-center mb-3">
-            <%= f.password_field :password_confirmation, placeholder: "パスワード（確認用）", size: 46 %>
-          </div>
-          <div class="row d-flex justify-content-center mb-3">
-            <%= f.select :instrument_id, @instruments.map{ |instrument| [instrument.name, instrument.id] }, {include_blank: '担当楽器を教えてください。'} %>
-          </div>
-          <div class="text-center m-2">
-            <%= button_tag :class =>"wrapper icon w-25" do %>
-              <%= image_tag "img/icon/Tp.png", class: "img-icon" %>
-              <div>奏でる</div>
-            <% end %>
-          </div>
-          <div class="text-center m-2">ご登録済みの方は<%= link_to "こちら", new_member_session_path %></div>
-          <div class="text-center m-2">団体登録の方は<%= link_to "こちら", new_orchestra_registration_path %></div>
-        <% end %>
+      <div class="mx-auto card col-5 m-5">
+      <h2 class="text-center m-4 light">新規団員登録</h2>
+      <%= form_with model: @member, url: member_registration_path, local: true do |f| %>
+        <%= render "members/shared/error_messages", resource: resource %>
+        <div class="row d-flex justify-content-center mb-3">
+          <div class="pr-4"><%= f.text_field :family_name, autofocus: true, placeholder: "姓" %></div>
+          <div><%= f.text_field :given_name, placeholder: "名" %></div>
+        </div>
+        <div class="row d-flex justify-content-center mb-3">
+          <div class="pr-4"><%= f.text_field :family_name_kana, placeholder: "セイ" %></div>
+          <div><%= f.text_field :given_name_kana, placeholder: "メイ" %></div>
+        </div>
+        <div class="row d-flex justify-content-center mb-3">
+          <%= f.email_field :email, autocomplete: "email", placeholder: "メールアドレス", size: 46 %>
+        </div>
+        <div class="row d-flex justify-content-center mb-3">
+          <%= f.password_field :password, placeholder: "パスワード", size: 46 %>
+        </div>
+        <div class="row d-flex justify-content-center mb-3">
+          <%= f.password_field :password_confirmation, placeholder: "パスワード（確認用）", size: 46 %>
+        </div>
+        <div class="row d-flex justify-content-center mb-3">
+          <%= f.select :instrument_id, @instruments.map{ |instrument| [instrument.name, instrument.id] }, {include_blank: '担当楽器を教えてください。'}, id: "member[instrument_id]" %>
+        </div>
+        <div class="text-center mb-3">
+          <%= button_tag :class =>"wrapper icon w-25" do %>
+            <%= image_tag "img/icon/Tp.png", class: "img-icon" %>
+            <div>奏でる</div>
+          <% end %>
+        </div>
+        <div class="text-center m-2">ご登録済みの方は<%= link_to "こちら", new_member_session_path %></div>
+        <div class="text-center m-2">団体登録の方は<%= link_to "こちら", new_orchestra_registration_path %></div>
+      <% end %>
       </div>
     </div>
   </div>

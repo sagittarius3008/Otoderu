@@ -120,6 +120,7 @@ GEM
     ffi (1.15.3)
     font-awesome-sass (5.15.1)
       sassc (>= 1.11)
+    geocoder (1.6.7)
     gimei (1.0.0)
       romaji
     globalid (0.5.1)
@@ -313,7 +314,7 @@ DEPENDENCIES
   bootstrap (~> 4.5)
   bullet
   byebug
-  capybara (>= 2.15)
+  capybara
   coffee-rails (~> 4.2)
   devise
   devise-i18n
@@ -322,6 +323,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   font-awesome-sass
+  geocoder
   gimei
   jbuilder (~> 2.5)
   jquery-rails

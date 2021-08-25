@@ -1,6 +1,6 @@
 <div class="kamaishi photo">
   <div class="container">
-    <div class="row d-flex mx-auto m-5 p-0">
+    <div class="row d-flex mx-auto p-0">
       <div class="d-flex mx-auto m-5 p-0">
         <div class="col-5 card mr-3">
           <h2 class="text-center m-4">練習登録</h2>
@@ -14,8 +14,8 @@
                 <tr>
                   <td><%= f.label "時間",class: 'm-2' %></td>
                   <td>
-                    <%= f.time_select :start_time, {prompt:'--'}, class: 'form-control　col-3 m-2' %>-
-                    <%= f.time_select :end_time, {prompt:'--'}, class: 'form-control　col-3 m-2' %>
+                    <%= f.time_select :start_time, {:include_blank => true, :minute_step => 10}, class: 'form-control　col-3 m-2' %>-
+                    <%= f.time_select :end_time, {:include_blank => true, :minute_step => 10}, class: 'form-control　col-3 m-2' %>
                   </td>
                 </tr>
                 <tr>
@@ -35,7 +35,7 @@
                   <td>
                     <%= button_tag :class =>"wrapper icon w-50 ml-5" do %>
                       <%= image_tag "img/icon/Hr.png", class: "img-icon" %>
-                      <div>登録する</div>
+                      <div>登録</div>
                     <% end %>
                   </td>
                 </tr>
@@ -44,7 +44,12 @@
           <% end %>
         </div>
         <div class="col-8 card">
-          <h2 class="text-center m-4">練習一覧</h2>
+          <div class="d-flex mx-auto">
+            <h2 class="text-center mt-4 mb-4">練習一覧</h2>
+            <div class="tooltip1 circle">Tips
+              <span class="tooltip-text">日付をクリックすると詳細情報の確認、日程の編集、削除が行えます。</span>
+            </div>
+          </div>
           <%= render 'practice_index', practice_index: @practice_index %>
         </div>
       </div>

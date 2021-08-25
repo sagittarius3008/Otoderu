@@ -1,23 +1,33 @@
-<div class="container font-weight-bold">
-  <div class="row">
-    <h2 class="mx-auto m-3"><%= "#{@member.family_name}さんの練習予定" %></h2>
-      <%= month_calendar events: @member.practices do |date, practices| %>
-        <%= date.day %>
-        <% practices.each do |practice| %>
-          <div class="small-font float1">
-            <%= link_to practice.orchestra.name, members_practice_path(practice), class:"practice-font" %>
+<div id="particles-js"></div>
+  <div id="wrapper1">
+    <div class="container">
+      <div class="row">
+        <div class="d-flex mx-auto">
+          <h2 class="text-center mt-4 mb-4"><%= "#{@member.family_name}さんの練習予定" %></h2>
+          <div class="tooltip1 circle mt-2">Tips
+            <span class="tooltip-text">出欠入力を行いましょう！団体毎の絞り込みも行えます。</span>
+          </div>
+        </div>
+          <%= month_calendar events: @member.practices do |date, practices| %>
+            <%= date.day %>
+            <% practices.each do |practice| %>
+              <div class="small-font float1 tooltip1">
+                <%= link_to practice.orchestra.name, members_practice_path(practice), class:"practice-font" %>
+                <span class="tooltip-text1"><%= simple_format(practice.note) %></span>
+              </div>
+            <% end %>
+          <% end %>
+        <!--団体絞り込みフォーム-->
+        <%= form_with url: {controller:"members/attendances", action: "search"}, method: :get, local: true do |f| %>
+          <div class="text-center d-flex m-2">
+            <div><%= f.select :search, @names, {}, class: 'form-control' %></div>
+            <div class="m-1"><%= f.submit "団体別に表示", name: nil %></div>
+            <div class="mt-2"><%= link_to "解除",members_attendances_path, class: "text-darkblue" %></div>
           </div>
         <% end %>
-      <% end %>
-    <!--絞り込みフォーム-->
-    <%= form_with url: {controller:"members/attendances", action: "search"}, method: :get, local: true do |f| %>
-      <div class="text-center d-flex m-2">
-        <div><%= f.select :search, @names, {}, class: 'form-control' %></div>
-        <div class="m-1"><%= f.submit "団体別に表示", name: nil %></div>
+        <div id="attend" class="a-table mx-auto">
+          <%= render 'my_schedule', member: @member %>
+        </div>
       </div>
-    <% end %>
-    <div id="attend" class="a-table mx-auto">
-      <%= render 'my_schedule', member: @member %>
     </div>
   </div>
-</div>

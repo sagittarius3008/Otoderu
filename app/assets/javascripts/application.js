@@ -84,3 +84,116 @@ $(document).on('turbolinks:load', function() {
 	  });
 	});
 });
+
+//スクロールした際の動きを関数でまとめる
+function PageTopAnime() {
+		var scroll = $(window).scrollTop();
+		if (scroll >= 300){//上から200pxスクロールしたら
+			$('#page-top').removeClass('RightMove');//#page-topについているRightMoveというクラス名を除く
+			$('#page-top').addClass('LeftMove');//#page-topについているLeftMoveというクラス名を付与
+		}else{
+			if(
+				$('#page-top').hasClass('LeftMove')){//すでに#page-topにLeftMoveというクラス名がついていたら
+				$('#page-top').removeClass('LeftMove');//LeftMoveというクラス名を除き
+				$('#page-top').addClass('RightMove');//RightMoveというクラス名を#page-topに付与
+			}
+		}
+}
+
+// 画面をスクロールをしたら動かしたい場合の記述
+$(window).scroll(function () {
+	PageTopAnime();/* スクロールした際の動きの関数を呼ぶ*/
+});
+
+// ページが読み込まれたらすぐに動かしたい場合の記述
+$(window).on('load', function () {
+	PageTopAnime();/* スクロールした際の動きの関数を呼ぶ*/
+});
+
+
+// #page-topをボタン
+$('#page-top').click(function () {
+    $('body,html').animate({
+        scrollTop: 0//ページトップまでスクロール
+    }, 500);//ページトップスクロールの速さ。数字が大きいほど遅くなる
+    return false;//リンク自体の無効化
+});
+
+/*global particlesJS*/
+$(document).on('turbolinks:load', function() {
+	particlesJS("particles-js", {
+		"particles":{
+			"number":{
+				"value":7,
+				"density":{
+					"enable":true,
+					"value_area":1121.6780303333778
+				}
+			},
+			"color":{
+				"value":"#fff"
+			},
+			"shape":{
+				"type":"image",//形状は画像を指定
+				"stroke":{
+					"width":0,
+				},
+				"image":{
+					"src":"/assets/img/icon/8.png",
+					"width":200,
+					"height":200
+				}
+			},
+			"opacity":{
+				"value":0.06409588744762158,
+				"random":true,
+				"anim":{
+					"enable":false,
+					"speed":1,
+					"opacity_min":0.1,
+					"sync":false
+				}
+			},
+			"size":{
+				"value":25,
+				"random":true,//サイズをランダムに
+				"anim":{
+					"enable":false,
+					"speed":4,
+					"size_min":3,
+					"sync":false
+				}
+			},
+			"line_linked":{
+				"enable":false,
+			},
+			"move":{
+				"enable":true,
+				"speed":4,//この数値を小さくするとゆっくりな動きになる
+				"direction":"bottom",//右下に向かって落ちる
+				"random":true,//動きはランダムにしない
+				"straight":false,//動きをとどめない
+				"out_mode":"out",//画面の外に出るように描写
+				"bounce":true,//跳ね返りなし
+				"attract":{
+					"enable":false,
+					"rotateX":281.9177489524316,
+					"rotateY":127.670995809726
+				}
+			}
+		},
+		"interactivity":{
+			"detect_on":"canvas",
+			"events":{
+				"onhover":{
+					"enable":false,
+				},
+				"onclick":{
+					"enable":false,
+				},
+				"resize":true
+			}
+		},
+		"retina_detect":false
+	});
+});

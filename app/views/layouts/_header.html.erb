@@ -4,11 +4,27 @@
       <% if orchestra_signed_in? %>
         <li><%= link_to "練習登録", orchestras_practices_path %></li>
         <li><%= link_to "団員一覧", orchestras_members_path %></li>
-        <li><%= link_to "入団承認", orchestras_applies_path %></li>
+        <li class="d-flex vertical-align-center">
+          <%= link_to "入団承認", orchestras_applies_path, class: "mx-auto" %>
+          <% unless @nav_applies.empty? %>
+            <div class="font-weight-bold tooltip1">
+              <%= @nav_applies.count %>
+              <span class="tooltip-text"><%= "新規入団申請が届いています。" %></span>
+            </div>
+          <% end %>
+        </li>
         <li><%= link_to "登録楽器一覧", orchestras_instruments_path %></li>
         <li><%= link_to "ログアウト", destroy_orchestra_session_path, method: :delete %></li>
       <% elsif member_signed_in? %>
-        <li><%= link_to "出欠入力", members_attendances_path %></li>
+        <li class="d-flex vertical-align-center">
+          <%= link_to "出欠入力", members_attendances_path, class:"ml-3" %>
+          <% unless @nav_attendances.nil? %>
+            <div class="font-weight-bold tooltip1">
+              <%= @nav_attendances.where(attendance_status:0).count %>
+              <span class="tooltip-text"><%= "出欠の未回答があります！" %></span>
+            </div>
+          <% end %>
+        </li>
         <li><%= link_to "マイページ", members_member_mypage_path %></li>
         <li><%= link_to "入団申請", members_orchestras_path %></li>
         <li><%= link_to "ログアウト", destroy_member_session_path, method: :delete %></li>
@@ -18,8 +34,8 @@
         <li><%= link_to "ログイン", new_member_session_path %></li>
         <li><%= link_to "新規登録", new_member_registration_path %></li>
         <li class="font-weight-bold">─────────────────団体─────────────────</li>
-        <li><%= link_to "ログイン", new_orchestra_session_path %></li>
-        <li><%= link_to "新規登録", new_orchestra_registration_path %></li>
+        <li><%= link_to "ログイン", new_orchestra_session_path,id: "sign_up" %></li>
+        <li><%= link_to "新規登録", new_orchestra_registration_path,id: "registration" %></li>
         <li class="font-weight-bold">──────────────ゲストログイン──────────────</li>
         <li><%= link_to '個人', members_guest_sign_in_path, method: :post %></li>
         <li><%= link_to '団体', orchestras_guest_sign_in_path, method: :post %></li>

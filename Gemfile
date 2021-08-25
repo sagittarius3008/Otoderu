@@ -50,7 +50,7 @@ group :development do
 end
 
 group :test do
-  gem 'capybara', '>= 2.15'
+  gem 'capybara'
   gem 'rspec-rails'
   gem "factory_bot_rails"
   gem 'faker'
@@ -76,5 +76,6 @@ gem 'font-awesome-sass'
 gem 'gimei'
 gem 'dotenv-rails'
 gem 'slack-api'
-gem 'simple_calendar', '~> 2.0' 
+gem 'simple_calendar', '~> 2.0'
+gem 'geocoder'
 gem 'bullet', group: 'development'

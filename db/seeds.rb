@@ -41,7 +41,7 @@ end
     family_name_kana: "#{Gimei.last.katakana}",
     given_name_kana: "#{Gimei.first.katakana}",
     introduction: "団員#{n}です。よろしくお願いします。",
-    email: "member#{n}@test.com",
+    email: "member#{n}@example.com",
     password: "111111"
     )
 end

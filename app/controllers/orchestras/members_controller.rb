@@ -10,10 +10,12 @@ class Orchestras::MembersController < ApplicationController
     if belonging.part_top
       belonging.part_top = false
       belonging.save
+      flash[:notice] = "パートトップの設定を解除しました"
       redirect_to request.referer
     else
       belonging.part_top = true
       belonging.save
+      flash[:notice] = "パートトップに設定しました"
       redirect_to request.referer
     end
   end

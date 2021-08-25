@@ -1,3 +1,31 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.about-text{
+  // display: flex;
+  // justiffy-content: center;
+  // flex-direction: column;
+  width: 33vw;
+  // height: 20.625vw;
+}
+
+// .jumbotron{
+//   height: 23vw;
+//   padding: 0px;
+// }
+
+.contain-left{
+  position: absolute;
+  transform: translateX(-50%) translateY(-50%);
+  top: 50%;
+  left: 25%;
+}
+.contain-right{
+  position: absolute;
+  transform: translateX(-50%) translateY(-50%);
+  top: 50%;
+  left: 75%;
+}
+.contain-box{
+  height: 23vw;
+}

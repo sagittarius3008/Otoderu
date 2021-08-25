@@ -20,20 +20,29 @@
   font-family: 'ipaexm';
   src: font-url('ipaexm.ttf') format('truetype');
 }
-body{
-  font-family: ipaexm;
+
+.error{
+    position: sticky;
+    top: 0px;
 }
 
-.red{
-  color: #d44346;
+body{
+  font-family: ipaexm;
 }
 
 .white{
   color: #fff;
 }
-
 .practice-font{
   color: #000;
+}
+
+.text-darkblue{
+  color: #18426d;
+  text-decoration: underline;
+}
+.text-dark:hover{
+  text-decoration: none;
 }
 
 .main-color{
@@ -65,46 +74,15 @@ footer{
 .table-th4{width: 150px;}
 .table-th5{width: 300px;}
 .table-th6{width: 80x;}
+.table-th7{width: 200px;}
 .table-height{height: 20px;}
 
 .table tr:hover {
-  background-color: #FFFFb2;    /* マウスオーバー時の行の背景色 */
+  background-color: #e3e3e3;    /* マウスオーバー時の行の背景色 */
 }
 .table tr td:hover {
-  background-color: #FFFF00;    /* マウスオーバー時の行の背景色 */
+  background-color: #cfcfcf;    /* マウスオーバー時のセルの背景色 */
 }
-
-.d_table {
-	width: 100%;
-	display: table;
-	border-collapse: collapse;
-	text-align:center;
-	margin:0;
-	}
-.d_thead  {
-	display:table-header-group;
-	background:lightgreen;
-	font-weight:bold;
-	}
-.d_tbody {
-	display:table-row-group;
-	}
-.d_tr {
-// 	display: table-row;
-	}
-.d_th,.d_td,.d_td1 {
-	display: table-cell;
-	padding: 5px 0;
-	border: 1px solid #999;
-	vertical-align: middle;
-	width:20%;
-	}
-	.a-table{
-	  width: 100%;
-	}
-	.submit{
-	  width: 20px;
-	}
 
 // カレンダーの設定
 .simple-calendar {
@@ -293,46 +271,42 @@ opacity: 0;
   background-size: cover;
   background-color:rgba(255,255,255,0.1);
   background-blend-mode:lighten;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
 }
 // 個人サインイン
 .stage-right{
-  background: image-url("img/stage-right.jpg") center center / cover no-repeat;
-  background-position: 25% 20%;
-  padding-top: calc(80 / 1000 * 100%);
-  padding-bottom: calc(70 / 1000 * 100%);
+  background: image-url("img/stage-right.jpg")
+    center / cover;
 }
 // 個人ログイン
 .flute{
-  background: image-url("img/flute.jpg") center center / cover no-repeat;
-  background-position: 0% 10%;
-  padding-top: calc(100 / 1000 * 100%);
-  padding-bottom: calc(70 / 1000 * 100%);
+  background: image-url("img/flute.jpg")
+    center / cover;
 }
 // 団体ログイン
 .orchestra{
-  background: image-url("img/orchestra.jpg") center center / cover no-repeat;
-  padding-top: calc(100 / 1000 * 100%);
-  padding-bottom: calc(70 / 1000 * 100%);
+  background: image-url("img/orchestra.jpg")
+    center / cover;
 }
 // 団体サインイン
 .stage-left{
-  background: image-url("img/stage-left.jpg") center center / cover no-repeat;
-  background-position: 40% 35%;
-  padding-top: calc(100 / 1000 * 100%);
-  padding-bottom: calc(80 / 1000 * 100%);
+  background: image-url("img/stage-left.jpg")
+    center / cover;
 }
 .kamaishi{
-  background: image-url("img/kamaishi.jpg") center center / cover no-repeat;
-  padding-top: calc(50 / 1000 * 100%);
-  padding-bottom: calc(80 / 1000 * 100%);
+  background: image-url("img/kamaishi.jpg")
+    center / cover;
 }
-.search-icon{
-  width: 40px;
-  height: 40px;
-}
+
 .img-icon{
   width: 80px;
   height: 80px;
+}
+.wide-icon{
+  width: 60px;
+  height: 40px;
 }
 .big-icon{
   width: 100px;
@@ -340,38 +314,249 @@ opacity: 0;
 }
 .img-shadow1{
   width: 33vw;
-  height: 20.625vw;
+  // height: 20.625vw;
 }
 .round{
   border-radius: 10px;
 }
 
-.about-text{
-  display: flex;
-  justiffy-content: center;
-  flex-direction: column;
-  width: 33vw;
-  height: 20.625vw;
-}
-
 .btn-none{
   -webkit-appearance:none;
-  background-color: #FFF;
+  background-color: transparent;
   border-color: #FFF;
   border-width: 0px;
   text-decoration: none;
   color: #000;
 }
 
-.next-practice{
-  border-line: none;
-}
-.next-practice:hover{
-  text-decoration: none;
-}
 .linear{
   background: linear-gradient(transparent 60%, yellow 60%);
 }
 .icon-border{
   border-width: 0px;
+}
+
+// ツールチップ
+.tooltip1 {
+  position: relative;
+  cursor: pointer;
+}
+.tooltip-text {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -30px;
+  display: inline-block;
+  padding: 5px;
+  white-space: nowrap;
+  font-size: 0.8rem;
+  line-height: 1.3;
+  background: #333;
+  color: #fff;
+  border-radius: 3px;
+  transition: 0.3s ease-in;
+}
+
+/* ホバー時にツールチップの非表示を解除 */
+.tooltip1:hover .tooltip-text {
+  opacity: 1;
+  visibility: visible;
+  z-index: 5;
+}
+// ツールチップ終わり
+
+// kaminariのレイアウト
+.pagination>li>a {
+  border: none;
+  color: #696969;
+}
+.pagination>.active>a {
+  background: #93c9ff;
+  border-radius: 15px;
+}
+.pagination>li>a:hover {
+  border-radius: 15px;
+}
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: #18426d;
+  border-color: #007bff;
+}
+// kaminari終わり
+
+// 行頭のTIPS表示
+.circle {
+  background: #18426d;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  color: #fff;
+  font-size: 6px;
+  text-align: center;
+  line-height: 30px;
+}
+// 小さいTIPS表示
+.circle1 {
+  background: #18426d;
+  border-radius: 95%;
+  width: 20px;
+  height: 20px;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  line-height: 20px;
+}
+
+// DivTable
+.divTable{
+	display: table;
+	width: 100%;
+}
+.divTableRow {
+	display: table-row;
+	text-align: center;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+	text-align: center;
+}
+.divTableCell, .divTableHead {
+	border: 1px solid #999999;
+	display: table-cell;
+	padding: 3px 10px;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+	font-weight: bold;
+}
+.divTableFoot {
+	background-color: #EEE;
+	display: table-footer-group;
+	font-weight: bold;
+}
+.divTableBody {
+	display: table-row-group;
+}
+.divTable .divTableRow:hover {
+  background-color: #e3e3e3;    /* マウスオーバー時の行の背景色 */
+}
+.divTable .divTableRow .divTableCell:hover {
+  background-color: #cfcfcf;    /* マウスオーバー時の行の背景色 */
+}
+
+/*リンクの形状*/
+#page-top a{
+	display: flex;
+	justify-content:center;
+	align-items:center;
+	background:#942D2F;
+	border-radius: 5px;
+	width: 60px;
+	height: 60px;
+	color: #fff;
+	text-align: center;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-size:0.6rem;
+	transition:all 0.3s;
+}
+
+#page-top a:hover{
+	background: #777;
+}
+
+/*リンクを右下に固定*/
+#page-top {
+	position: fixed;
+	right: 20px;
+	bottom:20px;
+	z-index: 2;
+    /*はじめは非表示*/
+	opacity: 0;
+	transform: translateX(100px);
+}
+
+/*　左の動き　*/
+
+#page-top.LeftMove{
+	animation: LeftAnime 0.5s forwards;
+}
+
+@keyframes LeftAnime{
+  from {
+    opacity: 0;
+	transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+	transform: translateX(0);
+  }
+}
+
+/*　右の動き　*/
+
+#page-top.RightMove{
+	animation: RightAnime 0.5s forwards;
+}
+@keyframes RightAnime{
+  from {
+  	opacity: 1;
+	transform: translateX(0);
+  }
+  to {
+  	opacity: 1;
+	transform: translateX(100px);
+  }
+}
+
+/*========= レイアウトのためのCSS ===============*/
+
+#wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align:center;
+}
+
+/*========= particle js を描画するエリア設定 ===============*/
+
+html,body{
+  height: 100%;/*高さを100%にして描画エリアをとる*/
+}
+
+#particles-js{
+  position:fixed;/*描画固定*/
+  z-index:-1;/*描画を一番下に*/
+  width: 100%;
+  height: 100%;
+  background-color:#efe4c9;/*背景色*/
+}
+
+#wrapper1{
+  position: relative;/*描画を#particles-jsよりも上にするためposition:relative;を指定*/
+  z-index: 1;/*z-indexの数字を大きくすることで描画を#particles-jsよりも上に*/
+  width:100%;
+  height: 100%;
+}
+
+#map {
+  width: 100%;
+  height: 700px;
+}
+
+.attendance-table{
+  overflow: scroll;
+  width: 100%;
+  height: 500px;
+}
+
+.link-button{
+  border-bottom: 2px solid #000;
+  border-right:
+  2px solid #888;
 }

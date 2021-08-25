@@ -1,30 +1,41 @@
 <div class="container">
-  <div class="row">
+  <div class="row d-flex">
     <div class="m-5 mx-auto col-6 card">
-      <h2 class="text-center m-4"><%= "#{@practice.schedule}の練習詳細" %></h2>
+      <div class="d-flex mx-auto">
+        <h2 class="text-center m-4"><%= "#{practice.schedule}の練習詳細" %></h2>
+        <div class="tooltip1 circle">Tips
+          <span class="tooltip-text"><%= "[CSV出力]をクリックすると参加者リストがダウンロードできます。" %></span>
+        </div>
+      </div>
       <table>
         <tbody>
           <tr>
-            <td>時間</td>
+            <td class="text-center">時間</td>
             <td><%= l practice.start_at, format: :short %>-<%= l practice.end_at, format: :short %></td>
           </tr>
           <tr>
-            <td>場所</td>
+            <td class="text-center">場所</td>
             <td><%= practice.place %></td>
           </tr>
           <tr>
-            <td>譜面台</td>
+            <td class="text-center">譜面台</td>
             <td><%= practice.stand? ? "不要" : "要" %></td>
           </tr>
           <tr>
-            <td>備考</td>
-            <td><%= practice.note %></td>
+            <td class="text-center">備考</td>
+            <td><%= simple_format(practice.note) %></td>
+          </tr>
+          <tr>
+            <td class="text-center">出席人数</td>
+            <td><%= "#{practice.attendances.where(attendance_status:1).count + practice.attendances.where(attendance_status:3).count + practice.attendances.where(attendance_status:4).count}" %>人</td>
           </tr>
         </tbody>
       </table>
-      <table border="2" class="table practice_index small-font mb-5">
+      <div style="height:500px; width:100%; overflow-y:scroll;">
+        <table border="2" class="table small-font mb-5">
         <thead>
           <tr class="text-center">
+            <th class="table-th1 align-middle">楽器</th>
             <th class="table-th4 align-middle">名前</th>
             <th class="table-th3 align-middle">出欠</th>
             <th class="table-th5 align-middle">備考</th>
@@ -33,14 +44,51 @@
         <tbody>
           <% attendances.each do |attendance| %>
             <tr class="text-center">
-              <td><%= "#{attendance.member.family_name}#{attendance.member.given_name}" %></td>
-              <td><%= attendance.attendance_status %></td>
-              <td><%= attendance.note %></td>
+              <td class="p-2"><%= attendance.member.instrument.name %></td>
+              <td class="p-2"><%= "#{attendance.member.family_name}#{attendance.member.given_name}" %></td>
+              <td class="p-2"><%= attendance.attendance_status %></td>
+              <td class="p-2"><%= simple_format(attendance.note) %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
-      <%= link_to "CSV出力", orchestras_practice_path(format: :csv), class: "btn btn-primary m-3" %>
+      </div>
+      <% if orchestra_signed_in? %>
+      <div class="d-flex justify-content-between">
+        <div><%= link_to "予定の編集", edit_orchestras_practice_path(practice) %></div>
+        <div><%= link_to "日程削除", {controller: 'orchestras/practices', action: 'destroy' }, method: :delete, class: "m-3", data: { confirm: "\n削除すると元に戻せません。\nよろしいですか？" } %></div>
+      </div>
+      <% end %>
+      <%= link_to "CSV出力", orchestras_practice_path(format: :csv), class: "btn btn-primary m-3 w-100 mx-auto" %>
+    </div>
+    <div class="m-5 mx-auto card col-6">
+      <%= form_with url: map_request_path, method: :get do |f|%>
+        <%= f.text_field :address, class:"m-2" %>
+        <%= f.submit '地図検索' %>
+        <div id='map'></div>
+      <% end %>
     </div>
   </div>
 </div>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap" async defer></script>
+<!--googlemapの初期値を練習場所に指定-->
+<script type="text/javascript">
+  let mapInstance
+
+  function initMap() {
+    var test ={lat: <%= @latlng[0] %>, lng: <%= @latlng[1] %>};
+    mapInstance = new google.maps.Map(document.getElementById('map'), {
+              zoom: 15,
+              center: test
+              });
+
+    var marker = new google.maps.Marker({
+                  position:test,
+                  map: mapInstance,
+                 });
+
+     marker.addListener('click', function() {
+       infowindow.open(mapInstance, marker);
+     });
+  }
+</script>

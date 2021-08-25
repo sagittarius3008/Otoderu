@@ -22,7 +22,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root to: 'homes#top'
-  get 'homes/about' => 'homes#about'
 
   namespace :members do
     get 'member/mypage' => 'members#mypage'
@@ -44,10 +43,11 @@ Rails.application.routes.draw do
   namespace :orchestras do
     resources :members, only:[:index, :update]
     resources :instruments, only:[:create, :index, :update]
-    resources :practices, only:[:index, :create, :show, :update, :destroy]
+    resources :practices, only:[:index, :create, :show, :edit, :update, :destroy]
     resources :applies, only: [:index]
   end
 
+  get '/map_request', to: 'maps#map', as: 'map_request'
   post "/receive"=>"slack#create"
 
 end
