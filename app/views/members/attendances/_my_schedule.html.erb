@@ -25,8 +25,8 @@
       <div class="divTableCell align-middle table-th5">備考</div>
     </div>
     <% if @orchestra == nil %>
-    <% member.practices.sort{|a, b| a[:schedule] <=> b[:schedule]}.each do |practice| %>
-    <% attendance = practice.attendances.find_by(member_id: member.id) %>
+      <% member.practices.sort{|a, b| a[:schedule] <=> b[:schedule]}.each do |practice| %>
+      <% attendance = practice.attendances.find_by(member_id: member.id) %>
       <%= form_with model: attendance, url: members_attendance_path(attendance), method: :patch, remote: true do |f| %>
       <div class="divTableRow">
         <div class="divTableCell align-middle table-th3">
@@ -47,6 +47,7 @@
       </div>
       <% end %>
       <% end %>
+    <!--検索した場合-->
     <% else %>
     <%= render 'other_schedule', id: @orchestra.ids, member: @member %>
   <% end %>

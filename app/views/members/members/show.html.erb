@@ -11,7 +11,33 @@
           </div>
         <% end %>
       <% end %>
-      <%= render 'members/attendances/other_schedule', id: @orchestra.id, member: @member %>
+      <div class="divTable small-font m-2">
+        <div class="divTableBody">
+          <div class="divTableHeading">
+            <div class="divTableCell align-middle table-th3">更新</div>
+            <div class="divTableCell align-middle table-th4">出欠</div>
+            <div class="divTableCell align-middle table-th3">日付
+              <span class="tooltip1 circle1">Tips
+                <span class="tooltip-text">クリックすると日付毎の出欠状況を表示します。</span>
+              </span>
+            </div>
+            <div class="divTableCell align-middle table-th3">時間
+              <span class="tooltip1 circle1">Tips
+                <span class="tooltip-text">カーソルを合わせると詳細予定が表示されます。</span>
+              </span>
+            </div>
+            <div class="divTableCell align-middle table-th3">場所</div>
+            <div class="divTableCell align-middle table-th4">団体名
+              <span class="tooltip1 circle1">Tips
+                <span class="tooltip-text">クリックすると団体全体の出欠状況を表示します。</span>
+              </span>
+            </div>
+            <div class="divTableCell align-middle table-th2">出席</div>
+            <div class="divTableCell align-middle table-th1">譜面台</div>
+            <div class="divTableCell align-middle table-th5">備考</div>
+          </div>
+        <%= render 'members/attendances/other_schedule', id: @orchestra.id, member: @member %>
+        </div>
       </div>
     </div>
   </div>
