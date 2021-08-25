@@ -10,7 +10,7 @@
       </div>
       <div class="divTableCell align-middle table-th3"><%= link_to practice.schedule, members_practice_path(practice), class: "text-darkblue" %></div>
       <div class="divTableCell align-middle table-th3 tooltip1">
-        <span class="tooltip-text"><%= practice.note %></span><%= l practice.start_at, format: :short %>-<%= l practice.end_at, format: :short %>
+        <span class="tooltip-text1"><%= simple_format(practice.note) %></span><%= l practice.start_at, format: :short %>-<%= l practice.end_at, format: :short %>
       </div>
       <div class="divTableCell align-middle table-th3"><%= practice.place %></div>
       <div class="divTableCell align-middle table-th4"><%= link_to practice.orchestra.name, members_attendance_path(practice.orchestra), class: "text-darkblue" %></div>
