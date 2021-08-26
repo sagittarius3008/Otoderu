@@ -1,12 +1,7 @@
 <div class="container">
   <div class="row d-flex">
     <div class="m-5 mx-auto col-6 card">
-      <div class="d-flex mx-auto">
         <h2 class="text-center m-4"><%= "#{practice.schedule}の練習詳細" %></h2>
-        <div class="tooltip1 circle">Tips
-          <span class="tooltip-text"><%= "[CSV出力]をクリックすると参加者リストがダウンロードできます。" %></span>
-        </div>
-      </div>
       <table>
         <tbody>
           <tr>
@@ -23,7 +18,11 @@
           </tr>
           <tr>
             <td class="text-center">備考</td>
-            <td><%= simple_format(practice.note) %></td>
+            <td>
+              <div style="max-height:30vh; width:100%; overflow-y:scroll;">
+                <%= simple_format(practice.note) %>
+              </div>
+            </td>
           </tr>
           <tr>
             <td class="text-center">出席人数</td>
@@ -59,7 +58,7 @@
         <div><%= link_to "日程削除", {controller: 'orchestras/practices', action: 'destroy' }, method: :delete, class: "m-3", data: { confirm: "\n削除すると元に戻せません。\nよろしいですか？" } %></div>
       </div>
       <% end %>
-      <%= link_to "CSV出力", orchestras_practice_path(format: :csv), class: "btn btn-primary m-3 w-100 mx-auto" %>
+      <%= link_to "参加者リストのダウンロード", orchestras_practice_path(format: :csv), class: "btn btn-primary m-3 w-100 mx-auto" %>
     </div>
     <div class="m-5 mx-auto card col-6">
       <%= form_with url: map_request_path, method: :get do |f|%>

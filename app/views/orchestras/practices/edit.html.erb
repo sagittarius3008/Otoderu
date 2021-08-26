@@ -8,26 +8,26 @@
           <tbody>
             <tr>
               <td><%= f.label "日付",class: 'm-2 ' %></td>
-              <td><%= f.date_field :schedule, class: 'form-control　col-3 m-2' %></td>
+              <td><%= f.date_field :schedule, class: 'form-control m-2' %></td>
             </tr>
             <tr>
               <td><%= f.label "時間",class: 'm-2' %></td>
-              <td>
-                <%= f.time_select :start_time, {prompt:'--'}, class: 'form-control　col-3 m-2' %>-
-                <%= f.time_select :end_time, {prompt:'--'}, class: 'form-control　col-3 m-2' %>
+              <td class="d-flex align-items-center">
+                <%= f.time_select :start_time, {prompt:'--'}, class: 'form-control m-2' %>-
+                <%= f.time_select :end_time, {prompt:'--'}, class: 'form-control m-2' %>
               </td>
             </tr>
             <tr>
               <td><%= f.label "練習場所",class: 'm-2' %></td>
-              <td><%= f.text_field :place, class: 'form-control　col-3 m-2', size: 30 %></td>
+              <td><%= f.text_field :place, class: 'form-control m-2', size: 30 %></td>
             </tr>
             <tr>
               <td><%= f.label "譜面台",class: 'm-2' %></td>
-              <td>要<%= f.radio_button :stand, false, class: 'form-control　col-3 m-2' %>不要<%= f.radio_button :stand, true, class: 'form-control　col-3 m-2' %></td>
+              <td>要<%= f.radio_button :stand, false, class: 'm-2' %>不要<%= f.radio_button :stand, true, class: 'm-2' %></td>
             </tr>
             <tr>
               <td><%= f.label "備考",class: 'm-2' %></td>
-              <td><%= f.text_area :note, class: 'form-control　col-3 m-2', size: "30x10" %></td>
+              <td><%= f.text_area :note, class: 'form-control m-2', size: "30x10" %></td>
             </tr>
 
           </tbody>

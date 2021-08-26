@@ -5,7 +5,7 @@
       <div class="row">
         <div class="d-flex mx-auto">
           <h2 class="text-center mt-4 mb-4"><%= "#{@member.family_name}さんの練習予定" %></h2>
-          <div class="tooltip1 circle mt-2">Tips
+          <div class="tooltip1 mt-2"><i class="fas fa-question-circle fa-lg"></i>
             <span class="tooltip-text">出欠入力を行いましょう！団体毎の絞り込みも行えます。</span>
           </div>
         </div>
@@ -26,7 +26,7 @@
             <div class="mt-2"><%= link_to "解除",members_attendances_path, class: "text-darkblue" %></div>
           </div>
         <% end %>
-        <div id="attend" class="a-table mx-auto">
+        <div id="attend" class="mx-auto">
           <%= render 'my_schedule', member: @member %>
         </div>
       </div>

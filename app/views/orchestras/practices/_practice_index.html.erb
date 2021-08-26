@@ -12,13 +12,13 @@
     <tbody>
       <% practice_index.each do |practice| %>
         <tr class="text-center">
-          <td class="align-middle"><%= link_to practice.schedule, orchestras_practice_path(practice) %></td>
+          <td class="align-middle p-0"><%= link_to practice.schedule, orchestras_practice_path(practice) %></td>
           <td class="align-middle"><%= l practice.start_at, format: :short %>-<%= l practice.end_at, format: :short %></td>
           <td class="align-middle"><%= practice.place %></td>
           <td class="align-middle"><%= practice.stand? ? "不要" : "要" %></td>
           <td class="align-middle tooltip1">
             <%= practice.note.truncate(20, omission: '・・・') %>
-            <span class="tooltip-text"><%= simple_format(practice.note) %></span>
+            <span class="tooltip-text"><%= simple_format(practice.note, class:"tooltip-space") %></span>
           </td>
         </tr>
       <% end %>
