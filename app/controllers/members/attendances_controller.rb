@@ -4,7 +4,8 @@ class Members::AttendancesController < ApplicationController
 
   def index
     @member = Member.find_by(id: current_member.id)
-    # セレクトボックス作成のため
+    @practices = @member.practices.includes(:orchestra)
+    # セレクトボックスに使用→model
     @names = []
     @member.orchestras.each do |orchestra|
       @names << orchestra.name
@@ -13,6 +14,7 @@ class Members::AttendancesController < ApplicationController
 
   def search
     @member = Member.find_by(id: current_member.id)
+    @practices = @member.practices.includes(:orchestra)
     @orchestra = Orchestra.search(params[:search])
     @names = []
     @member.orchestras.each do |orchestra|
@@ -23,7 +25,7 @@ class Members::AttendancesController < ApplicationController
 
   def show
     @orchestra = Orchestra.find(params[:id])
-    @members = @orchestra.members
+    @members = @orchestra.members.includes(:instrument)
   end
 
   def update
