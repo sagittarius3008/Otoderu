@@ -1,13 +1,13 @@
 <div class="main-color">
   <div class="feed-images"></div>
-  <div class="container mt-2 ">
-    <div class="row">
-      <h1 class="display-4">ようこそ、Otoderuへ！</h1>
-      <div class="col-11">
+  <div class="container mt-5">
+    <div class="row justify-content-between">
+      <h1 class="display-3">ようこそ、Otoderuへ！</h1>
+      <!--<div class="col-11">-->
         <%= link_to href="#1", class: "text-dark" do %>
-          <%= image_tag "img/icon/Vnmask.png", class: "img-icon" %>Otoderuとは？
+          <%= image_tag "img/icon/Vnmask.png", class: "img-icon" %>Click!
         <% end %>
-      </div>
+      <!--</div>-->
     </div>
     <div class="main-color position-relative contain-box">
       <div id="1" class="contain-left">
@@ -32,12 +32,12 @@
         </p>
       </div>
     </div>
-    <%= link_to href="#2", class: "text-decoration-none text-dark" do %>
+    <%= link_to href="#2", class: "text-decoration-none text-dark " do %>
       <%= image_tag "img/icon/Vnmask.png", class: "img-icon" %>Click！
     <% end %>
     <div class="d-flex position-relative contain-box">
       <div id ="2" class="img-shadow1 contain-right"><%= image_tag "img/kamaishi.jpg", width: "90%", height: "90%", class: "round" %></div>
-      <div class="contain-left">
+      <div class="contain-left col-5">
         <h1 class="display-4 about-text">手軽に出欠入力</h1>
         <p class="lead font-weight-bold">
           毎回サイトにアクセスする手間は不要です.<br>
@@ -78,7 +78,7 @@
         <%= link_to new_member_registration_path, class: "text-decoration-none text-dark d-flex justify-content-center" do %>
           <%= image_tag "img/icon/Vn.png", class: "big-icon mt-3 " %>
         <% end %>
-        <div class="text-center">ようこそ</div>
+        <div id="3" class="text-center">ようこそ</div>
       </div>
     </div>
   </div>

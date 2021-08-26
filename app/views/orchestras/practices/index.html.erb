@@ -2,33 +2,33 @@
   <div class="container">
     <div class="row d-flex mx-auto p-0">
       <div class="d-flex mx-auto m-5 p-0">
-        <div class="col-5 card mr-3">
+        <div class="col-5 card">
           <h2 class="text-center m-4">練習登録</h2>
           <%= form_with model:@practice, url: { controller: "practices", action: "create" }, method: :post, local:true do |f| %>
             <table>
               <tbody>
                 <tr>
-                  <td><%= f.label "日付",class: 'm-2 ' %></td>
-                  <td><%= f.date_field :schedule, class: 'form-control　col-3 m-2' %></td>
+                  <td><%= f.label "日付",class: 'm-2' %></td>
+                  <td><%= f.date_field :schedule, class: 'form-control m-2' %></td>
                 </tr>
                 <tr>
                   <td><%= f.label "時間",class: 'm-2' %></td>
-                  <td>
-                    <%= f.time_select :start_time, {:include_blank => true, :minute_step => 10}, class: 'form-control　col-3 m-2' %>-
-                    <%= f.time_select :end_time, {:include_blank => true, :minute_step => 10}, class: 'form-control　col-3 m-2' %>
+                  <td class="d-flex align-items-center">
+                    <%= f.time_select :start_time, {:include_blank => true, :minute_step => 10}, class: 'form-control m-2' %>-
+                    <%= f.time_select :end_time, {:include_blank => true, :minute_step => 10}, class: 'form-control m-2' %>
                   </td>
                 </tr>
                 <tr>
                   <td><%= f.label "練習場所",class: 'm-2' %></td>
-                  <td><%= f.text_field :place, class: 'form-control　col-3 m-2', size: 30 %></td>
+                  <td><%= f.text_field :place, class: 'form-control m-2', size: 30 %></td>
                 </tr>
                 <tr>
                   <td><%= f.label "譜面台",class: 'm-2' %></td>
-                  <td>要<%= f.radio_button :stand, false, class: 'form-control　col-3 m-2' %>不要<%= f.radio_button :stand, true, class: 'form-control　col-3 m-2' %></td>
+                  <td>要<%= f.radio_button :stand, false, class: 'm-2' %>不要<%= f.radio_button :stand, true, class: 'form-control　col-3 m-2' %></td>
                 </tr>
                 <tr>
                   <td><%= f.label "備考",class: 'm-2' %></td>
-                  <td><%= f.text_area :note, class: 'form-control　col-3 m-2', size: "30x10" %></td>
+                  <td><%= f.text_area :note, class: 'form-control m-2', size: "30x10" %></td>
                 </tr>
                 <tr>
                   <td></td>
@@ -43,10 +43,10 @@
             </table>
           <% end %>
         </div>
-        <div class="col-8 card">
+        <div class="col-7 card">
           <div class="d-flex mx-auto">
             <h2 class="text-center mt-4 mb-4">練習一覧</h2>
-            <div class="tooltip1 circle">Tips
+            <div class="tooltip1 mt-2"><i class="fas fa-question-circle fa-lg"></i>
               <span class="tooltip-text">日付をクリックすると詳細情報の確認、日程の編集、削除が行えます。</span>
             </div>
           </div>
