@@ -1,6 +1,7 @@
 <div id="particles-js"></div>
   <div id="wrapper1">
     <div class="container">
+      <p id="notice" class="main-color notice m-0"><%= notice %></p>
       <div class="row">
         <div class="d-flex mx-auto">
           <h2 class="text-center mt-4 mb-4"><%= "#{@member.family_name}さんの練習予定" %></h2>
@@ -8,7 +9,7 @@
             <span class="tooltip-text">出欠入力を行いましょう！団体毎の絞り込みも行えます。</span>
           </div>
         </div>
-          <%= month_calendar events: @member.practices do |date, practices| %>
+          <%= month_calendar events: @practices do |date, practices| %>
             <%= date.day %>
             <% practices.each do |practice| %>
               <div class="small-font float1 tooltip1">
