@@ -15,7 +15,7 @@
  *= require_self
  */
 @import "bootstrap";
-
+@import "toastr";
 @font-face{
   font-family: 'ipaexm';
   src: font-url('ipaexm.ttf') format('truetype');
@@ -569,6 +569,36 @@ html,body{
   min-height: 70vh;
 }
 
-.height{
-  height: 100vh
+// フッダーをとびぬける
+// .height{
+//   height: 100vh!important;
+// }
+// background-color: #7bce79;
+@keyframes flash-message-fade {
+  0% {
+    display: inline;
+    opacity: 0.9;
+    background-color: #7bce79;
+  }
+  95% { opacity: 1; }
+  100% {
+    opacity: 0;
+    display: none;
+    background-color: white;
+  }
+}
+
+.flash-message {
+  animation-duration: 2.5s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+  display: none;
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+  padding-top: 1%;
 }

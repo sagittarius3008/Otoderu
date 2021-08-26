@@ -78,3 +78,4 @@ gem 'dotenv-rails'
 gem 'slack-api'
 gem 'simple_calendar', '~> 2.0'
 gem 'geocoder'
+gem "toastr-rails"
