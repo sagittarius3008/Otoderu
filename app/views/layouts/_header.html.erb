@@ -2,7 +2,13 @@
   <nav id="g-nav">
     <ul>
       <% if orchestra_signed_in? %>
-        <li><%= link_to "練習登録", orchestras_practices_path %></li>
+        <li class="d-flex">
+          <%= link_to "練習登録", orchestras_practices_path, class: "mx-auto" %>
+          <!--<a class="js-open-modal text-right text-dark p-0" href="#">-->
+          <!--  <i class="fas fa-plus-circle"></i>-->
+          <!--</a>-->
+          <!--<%#= render 'new', practice: @new_practice %>-->
+        </li>
         <li><%= link_to "団員一覧", orchestras_members_path %></li>
         <li class="d-flex vertical-align-center">
           <%= link_to "入団承認", orchestras_applies_path, class: "mx-auto" %>
@@ -30,14 +36,24 @@
         <li><%= link_to "ログアウト", destroy_member_session_path, method: :delete %></li>
       <% else %>
         <li><%= link_to "Top", root_path %></li>
-        <li class="font-weight-bold">─────────────────個人─────────────────</li>
+        <li class="font-weight-bold d-flex">
+          ─────────────────団員
+          <div class="tooltip1"><i class="fas fa-question-circle"></i>
+            <span class="tooltip-text">予定の確認、出欠入力が行えます。</span>
+          </div>─────────────────
+        </li>
         <li><%= link_to "ログイン", new_member_session_path %></li>
         <li><%= link_to "新規登録", new_member_registration_path %></li>
-        <li class="font-weight-bold">─────────────────団体─────────────────</li>
+        <li class="font-weight-bold d-flex">
+          ─────────────────団体
+          <div class="tooltip1"><i class="fas fa-question-circle"></i>
+            <span class="tooltip-text">練習予定の設定が行えます。</span>
+          </div>
+          ─────────────────</li>
         <li><%= link_to "ログイン", new_orchestra_session_path,id: "sign_up" %></li>
         <li><%= link_to "新規登録", new_orchestra_registration_path,id: "registration" %></li>
         <li class="font-weight-bold">──────────────ゲストログイン──────────────</li>
-        <li><%= link_to '個人', members_guest_sign_in_path, method: :post %></li>
+        <li><%= link_to '団員', members_guest_sign_in_path, method: :post %></li>
         <li><%= link_to '団体', orchestras_guest_sign_in_path, method: :post %></li>
       <% end %>
     </ul>

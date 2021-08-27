@@ -14,7 +14,7 @@
             <% practices.each do |practice| %>
               <div class="small-font float1 tooltip1">
                 <%= link_to practice.orchestra.name, members_practice_path(practice), class:"practice-font" %>
-                <span class="tooltip-text1"><%= simple_format(practice.note) %></span>
+                <!--<span class="tooltip-text1"><%#= simple_format(practice.note) %></span>-->
               </div>
             <% end %>
           <% end %>

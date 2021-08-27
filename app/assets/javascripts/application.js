@@ -28,13 +28,19 @@ $(document).on('turbolinks:load', function() {
   });
 });
 // nav→ハンバーガーのためclassを外す
+// きっかけはリンク以外をクリック
 $(document).on('turbolinks:load', function() {
-  $("#g-nav a").click(function () {
+  $("#g-nav").click(function () {
       $(".openbtn").removeClass('active');
       $("#g-nav").removeClass('panelactive');
   });
 });
-
+// イベントバブリング回避
+$(function(){
+   $('#g-nav.ul.li').on('click', function(e){
+        e.stopPropagation();
+    })
+})
 
 
 $(document).on('turbolinks:load', function() {
@@ -197,3 +203,38 @@ $(document).on('turbolinks:load', function() {
 		"retina_detect":false
 	});
 });
+
+// モーダルウィンドウの記述
+// $(document).on('turbolinks:load', function() {
+	// $(function(){
+	//   $(document).on('click', '.js-open-modal', function(){
+	//     $(this).next().removeClass('disable');
+	//   });
+	//   $('.js-close-modal').on('click', function(e){
+	//     e.preventDefault();
+	//     $(this).parents('.modal-panel-back').addClass('disable');
+	//   });
+	// });
+// });
+	$(function(){
+	  $('.js-open-modal').on('click', function(){
+	    $(this).next().removeClass('disable');
+	  });
+	  $('.js-close-modal').on('click', function(e){
+	    e.preventDefault();
+	    $(this).parents('.modal-panel-back').addClass('disable');
+	  });
+	});
+// });
+// 外枠クリックでモーダルウィンドウ消去する
+$(function(){
+  $('.modal-panel-back').on('click', function(){
+    $(this).addClass('disable');
+  })
+})
+// イベントバブリング防止
+$(function(){
+  $('.modal-panel').on('click', function(e){
+    e.stopPropagation();
+  })
+})
