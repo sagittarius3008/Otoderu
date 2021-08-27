@@ -625,9 +625,9 @@ html,body{
 
 
 // フッダーをとびぬける
-// .height{
-//   height: 100vh!important;
-// }
+.height{
+  min-height: 100vh!important;
+}
 // background-color: #7bce79;
 @keyframes flash-message-fade {
   0% {
