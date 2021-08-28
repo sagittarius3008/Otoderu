@@ -63,7 +63,7 @@ Orchestra.all.each do |orchestra|
       schedule: date,
       start_at: Time.now,
       end_at: Time.now,
-      place: "#{n}市民センター",
+      place: "東京芸術劇場",
       note: "今日は#{n}回目の練習です。#{n}楽章中心です。",
       start_time: date
     )
