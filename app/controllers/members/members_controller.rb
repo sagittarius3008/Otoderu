@@ -14,11 +14,9 @@ class Members::MembersController < ApplicationController
     unless @member.practices == []
       @most_recent_date = @member.practices.first.schedule
       @member.practices.each do |my_practice|
-        if my_practice.schedule - Date.today >= 0
-          if (@most_recent_date - Date.today).abs >= (my_practice.schedule - Date.today).abs
+        if my_practice.schedule - Date.today >= 0 && (@most_recent_date - Date.today).abs >= (my_practice.schedule - Date.today).abs
             @most_recent_practice = my_practice
             @most_recent_date = my_practice.schedule
-          end
         end
       end
     end

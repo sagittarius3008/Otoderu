@@ -6,7 +6,12 @@ class Members::PracticesController < ApplicationController
     @practice = Practice.find(params[:id])
     @attendances = Attendance.where(practice_id: params[:id]).includes([:member])
     results = Geocoder.search("#{@practice.place}")
+    unless results == []
       @latlng = results.first.coordinates
+    else
+      flash[:alert] = "該当する施設が見つかりませんでした。"
+      @latlng = [35.68123620000001, 139.7671248]
+    end
   end
 
 end

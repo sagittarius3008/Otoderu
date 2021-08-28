@@ -11,7 +11,13 @@ class Orchestras::PracticesController < ApplicationController
         @attendances = Attendance.where(practice_id: params[:id])
         @practice = Practice.find(params[:id])
         results = Geocoder.search("#{@practice.place}")
-        @latlng = results.first.coordinates
+
+        unless results == []
+          @latlng = results.first.coordinates
+        else
+          flash[:alert] = "該当する施設が見つかりませんでした。"
+          @latlng = [35.68123620000001, 139.7671248]
+        end
       end
       format.csv do
         practice = Practice.find(params[:id])
