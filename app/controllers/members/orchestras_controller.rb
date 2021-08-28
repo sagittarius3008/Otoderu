@@ -1,8 +1,6 @@
 class Members::OrchestrasController < ApplicationController
 
-
   def index
-    # @orchestras = (Orchestra.all - current_member.orchestras)
     @orchestras = Orchestra.includes([:members]).page(params[:page]).per(5)
   end
 

@@ -42,7 +42,8 @@ https://docs.google.com/spreadsheets/d/1yHLfj2vTUaqEzmE4-0uya6wkFhEpDJf8KrDFfRTX
 ## 素材提供
 - fotofolly
 - Musica Promenade
--
 
 ## 使用素材
 - [OSDN（IPAフォント）](https://ja.osdn.net/)
+- [favicon.cc](https://www.favicon.cc)
+- [silhouetteAC](https://www.silhouette-ac.com/)

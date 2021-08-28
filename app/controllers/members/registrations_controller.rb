@@ -6,7 +6,6 @@ class Members::RegistrationsController < Devise::RegistrationsController
   def after_sign_up_path_for(resource)
     members_orchestras_path
   end
-  
   #sign_up画面にインスタンス変数を使用する
   def new
     @instruments = Instrument.all
