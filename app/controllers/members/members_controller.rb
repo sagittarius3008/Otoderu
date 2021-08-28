@@ -1,6 +1,7 @@
 class Members::MembersController < ApplicationController
   include Nav
   before_action :un_answered
+  before_action :ensure_guest_member, only: %i[update edit]
 
   def show
     @member = Member.find(params[:id])
@@ -43,6 +44,11 @@ class Members::MembersController < ApplicationController
 
     def member_params
       params.require(:member).permit( :family_name, :family_name_kana, :given_name, :given_name_kana, :email, :instrument_id, :introduction )
+    end
+
+    def ensure_guest_member
+      @member = Member.find(params[:id])
+      redirect_to root_path, alert: "ゲストユーザーは編集できません" if @member.email == "guest@example.com"
     end
 
 end
