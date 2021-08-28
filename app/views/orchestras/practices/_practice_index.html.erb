@@ -5,10 +5,10 @@
       <th class="table-th4 p-2">時間</th>
       <th class="table-th4 p-2">場所</th>
       <th class="table-th2 p-2">譜面台</th>
-      <th class="table-th4 p-2">備考</th>
+      <th class="table-th4 p-2">練習予定</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody onLoad="rCheck()">
     <% practice_index.each do |practice| %>
       <tr class="text-center">
         <td class="align-middle p-0"><%= link_to practice.schedule, orchestras_practice_path(practice) %></td>
@@ -23,3 +23,15 @@
     <% end %>
   </tbody>
 </table>
+
+<!--リロードさせる-->
+<script>
+  $(document).ready( function(){
+    if (window.name != "test") {
+        location.reload();
+        window.name = "test";
+    } else {
+        window.name = "";
+    }
+});
+</script>

@@ -1,4 +1,3 @@
- <!--if( $('#attend').html("<%#= j(render 'my_schedule', member: @member) %>");){-->
  <!--//①お気に入りに登録した時の処理-->
 if( $('#attend').html("<%= j(render 'my_schedule', member: @member) %>")){
 
@@ -12,7 +11,7 @@ if( $('#attend').html("<%= j(render 'my_schedule', member: @member) %>")){
   flashMessage.setAttribute('class', 'flash-message')
   flashMessage.setAttribute('id', 'flash-message')
   flashMessage.setAttribute("style", `top: ${window.scrollY}px; animation-name: flash-message-fade;` );
-  flashMessage.innerHTML = "お気に入りに登録しました"
+  flashMessage.innerHTML = "登録ありがとうございます！"
 
 <!--//④flashメッセージの挿入先を取得(body)-->
   const body = document.querySelector("body");

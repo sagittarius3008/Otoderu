@@ -233,10 +233,11 @@ footer{
   background-color: rgba(200,200,200,.5);
 }
 .modal-panel {
-  width: 40vw;
+  width: 35vw;
   background-color: white;
-  padding: 30px;
+  padding: 10px;
   margin: 5vw auto;
+  transform: translateX(-50%);
 }
 // マイページ等フェードイン浮かび上がる動き
 .box{

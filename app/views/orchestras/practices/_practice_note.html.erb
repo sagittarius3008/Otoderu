@@ -1,8 +1,7 @@
-<div class="container">
+<div class="container"onLoad="rel()">
   <div class="row d-flex">
     <div class="m-5 mx-auto col-6 card">
       <h2 class="text-center m-4"><%= "#{practice.schedule}の練習詳細" %></h2>
-      
       <table>
         <tbody>
           <tr>
@@ -38,7 +37,7 @@
             <th class="table-th1 align-middle">楽器</th>
             <th class="table-th4 align-middle">名前</th>
             <th class="table-th3 align-middle">出欠</th>
-            <th class="table-th5 align-middle">備考</th>
+            <th class="table-th5 align-middle">練習予定</th>
           </tr>
         </thead>
         <tbody>
@@ -72,11 +71,12 @@
 </div>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap" async defer></script>
 <!--googlemapの初期値を練習場所に指定-->
-<script type="text/javascript">
-  let mapInstance
-
+<script>
+  let mapInstance;
   function initMap() {
+
     var test ={lat: <%= @latlng[0] %>, lng: <%= @latlng[1] %>};
+
     mapInstance = new google.maps.Map(document.getElementById('map'), {
               zoom: 15,
               center: test
