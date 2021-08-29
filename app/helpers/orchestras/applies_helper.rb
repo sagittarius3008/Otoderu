@@ -1,0 +1,2 @@
+module Orchestras::AppliesHelper
+end

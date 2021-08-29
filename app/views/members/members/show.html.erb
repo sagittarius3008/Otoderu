@@ -1,0 +1,125 @@
+<div id="particles-js"></div>
+  <div id="wrapper1">
+    <div class="container">
+      <div class="row">
+      <h2 class="mx-auto"><%= "#{@member.family_name}さんの練習予定" %></h2>
+      <%= month_calendar events: @orchestra.practices do |date, practices| %>
+        <%= date.day %>
+        <% practices.each do |practice| %>
+          <div class="small-font">
+            <%= link_to practice.orchestra.name, members_practice_path(practice), class:"practice-font" %>
+          </div>
+        <% end %>
+      <% end %>
+      <div class="divTable small-font m-2">
+        <div class="divTableBody">
+          <div class="divTableHeading">
+            <div class="divTableCell align-middle table-th3">更新</div>
+            <div class="divTableCell align-middle table-th4">出欠</div>
+            <div class="divTableCell align-middle table-th3">日付
+              <span class="tooltip1 "><i class="fas fa-question-circle"></i>
+                <span class="tooltip-text">クリックすると日付毎の出欠状況を表示します。</span>
+              </span>
+            </div>
+            <div class="divTableCell align-middle table-th3">時間
+              <span class="tooltip1 "><i class="fas fa-question-circle"></i>
+                <span class="tooltip-text">カーソルを合わせると詳細予定が表示されます。</span>
+              </span>
+            </div>
+            <div class="divTableCell align-middle table-th3">場所</div>
+            <div class="divTableCell align-middle table-th4">団体名
+              <span class="tooltip1 "><i class="fas fa-question-circle"></i>
+                <span class="tooltip-text">クリックすると団体全体の出欠状況を表示します。</span>
+              </span>
+            </div>
+            <div class="divTableCell align-middle table-th2">出席</div>
+            <div class="divTableCell align-middle table-th1">譜面台</div>
+            <div class="divTableCell align-middle table-th5">備考</div>
+          </div>
+        <%= render 'members/attendances/other_schedule', id: @orchestra.id, member: @member %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  /*global particlesJS*/
+$(document).on('turbolinks:load', function() {
+	particlesJS("particles-js", {
+		"particles":{
+			"number":{
+				"value":7,
+				"density":{
+					"enable":true,
+					"value_area":1121.6780303333778
+				}
+			},
+			"color":{
+				"value":"#fff"
+			},
+			"shape":{
+				"type":"image",//形状は画像を指定
+				"stroke":{
+					"width":0,
+				},
+				"image":{
+					"src":"/assets/img/icon/8.png",
+					"width":200,
+					"height":200
+				}
+			},
+			"opacity":{
+				"value":0.06409588744762158,
+				"random":true,
+				"anim":{
+					"enable":false,
+					"speed":1,
+					"opacity_min":0.1,
+					"sync":false
+				}
+			},
+			"size":{
+				"value":25,
+				"random":true,//サイズをランダムに
+				"anim":{
+					"enable":false,
+					"speed":4,
+					"size_min":3,
+					"sync":false
+				}
+			},
+			"line_linked":{
+				"enable":false,
+			},
+			"move":{
+				"enable":true,
+				"speed":4,//この数値を小さくするとゆっくりな動きになる
+				"direction":"bottom",//右下に向かって落ちる
+				"random":true,//動きはランダムにしない
+				"straight":false,//動きをとどめない
+				"out_mode":"out",//画面の外に出るように描写
+				"bounce":true,//跳ね返りなし
+				"attract":{
+					"enable":false,
+					"rotateX":281.9177489524316,
+					"rotateY":127.670995809726
+				}
+			}
+		},
+		"interactivity":{
+			"detect_on":"canvas",
+			"events":{
+				"onhover":{
+					"enable":false,
+				},
+				"onclick":{
+					"enable":false,
+				},
+				"resize":true
+			}
+		},
+		"retina_detect":false
+	});
+});
+</script>

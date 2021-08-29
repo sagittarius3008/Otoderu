@@ -1,0 +1,34 @@
+<div class="orchestra photo">
+  <div class="container">
+    <div class="row">
+      <div class="mx-auto card d-flex align-items-center justify-content-center col-5 m-5">
+        <h2 class="text-center m-5">団体ログイン</h2>
+        <%= form_with model: @orchestra, url: orchestra_session_path, local: true do |f| %>
+        <%= render "members/shared/error_messages", resource: resource %>
+        <div class="row mb-4">
+          <%= f.email_field :email, autocomplete: "email", placeholder: "メールアドレス",size: 40 %>
+        </div>
+        <div class="row mb-4">
+          <%= f.password_field :password, placeholder: "パスワード",size: 40 %>
+        </div>
+        <div class="text-center">
+          <div>テスト：musi-pro@example.com</div>
+          <div>パスワード：111111</div>
+        </div>
+        <div class="row mb-4">
+          <%= button_tag :class =>"wrapper icon w-50" do %>
+            <%= image_tag "img/icon/Tp.png", class: "img-icon" %>
+            <div>奏でる</div>
+          <% end %>
+        </div>
+        <div class="row d-flex justify-content-center mb-4">
+          ご登録がまだの場合は<%= link_to "こちら", new_orchestra_registration_path %>
+        </div>
+        <div class="row d-flex justify-content-center mb-4">
+          個人登録の方は<%= link_to "こちら", new_member_registration_path %>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

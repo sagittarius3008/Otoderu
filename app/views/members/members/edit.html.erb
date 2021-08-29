@@ -1,0 +1,41 @@
+<div class="kamaishi  photo">
+  <div class="container">
+    <div class="row">
+      <div class="mx-auto m-5 col-7 card">
+      <h2 class="text-center mt-4">情報更新</h2>
+      <%= form_with model: @member, url: {controller: "members", action: "update"}, method: :patch, local: true do |f| %>
+        <div class="row d-flex justify-content-center mb-3">
+            <div class="pr-4"><%= f.text_field :family_name, autofocus: true, placeholder: "姓" %></div>
+            <div><%= f.text_field :given_name, placeholder: "名" %></div>
+          </div>
+          <div class="row d-flex justify-content-center mb-3">
+            <div class="pr-4"><%= f.text_field :family_name_kana, placeholder: "セイ" %></div>
+            <div><%= f.text_field :given_name_kana, placeholder: "メイ" %></div>
+          </div>
+          <div class="row d-flex justify-content-center mb-3">
+            <%= f.email_field :email, autocomplete: "email", placeholder: "メールアドレス", size: 46 %>
+          </div>
+          <div class="row d-flex justify-content-center mb-3">
+            担当楽器<%= f.select :instrument_id, @instruments.map{ |instrument| [instrument.name, instrument.id] }, {include_blank: '担当楽器を教えてください。'} %>
+          </div>
+          <div class="row justify-content-center">
+            <%= f.text_field :introduction, autofocus: true, placeholder: "自己紹介", size: 46 %>
+          </div>
+          <div class="row justify-content-center mb-3">
+            ※入団申請した団体へ表示されます。
+          </div>
+          <div class="text-center d-flex m-2">
+            <%= button_tag :class =>"wrapper icon w-25" do %>
+              <%= image_tag "img/icon/Tp.png", class: "img-icon" %>
+              <div>編集する</div>
+            <% end %>
+            <%= link_to members_member_mypage_path, class: "wrapper icon w-25 back" do %>
+              <%= image_tag "img/icon/Tb.png", class: "img-icon" %>
+              <div>戻る</div>
+            <% end %>
+          </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

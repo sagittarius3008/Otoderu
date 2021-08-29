@@ -1,0 +1,29 @@
+ <!--//①お気に入りに登録した時の処理-->
+if( $('#attend').html("<%= j(render 'my_schedule', member: @member) %>")){
+
+<!--//②flashメッセージが既に存在する場合は、それを削除する-->
+  if(document.getElementById('flash-message')){
+    document.getElementById('flash-message').remove();
+  }
+
+<!--//③flashメッセージ(div要素)を生成する-->
+  const flashMessage = document.createElement('div');
+  flashMessage.setAttribute('class', 'flash-message')
+  flashMessage.setAttribute('id', 'flash-message')
+  flashMessage.setAttribute("style", `top: ${window.scrollY}px; animation-name: flash-message-fade;` );
+  flashMessage.innerHTML = "登録ありがとうございます！"
+
+<!--//④flashメッセージの挿入先を取得(body)-->
+  const body = document.querySelector("body");
+  body.prepend(flashMessage)
+
+<!--//⑤flashメッセージの表示位置をページスクロールに合わせる-->
+  document.addEventListener('scroll', function(){
+    flashMessage.style.top = `${window.scrollY}px`
+  })
+
+<!--//⑥flashメッセージを４秒後に消去する-->
+  window.setTimeout(function(){
+    flashMessage.remove();
+  }, 3500);
+}

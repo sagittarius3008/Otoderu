@@ -1,0 +1,41 @@
+<!--モーダルウィンドウ-->
+<div class="modal-panel-back disable">
+  <div class="modal-panel round">
+  <h2 class="text-center m-4">練習登録</h2>
+  <%= form_with model: practice, url: { controller: "practices", action: "create" }, method: :post, local:true do |f| %>
+  <div class="d-Table mx-auto">
+    <div class="d-TableBody">
+      <div class="d-TableRow">
+        <div class="d-TableCell"><%= f.label "日付" %></div>
+        <div class="d-TableCell"><%= f.date_field :schedule, class: 'form-control' %></div>
+      </div>
+      <div class="d-TableRow">
+        <div class="d-TableCell"><%= f.label "時間" %></div>
+        <div class="d-TableCell d-flex align-items-center">
+          <%= f.time_select :start_time, {:include_blank => true, :minute_step => 10}, class: 'form-control m-2' %>-
+          <%= f.time_select :end_time, {:include_blank => true, :minute_step => 10}, class: 'form-control m-2' %>
+        </div>
+      </div>
+      <div class="d-TableRow">
+        <div class="d-TableCell"><%= f.label "練習場所" %></div>
+        <div class="d-TableCell"><%= f.text_field :place, class: 'form-control', size: 30 %></div>
+      </div>
+      <div class="d-TableRow">
+        <div class="d-TableCell"><%= f.label "譜面台" %></div>
+        <div class="d-TableCell">要<%= f.radio_button :stand, false %>不要<%= f.radio_button :stand, true, class: 'form-control　col-3 m-2' %></div>
+      </div>
+      <div class="d-TableRow">
+        <div class="d-TableCell"><%= f.label "備考" %></div>
+        <div class="d-TableCell"><%= f.text_area :note, class: 'form-control', size: "30x10" %></div>
+      </div>
+    </div>
+  </div>
+  <div class="text-center">
+    <%= button_tag :class =>"wrapper icon w-25" do %>
+      <%= image_tag "img/icon/Hr.png", class: "img-icon" %>
+      <div>登録</div>
+    <% end %>
+  </div>
+  <% end %>
+  </div>
+</div>

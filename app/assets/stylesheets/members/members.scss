@@ -1,0 +1,18 @@
+// Place all the styles related to the members/members controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.back{
+  border-right: 2px solid #000 !important;
+  border-bottom: 2px solid #000 !important;
+}
+.back:hover{
+  text-decoration: none;
+  color: #000;
+}
+
+.next-practice{
+  border-line: none;
+}
+.next-practice:hover{
+  text-decoration: none;
+}

@@ -1,0 +1,137 @@
+<p id="page-top"><a href="#">Page Top</a></p>
+<div class="divTable fixed small-font m-2">
+  <div class="divTableBody">
+    <div class="divTableHeading">
+      <div class="divTableCell align-middle table-th3">更新</div>
+      <div class="divTableCell align-middle table-th4">出欠</div>
+      <div class="divTableCell align-middle table-th3">日付
+        <span class="tooltip1 "><i class="fas fa-question-circle"></i>
+          <span class="tooltip-text">クリックすると日付毎の出欠状況を表示します。</span>
+        </span>
+      </div>
+      <div class="divTableCell align-middle table-th3">時間
+        <span class="tooltip1 "><i class="fas fa-question-circle"></i>
+          <span class="tooltip-text">カーソルを合わせると詳細予定が表示されます。</span>
+        </span>
+      </div>
+      <div class="divTableCell align-middle table-th3">場所</div>
+      <div class="divTableCell align-middle table-th4">団体名
+        <span class="tooltip1 "><i class="fas fa-question-circle"></i>
+          <span class="tooltip-text">クリックすると団体全体の出欠状況を表示します。</span>
+        </span>
+      </div>
+      <div class="divTableCell align-middle table-th2">出席</div>
+      <div class="divTableCell align-middle table-th1">譜面台</div>
+      <div class="divTableCell align-middle table-th5">備考</div>
+    </div>
+    <% if @orchestra == nil %>
+      <% member.practices.sort{|a, b| a[:schedule] <=> b[:schedule]}.each do |practice| %>
+      <% attendance = practice.attendances.find_by(member_id: member.id) %>
+      <%= form_with model: attendance, url: members_attendance_path(attendance), method: :patch, remote: true do |f| %>
+      <div class="divTableRow">
+        <div class="divTableCell align-middle table-th3">
+          <%= button_tag :class =>"wrapper icon" do %><%= image_tag "img/icon/Tp-mini.png", class: "wide-icon" %><% end %>
+        </div>
+        <div class="divTableCell align-middle table-th4">
+          <%= f.select :attendance_status, Attendance.attendance_statuses.keys.to_a, {}, class: 'form-control' %>
+        </div>
+        <div class="divTableCell align-middle table-th3"><%= link_to practice.schedule, members_practice_path(practice), class: "text-darkblue" %></div>
+        <div class="divTableCell align-middle table-th3 tooltip1">
+          <span class="tooltip-text1"><%= simple_format(practice.note) %></span><%= l practice.start_at, format: :short %>-<%= l practice.end_at, format: :short %>
+        </div>
+        <div class="divTableCell align-middle table-th3"><%= practice.place %></div>
+        <div class="divTableCell align-middle table-th4"><%= link_to practice.orchestra.name, members_attendance_path(practice.orchestra), class: "text-darkblue" %></div>
+        <div class="divTableCell align-middle table-th2"><%= "#{practice.attendances.where(attendance_status:1).count + practice.attendances.where(attendance_status:3).count + practice.attendances.where(attendance_status:4).count}" %>人</div>
+        <div class="divTableCell align-middle table-th1"><%= practice.stand? ? "不要" : "要" %></div>
+        <div class="divTableCell align-middle table-th5"><%= f.text_field :note, size:30 %></div>
+      </div>
+      <% end %>
+      <% end %>
+    <!--検索した場合-->
+    <% else %>
+    <%= render 'other_schedule', id: @orchestra.ids, member: @member %>
+  <% end %>
+  </div>
+</div>
+
+<!--背景の動き-->
+<script>
+  /*global particlesJS*/
+$(document).on('turbolinks:load', function() {
+	particlesJS("particles-js", {
+		"particles":{
+			"number":{
+				"value":7,
+				"density":{
+					"enable":true,
+					"value_area":1121.6780303333778
+				}
+			},
+			"color":{
+				"value":"#fff"
+			},
+			"shape":{
+				"type":"image",//形状は画像を指定
+				"stroke":{
+					"width":0,
+				},
+				"image":{
+					"src":"/assets/img/icon/8.png",
+					"width":200,
+					"height":200
+				}
+			},
+			"opacity":{
+				"value":0.06409588744762158,
+				"random":true,
+				"anim":{
+					"enable":false,
+					"speed":1,
+					"opacity_min":0.1,
+					"sync":false
+				}
+			},
+			"size":{
+				"value":25,
+				"random":true,//サイズをランダムに
+				"anim":{
+					"enable":false,
+					"speed":4,
+					"size_min":3,
+					"sync":false
+				}
+			},
+			"line_linked":{
+				"enable":false,
+			},
+			"move":{
+				"enable":true,
+				"speed":4,//この数値を小さくするとゆっくりな動きになる
+				"direction":"bottom",//右下に向かって落ちる
+				"random":true,//動きはランダムにしない
+				"straight":false,//動きをとどめない
+				"out_mode":"out",//画面の外に出るように描写
+				"bounce":true,//跳ね返りなし
+				"attract":{
+					"enable":false,
+					"rotateX":281.9177489524316,
+					"rotateY":127.670995809726
+				}
+			}
+		},
+		"interactivity":{
+			"detect_on":"canvas",
+			"events":{
+				"onhover":{
+					"enable":false,
+				},
+				"onclick":{
+					"enable":false,
+				},
+				"resize":true
+			}
+		},
+		"retina_detect":false
+	});
+});
+</script>
