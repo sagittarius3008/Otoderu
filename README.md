@@ -1,6 +1,10 @@
 # Otoderu
 
-## サイト概要
+![Demo](https://user-images.githubusercontent.com/83518855/131471852-b7817ded-56b1-412a-ac25-778ce5ecb9de.gif)
+
+### [Otoderu(サイト URL)へ](https://otoderu.com)
+
+## 概要
 
 オーケストラ(吹奏楽)で使用する出欠管理システム
 
@@ -55,11 +59,19 @@
 
 ## 設計書
 
-- ER 図
-  ![ER図](https://user-images.githubusercontent.com/83518855/129730921-1d76384f-7787-4f0f-b098-88af53a7f5c7.png)
-- [URL](https://otoderu.com)
 - [テーブル定義書](https://docs.google.com/spreadsheets/d/1a9zYIdhUhD_8Z63i26BLWO315mVppMZ7koWDFI5wkVA/edit?usp=sharing)
 - [アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1lXLAcZVtGDKtB71RUtqQRwT3cMNWfw1PctalsSpCccA/edit?usp=sharing)
+- ER 図  
+  ![ER図](https://user-images.githubusercontent.com/83518855/129730921-1d76384f-7787-4f0f-b098-88af53a7f5c7.png)
+
+## 使用方法
+
+```
+$ git clone git@github.com:sagittarius3008/Otoderu.git
+$ bundle install
+$ rails db:migrate
+$ rails db:seed
+```
 
 ## 開発環境
 
