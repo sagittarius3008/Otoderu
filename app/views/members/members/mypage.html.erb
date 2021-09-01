@@ -3,7 +3,7 @@
     <div class="row">
       <div class="mx-auto m-3 col-5 card">
         <h2 class="text-center m-4">マイページ</h2>
-        <% unless @most_recent_date == nil %>
+        <% unless @most_recent_practice == nil %>
           <p class="text-center m-3 ">
             次の練習は<%= link_to "#{l @most_recent_date, format: :short} #{@most_recent_practice.orchestra.name} ", members_practice_path(@most_recent_practice), class: "text-dark next-practice linear" %>です。
           </p>

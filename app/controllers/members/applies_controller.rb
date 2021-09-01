@@ -17,8 +17,7 @@ class Members::AppliesController < ApplicationController
 
   private
 
-    def apply_params
-      params.permit(:orchestra_id)
-    end
-
+  def apply_params
+    params.permit(:orchestra_id)
+  end
 end

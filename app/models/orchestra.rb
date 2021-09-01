@@ -39,5 +39,4 @@ class Orchestra < ApplicationRecord
       Orchestra.all
     end
   end
-
 end

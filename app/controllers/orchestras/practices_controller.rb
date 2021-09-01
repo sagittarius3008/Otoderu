@@ -1,5 +1,4 @@
 class Orchestras::PracticesController < ApplicationController
-
   def index
     @practice = Practice.new
     @practice_index = Practice.where(orchestra_id: current_orchestra.id).order(schedule: :asc)
@@ -12,7 +11,7 @@ class Orchestras::PracticesController < ApplicationController
         @practice = Practice.find(params[:id])
         # 練習場所の緯度経度を取得
         results = Geocoder.search("#{@practice.place}")
-        
+        # 検索不能な場合東京駅を表示
         if results == []
           flash[:alert] = "該当する施設が見つかりませんでした。"
           @latlng = [35.68123620000001, 139.7671248]
@@ -45,7 +44,7 @@ class Orchestras::PracticesController < ApplicationController
       end_at: end_at.in_time_zone
     )
     if practice.save
-      members = current_orchestra.belongings.map{|belonging| belonging.member }
+      members = current_orchestra.belongings.map { |belonging| belonging.member }
       members.each do |member|
         attendance = Attendance.new(practice_id: practice.id)
         attendance.member_id = member.id
@@ -90,8 +89,7 @@ class Orchestras::PracticesController < ApplicationController
 
   private
 
-    def practice_params
-      params.require(:practice).permit(:schedule, :'start_time(4i)', :'start_time(5i)', :"end_time(4i)", :"end_time(5i)", :place, :stand, :note)
-    end
-
+  def practice_params
+    params.require(:practice).permit(:schedule, :'start_time(4i)', :'start_time(5i)', :"end_time(4i)", :"end_time(5i)", :place, :stand, :note)
+  end
 end

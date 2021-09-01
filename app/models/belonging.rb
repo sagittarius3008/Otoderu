@@ -6,5 +6,4 @@ class Belonging < ApplicationRecord
 
   validates :part_top, inclusion: [true, false]
   validates :belonging_status, presence: true
-
 end

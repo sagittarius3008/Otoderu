@@ -6,7 +6,8 @@ class Members::RegistrationsController < Devise::RegistrationsController
   def after_sign_up_path_for(resource)
     members_orchestras_path
   end
-  #sign_up画面にインスタンス変数を使用する
+
+  # sign_up画面にインスタンス変数を使用する
   def new
     @instruments = Instrument.all
     super
@@ -84,5 +85,4 @@ class Members::RegistrationsController < Devise::RegistrationsController
   def sign_up_params
     params.require(:member).permit(:family_name, :family_name_kana, :given_name, :given_name_kana, :instrument_id, :email, :password, :password_confirmation)
   end
-
 end

@@ -11,5 +11,4 @@ class Practice < ApplicationRecord
     validates :place
   end
   validates :stand, inclusion: [true, false]
-
 end

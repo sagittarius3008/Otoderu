@@ -33,7 +33,6 @@ class Members::AttendancesController < ApplicationController
     attendance.attendance_status = params[:attendance][:attendance_status]
     attendance.note = params[:attendance][:note]
     attendance.save
-      @member = Member.find_by(id: current_member.id)
+    @member = Member.find_by(id: current_member.id)
   end
-
 end

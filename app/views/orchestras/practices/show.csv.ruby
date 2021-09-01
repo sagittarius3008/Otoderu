@@ -9,7 +9,7 @@ CSV.generate(bom) do |csv|
       attendance.member.family_name,
       attendance.member.given_name,
       attendance.attendance_status,
-      attendance.note
+      attendance.note,
     ]
     csv << csv_column_values
   end
