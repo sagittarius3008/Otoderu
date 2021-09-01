@@ -13,5 +13,6 @@ module Otoderu
     config.i18n.default_locale = :ja
     config.time_zone = 'Tokyo'
     config.beginning_of_week = :sunday
+    config.paths.add 'lib', eager_load: true
   end
 end
