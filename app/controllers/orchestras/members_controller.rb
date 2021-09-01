@@ -1,5 +1,4 @@
 class Orchestras::MembersController < ApplicationController
-
   def index
     @orchestra = Orchestra.find(current_orchestra.id)
     @belongings = @orchestra.belongings.where(orchestra_id: current_orchestra.id)
@@ -19,5 +18,4 @@ class Orchestras::MembersController < ApplicationController
       redirect_to request.referer
     end
   end
-
 end
