@@ -1,7 +1,10 @@
 <div class="container"onLoad="rel()">
   <div class="row d-flex">
     <div class="m-5 mx-auto col-6 card">
-      <h2 class="text-center m-4"><%= "#{practice.schedule}の練習詳細" %></h2>
+      <div class="d-flex mx-auto m-4">
+        <h2 class="mr-3"><%= "#{practice.schedule}の練習詳細" %></h2>
+        <div class="mt-1"><%= social_share_button_tag("#{practice.schedule}の練習予定をご確認ください。") %></div>
+      </div>
       <table>
         <tbody>
           <tr>
