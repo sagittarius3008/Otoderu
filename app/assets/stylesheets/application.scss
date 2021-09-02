@@ -16,6 +16,7 @@
  */
 @import "bootstrap";
 @import "toastr";
+@import "social-share-button";
 @font-face{
   font-family: 'ipaexm';
   src: font-url('ipaexm.ttf') format('truetype');
@@ -679,4 +680,14 @@ html,body{
   align-items: center;
   height: 70px;
   padding-top: 1%;
+}
+
+$size: 1.8rem;
+
+.social-share-button {
+  .ssb-icon {
+    background-size: $size $size;
+    height: $size;
+    width: $size;
+  }
 }
