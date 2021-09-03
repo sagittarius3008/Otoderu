@@ -11,7 +11,6 @@ class Members::PostsController < ApplicationController
     post = Post.new(post_params)
     post.orchestra_id = params[:post][:orchestra_id]
     post.score = Language.get_data(post_params[:body])
-    # byebug
     if post.save
       flash[:notice] = "投稿が完了しました。"
       redirect_to request.referer

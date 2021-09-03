@@ -24,7 +24,7 @@
       <% elsif member_signed_in? %>
         <li class="d-flex vertical-align-center">
           <%= link_to "出欠入力", members_attendances_path, class:"ml-3" %>
-          <% unless @nav_attendances.nil? %>
+          <% if @count != 0 %>
             <div class="font-weight-bold tooltip1">
               <%= @nav_attendances.where(attendance_status:0).count %>
               <span class="tooltip-text2"><%= "出欠の登録をお願いします！" %></span>
