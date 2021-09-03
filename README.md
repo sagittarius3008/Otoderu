@@ -54,7 +54,7 @@
 
 - レスポンシブ対応
 - SQL 発行の改善
-- DRY な記載
+- DRY に基づいた記載
 
 頂いた[レビュー](https://docs.google.com/spreadsheets/d/1ncuHkSPa2KOA9w-8PAqZyYjZSPjEKQVvLZSY_Tatpx4/edit?usp=sharing)を参考にしながら改善に努めて参ります。
 
