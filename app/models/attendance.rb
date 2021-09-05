@@ -5,5 +5,4 @@ class Attendance < ApplicationRecord
   belongs_to :practice
 
   validates :attendance_status, presence: true
-
 end

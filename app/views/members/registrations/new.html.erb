@@ -1,17 +1,17 @@
 <div class="stage-right photo">
   <div class="container">
     <div class="row">
-      <div class="mx-auto card col-5 m-5">
+      <div class="mx-auto card col-lg-5 col-md-10 m-5">
       <h2 class="text-center m-4 light">新規団員登録</h2>
       <%= form_with model: @member, url: member_registration_path, local: true do |f| %>
         <%= render "members/shared/error_messages", resource: resource %>
         <div class="row d-flex justify-content-center mb-3">
-          <div class="pr-4"><%= f.text_field :family_name, autofocus: true, placeholder: "姓" %></div>
-          <div><%= f.text_field :given_name, placeholder: "名" %></div>
+          <div class="pl-2 pr-2"><%= f.text_field :family_name, autofocus: true, placeholder: "姓" %></div>
+          <div class="pl-2 pr-2"><%= f.text_field :given_name, placeholder: "名" %></div>
         </div>
         <div class="row d-flex justify-content-center mb-3">
-          <div class="pr-4"><%= f.text_field :family_name_kana, placeholder: "セイ" %></div>
-          <div><%= f.text_field :given_name_kana, placeholder: "メイ" %></div>
+          <div class="pl-2 pr-2"><%= f.text_field :family_name_kana, placeholder: "セイ" %></div>
+          <div class="pl-2 pr-2"><%= f.text_field :given_name_kana, placeholder: "メイ" %></div>
         </div>
         <div class="row d-flex justify-content-center mb-3">
           <%= f.email_field :email, autocomplete: "email", placeholder: "メールアドレス", size: 46 %>

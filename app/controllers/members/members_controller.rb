@@ -1,7 +1,7 @@
 class Members::MembersController < ApplicationController
   include Nav
   before_action :un_answered
-  before_action :ensure_guest_member, only: %i[update edit]
+  before_action :ensure_guest_member, only: [:update, :edit]
 
   def show
     @member = Member.find(params[:id])
@@ -15,8 +15,8 @@ class Members::MembersController < ApplicationController
       @most_recent_date = @member.practices.first.schedule
       @member.practices.each do |my_practice|
         if my_practice.schedule - Date.today >= 0 && (@most_recent_date - Date.today).abs >= (my_practice.schedule - Date.today).abs
-            @most_recent_practice = my_practice
-            @most_recent_date = my_practice.schedule
+          @most_recent_practice = my_practice
+          @most_recent_date = my_practice.schedule
         end
       end
     end
@@ -40,13 +40,12 @@ class Members::MembersController < ApplicationController
 
   private
 
-    def member_params
-      params.require(:member).permit( :family_name, :family_name_kana, :given_name, :given_name_kana, :email, :instrument_id, :introduction )
-    end
+  def member_params
+    params.require(:member).permit(:family_name, :family_name_kana, :given_name, :given_name_kana, :email, :instrument_id, :introduction)
+  end
 
-    def ensure_guest_member
-      @member = Member.find(params[:id])
-      redirect_to root_path, alert: "ゲストユーザーは編集できません" if @member.email == "guest@example.com"
-    end
-
+  def ensure_guest_member
+    @member = Member.find(params[:id])
+    redirect_to root_path, alert: "ゲストユーザーは編集できません" if @member.email == "guest@example.com"
+  end
 end

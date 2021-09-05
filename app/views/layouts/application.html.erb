@@ -10,13 +10,12 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-
     <header>
       <%= render 'layouts/header' %>
     </header>
-      <main class="font-weight-bold">
-        <%= yield %>
-      </main>
+    <main class="font-weight-bold">
+      <%= yield %>
+    </main>
     <%= render 'layouts/footer' %>
     <% if flash.any? %>
       <script type="text/javascript">

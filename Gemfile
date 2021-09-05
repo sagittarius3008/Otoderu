@@ -47,6 +47,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'rubocop-airbnb'
 end
 
 group :test do
@@ -80,4 +81,4 @@ gem 'simple_calendar', '~> 2.0'
 gem 'geocoder'
 gem 'bullet', group: 'development'
 gem "toastr-rails"
-
+gem 'social-share-button'

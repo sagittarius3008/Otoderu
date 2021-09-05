@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_13_232033) do
+ActiveRecord::Schema.define(version: 2021_09_01_095843) do
 
   create_table "applies", force: :cascade do |t|
     t.integer "member_id", null: false
@@ -72,6 +72,14 @@ ActiveRecord::Schema.define(version: 2021_08_13_232033) do
     t.string "name", null: false
     t.index ["email"], name: "index_orchestras_on_email", unique: true
     t.index ["reset_password_token"], name: "index_orchestras_on_reset_password_token", unique: true
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.integer "orchestra_id", null: false
+    t.text "body", null: false
+    t.decimal "score", precision: 5, scale: 3
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "practices", force: :cascade do |t|

@@ -1,5 +1,4 @@
 class Orchestras::InstrumentsController < ApplicationController
-
   def index
     @instruments = Instrument.all
     @instrument = Instrument.new
@@ -28,7 +27,7 @@ class Orchestras::InstrumentsController < ApplicationController
 
   private
 
-    def instrument_params
-      params.require(:instrument).permit(:name)
-    end
+  def instrument_params
+    params.require(:instrument).permit(:name)
+  end
 end

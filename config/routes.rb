@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     get 'member/mypage' => 'members#mypage'
     resources :members, only:[:edit, :show, :update]
     resources :practices, only:[:show]
+    resources :posts, only:[:create, :edit, :show, :update, :destroy]
     resources :attendances, only:[:index, :show, :update] do
       collection do
         get 'search'

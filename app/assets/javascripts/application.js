@@ -18,6 +18,7 @@
 //= require turbolinks
 //= require toastr
 //= require_tree .
+//= require social-share-button
 /*global $*/
 
 // ハンバーガーメニュー→navの表示のためclassを付与
