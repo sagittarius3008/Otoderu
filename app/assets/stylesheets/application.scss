@@ -67,7 +67,7 @@ footer{
 }
 
 .small-font{
-  font-size: calc(9px + 0.25vw)
+  font-size: calc(11px + 0.2vw)
 }
 .table-th1{width: 70px;}
 .table-th2{width: 60px;}
@@ -698,5 +698,8 @@ $size: 1.8rem;
   }
   .center{
     text-align: center;
+  }
+  .nav-font{
+    font-size: 3rem !important;
   }
 }
