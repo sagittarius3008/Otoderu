@@ -7,7 +7,7 @@ class Members::OrchestrasController < ApplicationController
   def create
     orchestra_id = current_orchestra.id
     member_id = params[:member][:member_id]
-    belonging = Belonging.new(orchestra_id: orchestra_id, member_id: member_id, part_top: false)
+    belonging = Belonging.new(orchestra_id: orchestra_id, member_id: member_id)
     if belonging.save
       # 入団以前に設定された練習の情報も持たせる
       orchestra = Orchestra.find(orchestra_id)

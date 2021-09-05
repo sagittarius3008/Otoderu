@@ -691,3 +691,12 @@ $size: 1.8rem;
     width: $size;
   }
 }
+
+@media (max-width: 1200px) {
+  .display-3 {
+    font-size: 3rem;
+  }
+  .center{
+    text-align: center;
+  }
+}
