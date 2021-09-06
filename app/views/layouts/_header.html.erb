@@ -19,10 +19,10 @@
             </div>
           <% end %>
         </li>
-        <li><%= link_to "登録楽器一覧", orchestras_instruments_path %></li>
-        <li><%= link_to "ログアウト", destroy_orchestra_session_path, method: :delete %></li>
+        <li><%= link_to "登録楽器一覧", orchestras_instruments_path, class:"nav-font" %></li>
+        <li><%= link_to "ログアウト", destroy_orchestra_session_path, method: :delete, class:"nav-font" %></li>
       <% elsif member_signed_in? %>
-        <li class="d-flex vertical-align-center">
+        <li class="d-flex vertical-align-center justify-content-center">
           <%= link_to "出欠入力", members_attendances_path, class:"ml-3 nav-font" %>
           <% if @count != 0 && @count != nil %>
             <div class="font-weight-bold tooltip1">
@@ -53,8 +53,9 @@
           ─────────────</li>
         <li><%= link_to "ログイン", new_orchestra_session_path,id: "sign_up", class:"nav-font" %></li>
         <li><%= link_to "新規登録", new_orchestra_registration_path,id: "registration", class:"nav-font" %></li>
-        <li class="font-weight-bold justify-content-center">
-          ───────────ゲストログイン───────────</li>
+        <li class="font-weight-bold justify-content-center d-flex">
+          ───────────<div class="nav-font">ゲストログイン</div>───────────
+        </li>
         <li><%= link_to '団員', members_guest_sign_in_path, method: :post, class:"nav-font" %></li>
         <li><%= link_to '団体', orchestras_guest_sign_in_path, method: :post, class:"nav-font" %></li>
       <% end %>

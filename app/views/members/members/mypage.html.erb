@@ -1,7 +1,7 @@
 <div class="kamaishi photo">
   <div class="container">
     <div class="row">
-      <div class="mx-auto m-3 col-5 card">
+      <div class="mx-auto m-3 col-lg-5 col-xs-10 card">
         <h2 class="text-center m-4">マイページ</h2>
         <% unless @most_recent_practice == nil %>
           <p class="text-center m-3 ">
@@ -25,10 +25,10 @@
             <div>入団申請</div>
           <% end %>
         </div>
-        <div class="text-center mt-3">───────────練習予定───────────</div>
+        <div class="text-center mt-3">──────────練習予定──────────</div>
         <% @member.orchestras.each do |orchestra| %>
           <div class="text-center delayScroll wrapper mb-1">
-            <%= link_to orchestra.name, members_attendance_path(orchestra), class:"btn box" %>
+            <%= link_to orchestra.name, members_attendance_path(orchestra), class:"btn box font-size-standard" %>
           </div>
         <% end %>
       </div>

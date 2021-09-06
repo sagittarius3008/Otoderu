@@ -1,7 +1,7 @@
 <div class="kamaishi photo">
   <div class="container">
     <div class="row d-flex mx-auto">
-      <div class="col-6 card m-3 mx-auto">
+      <div class="col-xs-12 col-lg-6 card m-3 mx-auto">
       <h2 class="text-center m-4">練習予定変更</h2>
       <%= form_with model: @practice, url: { controller: "practices", action: "update" }, method: :patch, local:true do |f| %>
         <table class="mx-auto">
