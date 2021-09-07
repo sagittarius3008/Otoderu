@@ -2,8 +2,10 @@
 <div class="divTable fixed small-font m-2">
   <div class="divTableBody">
     <div class="divTableHeading">
+    	<% if member == current_member %>
       <div class="divTableCell align-middle table-th3">更新</div>
       <div class="divTableCell align-middle table-th4">出欠</div>
+      <% end %>
       <div class="divTableCell align-middle table-th3">日付
         <span class="tooltip1 "><i class="fas fa-question-circle"></i>
           <span class="tooltip-text">クリックすると日付毎の出欠状況を表示します。</span>
@@ -29,17 +31,19 @@
       <% attendance = practice.attendances.find_by(member_id: member.id) %>
       <%= form_with model: attendance, url: members_attendance_path(attendance), method: :patch, remote: true do |f| %>
       <div class="divTableRow">
-        <div class="divTableCell align-middle table-th3">
-          <%= button_tag :class =>"wrapper icon" do %><%= image_tag "img/icon/Tp-mini.png", class: "wide-icon" %><% end %>
-        </div>
-        <% if attendance.attendance_status == "未入力" %>
-	        <div class="divTableCell align-middle table-th4 sub-color">
-	          	<%= f.select :attendance_status, Attendance.attendance_statuses.keys.to_a, {}, class: 'form-control' %>
+      	<% if member == current_member %>
+	        <div class="divTableCell align-middle table-th3">
+	          <%= button_tag :class =>"wrapper icon" do %><%= image_tag "img/icon/Tp-mini.png", class: "wide-icon" %><% end %>
 	        </div>
-        <% else %>
-          <div class="divTableCell align-middle table-th4">
-          	<%= f.select :attendance_status, Attendance.attendance_statuses.keys.to_a, {}, class: 'form-control' %>
-          </div>
+	        <% if attendance.attendance_status == "未入力" %>
+		        <div class="divTableCell align-middle table-th4 sub-color">
+		          	<%= f.select :attendance_status, Attendance.attendance_statuses.keys.to_a, {}, class: 'form-control' %>
+		        </div>
+	        <% else %>
+	          <div class="divTableCell align-middle table-th4">
+	          	<%= f.select :attendance_status, Attendance.attendance_statuses.keys.to_a, {}, class: 'form-control' %>
+	          </div>
+	        <% end %>
         <% end %>
         <div class="divTableCell align-middle table-th3"><%= link_to practice.schedule, members_practice_path(practice), class: "text-darkblue" %></div>
         <div class="divTableCell align-middle table-th3 tooltip1">

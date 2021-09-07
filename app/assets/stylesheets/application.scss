@@ -696,6 +696,9 @@ $size: 1.8rem;
   .display-3 {
     font-size: 3rem;
   }
+  h2{
+    font-size: 3rem !important;
+  }
   .center{
     text-align: center;
   }
@@ -714,7 +717,36 @@ $size: 1.8rem;
   .tooltip-text{
     font-size: 1.2rem;
   }
-
+  .card{
+    min-height: 50vh;
+    justify-content: center;
+  }
+  .openbtn{
+    width:90px;
+    height:90px;
+  }
+  .openbtn::after{
+    bottom: 18px;
+    right: 17px;
+    content:'MENU';
+    color:#000;
+    font-size: 25px;
+  }
+  .flex-off{
+   flex-direction: column!important;
+  }
+  // .img-icon{
+  //   width:40px;
+  //   height:40px;
+  // }
+  // // .wide-icon{
+  //   width:30px;
+  //   height:20px;
+  // }
+  .big-icon{
+    width:50px;
+    height:50px;
+  }
   .sp-off{
     display:none;
   }

@@ -1,7 +1,7 @@
 <div class="kamaishi photo">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
-      <div class="mx-auto m-5 col-10 card">
+      <div class="mx-auto m-5 col-lg-7 card">
         <div class="d-flex mx-auto">
           <h2 class="text-center mt-4 mb-4"><%= "#{current_orchestra.name}の団員一覧" %></h2>
           <div class="tooltip1 mt-2"><i class="fas fa-question-circle fa-lg"></i>
@@ -27,7 +27,7 @@
                   <td class="align-middle p-0"><%= belonging.part_top? ? "〇" : "" %></td>
                   <td class="align-middle p-0"><%= "#{belonging.member.family_name} #{belonging.member.given_name}" %></td>
                   <td class="align-middle p-0"><%= "#{belonging.member.family_name_kana} #{belonging.member.given_name_kana}" %></td>
-                  <td class="align-middle p-0"><%= belonging.member.introduction %></td>
+                  <td class="align-middle p-0 small-font"><%= belonging.member.introduction %></td>
                   <td class="align-middle p-0">
                     <%= link_to orchestras_member_path(belonging), method: :patch, class: "text-decoration-none text-dark" do %>
                       <%= image_tag "img/icon/Tb-mini.png", class: "wide-icon wrapper m-0 link-button" %>
