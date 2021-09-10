@@ -1,7 +1,7 @@
 <div class="kamaishi photo">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
-      <div class="mx-auto card m-5 col-lg-7 col-10">
+      <div class="mx-auto card m-5 col-lg-5 col-sm-10">
         <div class="d-flex mx-auto">
           <h2 class="text-center m-4">入団申請画面</h2>
           <div class="tooltip1 mt-2"><i class="fas fa-question-circle fa-lg"></i>
@@ -9,7 +9,7 @@
           </div>
         </div>
         <%= form_with url: {controller: "members/orchestras", action: "search"}, method: :get, local: true do |f| %>
-          <div class="text-center m-2">
+          <div class="text-center m-3">
             <%= f.text_field :search, placeholder: "団体名を入力してください", size: 25 %>
             <%= button_tag class: "icon" do %>
               <i class="fas fa-search fa-lg"></i>
@@ -42,9 +42,9 @@
           <% end %>
         <div class="mx-auto"><%= paginate @orchestras %></div>
         <div class="m-3 mx-auto">
-          <%= link_to members_member_mypage_path, class: "icon" do %>
-            <%= image_tag "img/icon/Piano.png", class: "img-icon ml-2" %>
-            <div>マイページへ</div>
+          <%= link_to members_member_mypage_path, class: "icon d-flex justify-content-center" do %>
+            <%= image_tag "img/icon/Piano.png", class: "img-icon" %>
+            <div class="mt-4">マイページへ</div>
           <% end %>
         </div>
       </div>

@@ -46,4 +46,6 @@ class Member < ApplicationRecord
       member.introduction = "よろしくお願いいたします。"
     end
   end
+  
+  
 end

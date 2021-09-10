@@ -4,14 +4,10 @@
       <% if orchestra_signed_in? %>
         <li class="d-flex">
           <%= link_to "練習登録", orchestras_practices_path, class: "mx-auto nav-font" %>
-          <!--<a class="js-open-modal text-right text-dark p-0" href="#">-->
-          <!--  <i class="fas fa-plus-circle"></i>-->
-          <!--</a>-->
-          <!--<%#= render 'new', practice: @new_practice %>-->
         </li>
         <li><%= link_to "団員一覧", orchestras_members_path, class: "mx-auto nav-font" %></li>
-        <li class="d-flex vertical-align-center">
-          <%= link_to "入団承認", orchestras_applies_path, class: "mx-auto nav-font" %>
+        <li class="d-flex vertical-align-center justify-content-center">
+          <%= link_to "入団承認", orchestras_applies_path, class: "nav-font" %>
           <% unless @nav_applies.empty? %>
             <div class="font-weight-bold tooltip1">
               <%= @nav_applies.count %>

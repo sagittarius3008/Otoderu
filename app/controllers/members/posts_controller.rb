@@ -4,9 +4,6 @@ class Members::PostsController < ApplicationController
     @posts = Post.where(orchestra_id: params[:id])
   end
 
-  def edit
-  end
-
   def create
     post = Post.new(post_params)
     post.orchestra_id = params[:post][:orchestra_id]
@@ -21,6 +18,7 @@ class Members::PostsController < ApplicationController
   end
 
   def destroy
+    
   end
 
   private

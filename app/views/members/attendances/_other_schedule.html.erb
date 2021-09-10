@@ -15,8 +15,12 @@
           <span class="tooltip-text1"><%= simple_format(practice.note) %></span><%= l practice.start_at, format: :short %>-<%= l practice.end_at, format: :short %>
         </div>
         <div class="divTableCell align-middle table-th3"><%= practice.place %></div>
-        <div class="divTableCell align-middle table-th4"><%= link_to practice.orchestra.name, members_attendance_path(practice.orchestra), class: "text-darkblue" %></div>
-        <div class="divTableCell align-middle table-th2"><%= "#{practice.attendances.where(attendance_status:1).count + practice.attendances.where(attendance_status:3).count + practice.attendances.where(attendance_status:4).count}" %>人</div>
+        <div class="divTableCell align-middle table-th4">
+          <%= link_to practice.orchestra.name, members_attendance_path(practice.orchestra), class: "text-darkblue" %>
+        </div>
+        <div class="divTableCell align-middle table-th2">
+          <%= "#{practice.attendances.where(attendance_status:1).count + practice.attendances.where(attendance_status:3).count + practice.attendances.where(attendance_status:4).count}" %>人
+        </div>
         <div class="divTableCell align-middle table-th1"><%= practice.stand? ? "不要" : "要" %></div>
         <div class="divTableCell align-middle table-th5"><%= f.text_field :note, size:30 %></div>
         <% end %>
