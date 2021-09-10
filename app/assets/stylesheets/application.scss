@@ -49,6 +49,9 @@ body{
 .main-color{
   background-color: #efe4c9;
 }
+.sub-color{
+  background-color: #efeade;
+}
 
 footer{
   background-color: #1A0807;
@@ -234,7 +237,7 @@ footer{
   background-color: rgba(200,200,200,.5);
 }
 .modal-panel {
-  width: 35vw;
+  width: 40vw;
   background-color: white;
   padding: 10px;
   margin: 5vw auto;
@@ -496,19 +499,16 @@ opacity: 0;
 
 .d-Table{
 	display: table;
-// 	width: 50vw;
 	table-layout: fixed;
 }
 .d-TableRow {
 	display: table-row;
 	text-align: center;
-// 	width: 50vw;
 }
 .d-TableHeading {
 	background-color: #EEE;
 	display: table-header-group;
 	text-align: center;
-// 	width: 50vw;
 }
 .d-TableCell, .divTableHead {
 	border: 1px solid #999999;
@@ -696,10 +696,50 @@ $size: 1.8rem;
   .display-3 {
     font-size: 3rem;
   }
+  h2{
+    font-size: 3rem !important;
+  }
   .center{
     text-align: center;
   }
   .nav-font{
     font-size: 3rem !important;
+  }
+  .font-size-standard{
+    font-size: 26px !important;
+  }
+  .small-font{
+    font-size: 19px !important;
+  }
+  .lead{
+    font-size: 1.5rem;
+  }
+  .tooltip-text{
+    font-size: 1.2rem;
+  }
+  .card{
+    min-height: 50vh;
+    justify-content: center;
+  }
+  .openbtn{
+    width:90px;
+    height:90px;
+  }
+  .openbtn::after{
+    bottom: 18px;
+    right: 17px;
+    content:'MENU';
+    color:#000;
+    font-size: 25px;
+  }
+  .flex-off{
+   flex-direction: column!important;
+  }
+  .big-icon{
+    width:50px;
+    height:50px;
+  }
+  .sp-off{
+    display:none;
   }
 }

@@ -17,7 +17,7 @@
                 <th class="table-th2 align-middle p-2">Top</th>
                 <% @orchestra.practices.sort{|a, b| a[:schedule] <=> b[:schedule]}.each do |practice| %>
                   <% practice_date = l practice.schedule, format: :short %><!--日付の形式を成形-->
-                  <th class="table-th2 align-middle p-2">
+                  <th class="table-th2 align-middle p-2 small-font">
                     <%= link_to practice_date, members_practice_path(practice), class: "text-dark" %><br>
                     出席<%= "#{practice.attendances.where(attendance_status:1).count + practice.attendances.where(attendance_status:3).count + practice.attendances.where(attendance_status:4).count}" %>人
                   </th>
@@ -28,20 +28,20 @@
               <!--各メンバーにつき一行ずつ作成する-->
               <% @members.sort{|a, b| a[:instrument_id] <=> b[:instrument_id]}.each do |member| %>
               <tr>
-                <td class="align-middle text-center p-1">
+                <td class="align-middle text-center small-font p-1">
                   <%= form_with model: @orchestra, url: members_member_path(member), method: :get, local: true do |f| %>
                     <%= f.hidden_field :id, value: params[:id] %>
                     <%= f.submit "#{member.family_name}#{member.given_name}", class: "btn-none" %>
                   <% end %>
                 </td>
-                <td class="align-middle text-center p-1"><%= member.instrument.name %></td>
-                <td class="align-middle text-center p-1">
+                <td class="align-middle text-center small-font p-1"><%= member.instrument.name %></td>
+                <td class="align-middle text-center small-font p-1">
                   <% if member.belongings.find_by(orchestra_id: @orchestra).part_top %>〇
                   <% else member.belongings.find_by(orchestra_id: @orchestra).part_top %>
                   <% end %>
                 </td>
                 <% @orchestra.practices.each do |practice| %>
-                  <td class="align-middle text-center p-1">
+                  <td class="align-middle text-center small-font p-1">
                     <% if practice.attendances.find_by(member_id: member.id).attendance_status == "未入力" %>-
                     <% elsif practice.attendances.find_by(member_id: member.id).attendance_status == "出席" %>〇
                     <% elsif practice.attendances.find_by(member_id: member.id).attendance_status == "欠席" %>×

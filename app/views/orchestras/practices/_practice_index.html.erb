@@ -5,7 +5,7 @@
       <th class="table-th4 p-2">時間</th>
       <th class="table-th4 p-2">場所</th>
       <th class="table-th2 p-2">譜面台</th>
-      <th class="table-th4 p-2">練習予定</th>
+      <th class="table-th4 p-2 sp-off">練習予定</th>
     </tr>
   </thead>
   <tbody onLoad="rCheck()">
@@ -15,7 +15,7 @@
         <td class="align-middle"><%= l practice.start_at, format: :short %>-<%= l practice.end_at, format: :short %></td>
         <td class="align-middle"><%= practice.place %></td>
         <td class="align-middle"><%= practice.stand? ? "不要" : "要" %></td>
-        <td class="align-middle tooltip1">
+        <td class="align-middle tooltip1 sp-off">
           <%= practice.note.truncate(20, omission: '・・・') %>
           <span class="tooltip-text"><%= simple_format(practice.note, class:"tooltip-space") %></span>
         </td>

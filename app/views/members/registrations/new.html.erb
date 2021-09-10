@@ -1,7 +1,7 @@
 <div class="stage-right photo">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
-      <div class="mx-auto card col-lg-5 col-md-10 m-5">
+      <div class="mx-auto card col-12 col-lg-4 col-md-10 m-5">
       <h2 class="text-center m-4 light">新規団員登録</h2>
       <%= form_with model: @member, url: member_registration_path, local: true do |f| %>
         <%= render "members/shared/error_messages", resource: resource %>

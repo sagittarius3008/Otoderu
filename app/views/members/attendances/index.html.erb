@@ -8,19 +8,20 @@
             <span class="tooltip-text">出欠入力を行いましょう！団体毎の絞り込みも行えます。</span>
           </div>
         </div>
+        <!--カレンダー-->
           <%= month_calendar events: @practices do |date, practices| %>
             <%= date.day %>
             <% practices.each do |practice| %>
               <div class="small-font float1 tooltip1">
-                <%= link_to practice.orchestra.name, members_practice_path(practice), class:"practice-font" %>
-                <!--<span class="tooltip-text1"><%#= simple_format(practice.note) %></span>-->
+                <%= link_to practice.orchestra.name, members_practice_path(practice), class: "practice-font sp-off" %>*
+                <span class="tooltip-text1"><%= simple_format(practice.note) %></span>
               </div>
             <% end %>
           <% end %>
         <!--団体絞り込みフォーム-->
         <%= form_with url: {controller:"members/attendances", action: "search"}, method: :get, local: true do |f| %>
           <div class="text-center d-flex m-2">
-            <div><%= f.select :search, @names, {}, class: 'form-control' %></div>
+            <div><%= f.select :search, @names, {}, class: 'form-control font-size-standard' %></div>
             <div class="m-1"><%= f.submit "団体別に表示", name: nil %></div>
             <div class="mt-2"><%= link_to "解除",members_attendances_path, class: "text-darkblue" %></div>
           </div>

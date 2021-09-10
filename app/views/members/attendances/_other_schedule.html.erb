@@ -1,22 +1,28 @@
 <% member.practices.where(orchestra_id: id).sort{|a, b| a[:schedule] <=> b[:schedule]}.each do |practice| %>
   <% attendance = practice.attendances.find_by(member_id: member.id) %>
-  <%= form_with model: attendance, url: members_attendance_path(attendance), method: :patch, remote: true do |f| %>
-    <div class="divTableRow">
-      <div class="divTableCell align-middle table-th3">
-        <%= button_tag :class =>"wrapper icon" do %><%= image_tag "img/icon/Tp-mini.png", class: "wide-icon" %><% end %>
+      <div class="divTableRow">
+      <%= form_with model: attendance, url: members_attendance_path(attendance), method: :patch, remote: true do |f| %>
+      <% if member == current_member %>
+        <div class="divTableCell align-middle table-th3">
+          <%= button_tag :class =>"wrapper icon" do %><%= image_tag "img/icon/Tp-mini.png", class: "wide-icon" %><% end %>
+        </div>
+        <div class="divTableCell align-middle table-th4">
+          <%= f.select :attendance_status, Attendance.attendance_statuses.keys.to_a, {}, class: 'form-control' %>
+        </div>
+      <% end %>
+        <div class="divTableCell align-middle table-th3"><%= link_to practice.schedule, members_practice_path(practice), class: "text-darkblue" %></div>
+        <div class="divTableCell align-middle table-th3 tooltip1">
+          <span class="tooltip-text1"><%= simple_format(practice.note) %></span><%= l practice.start_at, format: :short %>-<%= l practice.end_at, format: :short %>
+        </div>
+        <div class="divTableCell align-middle table-th3"><%= practice.place %></div>
+        <div class="divTableCell align-middle table-th4">
+          <%= link_to practice.orchestra.name, members_attendance_path(practice.orchestra), class: "text-darkblue" %>
+        </div>
+        <div class="divTableCell align-middle table-th2">
+          <%= "#{practice.attendances.where(attendance_status:1).count + practice.attendances.where(attendance_status:3).count + practice.attendances.where(attendance_status:4).count}" %>人
+        </div>
+        <div class="divTableCell align-middle table-th1"><%= practice.stand? ? "不要" : "要" %></div>
+        <div class="divTableCell align-middle table-th5"><%= f.text_field :note, size:30 %></div>
+        <% end %>
       </div>
-      <div class="divTableCell align-middle table-th4">
-        <%= f.select :attendance_status, Attendance.attendance_statuses.keys.to_a, {}, class: 'form-control' %>
-      </div>
-      <div class="divTableCell align-middle table-th3"><%= link_to practice.schedule, members_practice_path(practice), class: "text-darkblue" %></div>
-      <div class="divTableCell align-middle table-th3 tooltip1">
-        <span class="tooltip-text1"><%= simple_format(practice.note) %></span><%= l practice.start_at, format: :short %>-<%= l practice.end_at, format: :short %>
-      </div>
-      <div class="divTableCell align-middle table-th3"><%= practice.place %></div>
-      <div class="divTableCell align-middle table-th4"><%= link_to practice.orchestra.name, members_attendance_path(practice.orchestra), class: "text-darkblue" %></div>
-      <div class="divTableCell align-middle table-th2"><%= "#{practice.attendances.where(attendance_status:1).count + practice.attendances.where(attendance_status:3).count + practice.attendances.where(attendance_status:4).count}" %>人</div>
-      <div class="divTableCell align-middle table-th1"><%= practice.stand? ? "不要" : "要" %></div>
-      <div class="divTableCell align-middle table-th5"><%= f.text_field :note, size:30 %></div>
-    </div>
-  <% end %>
 <% end %>
