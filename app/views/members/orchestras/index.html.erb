@@ -21,7 +21,9 @@
               <div class="m-3 col-11 d-flex">
                 <div class="col-6 small-font"><%= orchestra.name %></div>
                 <div class="col-3 small-font">
-                  <% unless orchestra.member_belonging?(current_member) %>
+                  <% if orchestra.member_belonging?(current_member) %>
+                    入団済み
+                  <% else %>
                     <% if orchestra.applies.find_by(member_id: current_member) %>
                       <% path = orchestra.applies.find_by(member_id: current_member) %>
                       <%= form_with model: orchestra, url: members_apply_path(path), method: :delete, local: true do |f| %>
@@ -33,7 +35,6 @@
                         <%= f.submit '入団申請' %>
                       <% end %>
                     <% end %>
-                  <% else %>入団済み
                   <% end %>
                 </div>
                 <div class="col-3"><%= link_to "口コミ",members_post_path(orchestra), class: "btn" %></div>

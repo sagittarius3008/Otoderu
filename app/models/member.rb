@@ -46,6 +46,12 @@ class Member < ApplicationRecord
       member.introduction = "よろしくお願いいたします。"
     end
   end
-  
-  
+
+  # def new_practice?
+  #   my_practice.schedule - Date.today >= 0 && (@most_recent_date - Date.today).abs >= (my_practice.schedule - Date.today).abs
+  # end
+
+  # def has_practice?(member)
+  #   member.practices == []
+  # end
 end
