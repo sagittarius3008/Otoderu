@@ -30,7 +30,7 @@
       <% member.practices.sort{|a, b| a[:schedule] <=> b[:schedule]}.each do |practice| %>
       <% attendance = practice.attendances.find_by(member_id: member.id) %>
       <%= form_with model: attendance, url: members_attendance_path(attendance), method: :patch, remote: true do |f| %>
-      <div class="divTableRow">
+      <div id=<%= "#{attendance.id}" %> class="divTableRow">
       	<% if member == current_member %>
 	        <div class="divTableCell align-middle table-th3">
 	          <%= button_tag :class =>"wrapper icon" do %><%= image_tag "img/icon/Tp-mini.png", class: "wide-icon" %><% end %>

@@ -1,6 +1,6 @@
- <!--//①お気に入りに登録した時の処理-->
+<!--更新処理-->
 if( $('#attend').html("<%= j(render 'my_schedule', member: @member) %>")){
-
+<!--if( $('#<%#= "#{attendance.id}" %>').html("<%#= j(render 'my_schedule', member: @member) %>")){-->
 <!--//②flashメッセージが既に存在する場合は、それを削除する-->
   if(document.getElementById('flash-message')){
     document.getElementById('flash-message').remove();
