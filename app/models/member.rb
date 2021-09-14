@@ -9,6 +9,7 @@ class Member < ApplicationRecord
   has_many :applies
   has_many :orchestras, through: :belongings
   has_many :practices, through: :attendances
+  has_many :posts
   belongs_to :instrument
 
   with_options presence: true do

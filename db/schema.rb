@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 2021_09_01_095843) do
 
   create_table "posts", force: :cascade do |t|
     t.integer "orchestra_id", null: false
+    t.integer "member_id", null: false
     t.text "body", null: false
     t.decimal "score", precision: 5, scale: 3
     t.datetime "created_at", null: false
