@@ -40,12 +40,9 @@
               <tr class="text-center">
                 <th class="table-th4 align-middle">投稿</th>
                 <th class="table-th2 align-middle">
-                  <% if @posts.blank? %>
-                    評価値
-                  <% else %>
-                    <%= "評価値=#{@posts.average(:score).floor(2).to_f}" %>
-                  <% end %>
+                  <%= @posts.blank? ? "評価値" : "評価値=#{@posts.average(:score).floor(2).to_f}" %>
                 </th>
+                <th class="table-th4 align-middle">削除</th>
               </tr>
             </thead>
             <tbody>
@@ -53,6 +50,14 @@
               <tr>
                 <td class="align-middle text-center p-1"><%= post.body %></td>
                 <td class="align-middle text-center p-1"><%= post.score %></td>
+                <td class="align-middle text-center p-1">
+                  <% if post.member_id == current_member.id %>
+                  <%= form_with model: post, url: { controller: "members/posts", action: "destroy" }, method: :delete, local: true do |f| %>
+                    <%= f.hidden_field :id, value: post.id %>
+                    <%= f.submit '削除' %>
+                  <% end %>
+                  <% end %>
+                </td>
               </tr>
               <% end %>
             </tbody>
