@@ -8,7 +8,7 @@
             次の練習は<%= link_to "#{l @most_recent_date, format: :short} #{@most_recent_practice.orchestra.name} ", members_practice_path(@most_recent_practice), class: "text-dark next-practice linear" %>です。
           </p>
           <p class="text-center m-3">
-            出欠未入力が<%= @member.attendances.where(attendance_status:0).count %>件あります。
+            出欠未入力が<%= @member.attendances.absent_count %>件あります。
           </p>
         <% end %>
         <div class="d-flex justify-content-center text-center m-3">
