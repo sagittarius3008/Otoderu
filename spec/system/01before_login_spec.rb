@@ -98,8 +98,9 @@ describe 'ユーザログイン前のテスト' do
         fill_in 'member[family_name_kana]', with: Faker::Lorem.characters(number: 5)
         fill_in 'member[given_name_kana]', with: Faker::Lorem.characters(number: 5)
         fill_in 'member[email]', with: Faker::Internet.email
-        fill_in 'member[password]', with: 'password'
-        fill_in 'member[password_confirmation]', with: 'password'
+        password = Faker::Internet.password(min_length: 8)
+        fill_in 'member[password]', with: password
+        fill_in 'member[password_confirmation]', with: password
         # https://qiita.com/jnchito/items/607f956263c38a5fec24#%E3%82%BB%E3%83%AC%E3%82%AF%E3%83%88%E3%83%9C%E3%83%83%E3%82%AF%E3%82%B9%E3%81%AE%E5%A0%B4%E5%90%88
         select 'Va', from: 'member[instrument_id]'
       end
@@ -112,5 +113,18 @@ describe 'ユーザログイン前のテスト' do
         expect(current_path).to eq '/members/orchestras'
       end
     end
+  
+  describe 'マイページのテスト' do
+    before do
+      visit members_members_mypage_path
+    end
+    
+    context 'ヘッダーの表示内容の確認' do
+      it 'URLが正しい' do
+        expect(current_path).to eq '/members/member/mypage'
+      end
+    end
+  end
+  
   end
 end
