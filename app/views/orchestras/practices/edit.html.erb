@@ -1,20 +1,20 @@
 <div class="kamaishi photo">
-  <div class="container">
-    <div class="row d-flex mx-auto">
-      <div class="col-xs-12 col-lg-6 card m-3 mx-auto">
+  <div class="container-fluid">
+    <div class="row mx-auto">
+      <div class="col-lg-4 col-sm-10  card m-3 mx-auto">
       <h2 class="text-center m-4">練習予定変更</h2>
       <%= form_with model: @practice, url: { controller: "practices", action: "update" }, method: :patch, local:true do |f| %>
         <table class="mx-auto">
           <tbody>
             <tr>
-              <td><%= f.label "日付",class: 'm-2 ' %></td>
-              <td><%= f.date_field :schedule, class: 'form-control m-2' %></td>
+              <td><%= f.label "日付",class:'m-2' %></td>
+              <td><%= f.date_field :schedule, class:'form-control m-2' %></td>
             </tr>
             <tr>
               <td><%= f.label "時間",class: 'm-2' %></td>
               <td class="d-flex align-items-center">
-                <%= f.time_select :start_time, {prompt:'--'}, class: 'form-control m-2' %>-
-                <%= f.time_select :end_time, {prompt:'--'}, class: 'form-control m-2' %>
+                <%= f.time_select :start_time, {prompt:'--'}, class:'form-control m-2' %>-
+                <%= f.time_select :end_time, {prompt:'--'}, class:'form-control m-2' %>
               </td>
             </tr>
             <tr>

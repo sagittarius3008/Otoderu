@@ -1,59 +1,63 @@
-  <div class="openbtn"><span></span><span></span><span></span></div>
-  <nav id="g-nav">
-    <ul class="col-xs-12 col-lg-6">
-      <% if orchestra_signed_in? %>
-        <li class="d-flex">
-          <%= link_to "練習登録", orchestras_practices_path, class: "mx-auto nav-font" %>
-        </li>
-        <li><%= link_to "団員一覧", orchestras_members_path, class: "mx-auto nav-font" %></li>
-        <li class="d-flex vertical-align-center justify-content-center">
-          <%= link_to "入団承認", orchestras_applies_path, class: "nav-font" %>
-          <% unless @nav_applies.empty? %>
-            <div class="font-weight-bold tooltip1">
-              <%= @nav_applies.count %>
-              <span class="tooltip-text2"><%= "新規入団申請が届いています。" %></span>
-            </div>
-          <% end %>
-        </li>
-        <li><%= link_to "登録楽器一覧", orchestras_instruments_path, class:"nav-font" %></li>
-        <li><%= link_to "ログアウト", destroy_orchestra_session_path, method: :delete, class:"nav-font" %></li>
-      <% elsif member_signed_in? %>
-        <li class="d-flex vertical-align-center justify-content-center">
-          <%= link_to "出欠入力", members_attendances_path, class:"ml-3 nav-font" %>
-          <% if @count != 0 && @count != nil %>
-            <div class="font-weight-bold tooltip1">
-              <%= @nav_attendances.where(attendance_status:0).count %>
-              <span class="tooltip-text2"><%= "出欠の登録をお願いします！" %></span>
-            </div>
-          <% end %>
-        </li>
-        <li><%= link_to "マイページ", members_member_mypage_path, class:"nav-font" %></li>
-        <li><%= link_to "入団申請", members_orchestras_path, class:"nav-font" %></li>
-        <li><%= link_to "ログアウト", destroy_member_session_path, method: :delete, class:"nav-font" %></li>
-      <% else %>
-        <li><%= link_to "Top", root_path, class:"nav-font" %></li>
-        <li class="font-weight-bold d-flex justify-content-center">
-          ─────────────
-          <div class="nav-font">団員</div>
-          <div class="tooltip1"><i class="fas fa-question-circle"></i>
-            <span class="tooltip-text">予定の確認、出欠入力が行えます。</span>
-          </div>─────────────
-        </li>
-        <li><%= link_to "ログイン", new_member_session_path, class:"nav-font" %></li>
-        <li><%= link_to "新規登録", new_member_registration_path, class:"nav-font" %></li>
-        <li class="font-weight-bold d-flex justify-content-center">
-          ─────────────<div class="nav-font">団体</div>
-          <div class="tooltip1"><i class="fas fa-question-circle"></i>
-            <span class="tooltip-text2">練習予定の設定が行えます。</span>
+<div class="openbtn"><span></span><span></span><span></span></div>
+<nav id="g-nav">
+  <ul class="col-xs-12 col-lg-6">
+    <% if orchestra_signed_in? %>
+      <li class="d-flex">
+        <%= link_to "練習登録", orchestras_practices_path, class: "mx-auto nav-font" %>
+      </li>
+      <li><%= link_to "団員一覧", orchestras_members_path, class: "mx-auto nav-font" %></li>
+      <li class="d-flex vertical-align-center justify-content-center">
+        <%= link_to "入団承認", orchestras_applies_path, class: "nav-font" %>
+        <!--入団申請がある場合の処理-->
+        <% unless @nav_applies.empty? %>
+          <div class="font-weight-bold tooltip1">
+            <%= @nav_applies.count %>
+            <span class="tooltip-text2"><%= "新規入団申請が届いています。" %></span>
           </div>
-          ─────────────</li>
-        <li><%= link_to "ログイン", new_orchestra_session_path,id: "sign_up", class:"nav-font" %></li>
-        <li><%= link_to "新規登録", new_orchestra_registration_path,id: "registration", class:"nav-font" %></li>
-        <li class="font-weight-bold justify-content-center d-flex">
-          ───────────<div class="nav-font">ゲストログイン</div>───────────
-        </li>
-        <li><%= link_to '団員', members_guest_sign_in_path, method: :post, class:"nav-font" %></li>
-        <li><%= link_to '団体', orchestras_guest_sign_in_path, method: :post, class:"nav-font" %></li>
-      <% end %>
-    </ul>
-  </nav>
+        <% end %>
+        <!---->
+      </li>
+      <li><%= link_to "登録楽器一覧", orchestras_instruments_path, class:"nav-font" %></li>
+      <li><%= link_to "ログアウト", destroy_orchestra_session_path, method: :delete, class:"nav-font" %></li>
+    <% elsif member_signed_in? %>
+      <li class="d-flex vertical-align-center justify-content-center">
+        <%= link_to "出欠入力", members_attendances_path, class:"nav-font ml-3" %>
+        <!--出欠未登録がある場合の処理-->
+        <% if @count != 0 && @count != nil %>
+          <div class="font-weight-bold tooltip1">
+            <%= @nav_attendances.where(attendance_status:0).count %>
+            <span class="tooltip-text2"><%= "出欠の登録をお願いします！" %></span>
+          </div>
+        <% end %>
+        <!---->
+      </li>
+      <li><%= link_to "マイページ", members_member_mypage_path, class:"nav-font" %></li>
+      <li><%= link_to "入団申請", members_orchestras_path, class:"nav-font" %></li>
+      <li><%= link_to "ログアウト", destroy_member_session_path, method: :delete, class:"nav-font" %></li>
+    <% else %>
+      <li><%= link_to "Top", root_path, class:"nav-font" %></li>
+      <li class="d-flex justify-content-center font-weight-bold">
+        ─────────────
+        <div class="nav-font">団員</div>
+        <div class="tooltip1"><i class="fas fa-question-circle"></i>
+          <span class="tooltip-text">予定の確認、出欠入力が行えます。</span>
+        </div>─────────────
+      </li>
+      <li><%= link_to "ログイン", new_member_session_path, class:"nav-font" %></li>
+      <li><%= link_to "新規登録", new_member_registration_path, class:"nav-font" %></li>
+      <li class="d-flex justify-content-center font-weight-bold">
+        ─────────────<div class="nav-font">団体</div>
+        <div class="tooltip1"><i class="fas fa-question-circle"></i>
+          <span class="tooltip-text2">練習予定の設定が行えます。</span>
+        </div>
+        ─────────────</li>
+      <li><%= link_to "ログイン", new_orchestra_session_path,id: "sign_up", class:"nav-font" %></li>
+      <li><%= link_to "新規登録", new_orchestra_registration_path,id: "registration", class:"nav-font" %></li>
+      <li class="justify-content-center d-flex font-weight-bold">
+        ───────────<div class="nav-font">ゲストログイン</div>───────────
+      </li>
+      <li><%= link_to '団員', members_guest_sign_in_path, method: :post, class:"nav-font" %></li>
+      <li><%= link_to '団体', orchestras_guest_sign_in_path, method: :post, class:"nav-font" %></li>
+    <% end %>
+  </ul>
+</nav>
