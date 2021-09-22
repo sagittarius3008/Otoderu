@@ -8,7 +8,7 @@
       <th class="table-th4 p-2 sp-off">練習予定</th>
     </tr>
   </thead>
-  <tbody onLoad="rCheck()">
+  <tbody>
     <% practice_index.each do |practice| %>
       <tr class="text-center">
         <td class="align-middle p-0"><%= link_to practice.schedule, orchestras_practice_path(practice) %></td>
@@ -26,12 +26,12 @@
 
 <!--リロードさせる-->
 <script>
-  $(document).ready( function(){
-    if (window.name != "test") {
-        location.reload();
-        window.name = "test";
-    } else {
-        window.name = "";
-    }
+$(document).ready( function(){
+  if (window.name != "reload") {
+      location.reload();
+      window.name = "reload";
+  } else {
+      window.name = "";
+  }
 });
 </script>
