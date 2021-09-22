@@ -5,4 +5,9 @@ class Attendance < ApplicationRecord
   belongs_to :practice
 
   validates :attendance_status, presence: true
+  
+  # 出欠未入力件数を表示するため
+  def self.absent_count
+    self.where(attendance_status:0).count
+  end
 end

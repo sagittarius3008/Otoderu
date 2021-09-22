@@ -1,22 +1,24 @@
 <div id="particles-js"></div>
-  <div id="wrapper1">
-    <div class="container">
-      <div class="row">
-      <h2 class="mx-auto"><%= "#{@member.family_name}さんの練習予定" %></h2>
-      <%= month_calendar events: @orchestra.practices do |date, practices| %>
-        <%= date.day %>
-        <% practices.each do |practice| %>
-          <div class="small-font">
-            <%= link_to practice.orchestra.name, members_practice_path(practice), class:"practice-font" %>
-          </div>
-        <% end %>
+<div id="wrapper1">
+  <div class="container">
+    <div class="row">
+    <h2 class="mx-auto"><%= "#{@member.family_name}さんの練習予定" %></h2>
+    <!--カレンダーの表示-->
+    <%= month_calendar events: @orchestra.practices do |date, practices| %>
+      <%= date.day %>
+      <% practices.each do |practice| %>
+        <div class="small-font">
+          <%= link_to practice.orchestra.name, members_practice_path(practice), class:"practice-font" %>
+        </div>
       <% end %>
+    <% end %>
+    <!---->
       <div class="divTable small-font m-2 mx-auto">
         <div class="divTableBody">
           <div class="divTableHeading">
           	<% if @member == current_member %>
-            <div class="divTableCell align-middle table-th3">更新</div>
-            <div class="divTableCell align-middle table-th4">出欠</div>
+	            <div class="divTableCell align-middle table-th3">更新</div>
+	            <div class="divTableCell align-middle table-th4">出欠</div>
             <% end %>
             <div class="divTableCell align-middle table-th3">日付
               <span class="tooltip1 "><i class="fas fa-question-circle"></i>
@@ -46,7 +48,8 @@
 </div>
 
 <script>
-  /*global particlesJS*/
+// 背景の動き
+/*global particlesJS*/
 $(document).on('turbolinks:load', function() {
 	particlesJS("particles-js", {
 		"particles":{

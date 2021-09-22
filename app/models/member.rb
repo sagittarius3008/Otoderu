@@ -9,6 +9,7 @@ class Member < ApplicationRecord
   has_many :applies
   has_many :orchestras, through: :belongings
   has_many :practices, through: :attendances
+  has_many :posts
   belongs_to :instrument
 
   with_options presence: true do
@@ -46,6 +47,12 @@ class Member < ApplicationRecord
       member.introduction = "よろしくお願いいたします。"
     end
   end
-  
-  
+
+  # def new_practice?
+  #   my_practice.schedule - Date.today >= 0 && (@most_recent_date - Date.today).abs >= (my_practice.schedule - Date.today).abs
+  # end
+
+  # def has_practice?(member)
+  #   member.practices == []
+  # end
 end

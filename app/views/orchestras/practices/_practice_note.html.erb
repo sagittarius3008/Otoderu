@@ -1,6 +1,6 @@
-<div class="container"onLoad="rel()">
+<div class="container">
   <div class="row d-flex">
-    <div class="m-5 mx-auto col-sx-12 col-lg-6 card">
+    <div class="mx-auto card col-sx-12 col-lg-6m-5">
       <div class="d-flex mx-auto m-4">
         <h2 class="mr-3"><%= "#{practice.schedule}の練習詳細" %></h2>
         <div class="mt-1"><%= social_share_button_tag("#{practice.schedule}の練習予定をご確認ください。") %></div>
@@ -63,7 +63,7 @@
       <% end %>
       <%= link_to "参加者リストのダウンロード", orchestras_practice_path(format: :csv), class: "btn btn-primary m-3 w-100 mx-auto font-size-standard" %>
     </div>
-    <div class="m-5 mx-auto card col-xs-12 col-lg-6">
+    <div class="mx-auto card col-xs-12 col-lg-6 m-5">
       <%= form_with url: map_request_path, method: :get do |f|%>
         <%= f.text_field :address, class:"m-2" %>
         <%= f.submit '地図検索' %>

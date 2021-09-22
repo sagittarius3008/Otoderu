@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row d-flex mx-auto">
       <div class="d-flex mx-auto m-5 p-0">
-        <div class="col-6 card mr-3">
+        <div class="card col-6 mr-3">
           <h2 class="text-center m-4">登録済み楽器一覧</h2>
           <div style="height:500px; width:100%; overflow-y:scroll;">
             <% @instruments.each do |instrument| %>
@@ -26,7 +26,7 @@
           <div class="d-flex">
             <%= form_with model: @instrument, url: orchestras_instruments_path, method: :post, local:true do |f| %>
               <%= f.label "楽器名称" %>
-              <%= f.text_field :name, class: 'form-control　col-3 m-2' %>
+              <%= f.text_field :name, class: 'm-2' %>
               <%= button_tag :class =>"wrapper icon w-25 ml-3" do %>
                 <%= image_tag "img/icon/Hr.png", class: "img-icon" %>
                 <div class="small-font">登録</div>

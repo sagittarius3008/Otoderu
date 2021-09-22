@@ -1,7 +1,7 @@
 <div class="kamaishi photo">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
-      <div class="card col-9 d-flex mx-auto m-3 p-3">
+      <div class="card col-lg-6 col-10 d-flex mx-auto m-3 p-3">
         <div class="d-flex mx-auto">
           <h2 class="text-center mt-4">口コミ一覧</h2>
           <div class="tooltip1 mt-2"><i class="fas fa-question-circle fa-lg"></i>
@@ -13,39 +13,37 @@
         </a>
         <!--モーダルウィンドウ-->
         <div class="modal-panel-back disable">
-            <div class="modal-panel round">
+          <div class="modal-panel round">
             <h2 class="text-center m-4">口コミ登録</h2>
             <%= form_with model: @post, url: { controller: "members/posts", action: "create" }, method: :post, local:true do |f| %>
-            <div class="d-Table mx-auto">
-              <div class="d-TableBody">
-                <div class="d-TableRow">
-                  <div class="d-TableCell"><%= f.label "投稿内容" %></div>
-                  <div class="d-TableCell"><%= f.text_area :body, class: 'form-control',size: "30x10" %></div>
+              <div class="d-Table mx-auto">
+                <div class="d-TableBody">
+                  <div class="d-TableRow">
+                    <div class="d-TableCell"><%= f.label "投稿内容" %></div>
+                    <div class="d-TableCell"><%= f.text_area :body, class: 'form-control',size: "30x10" %></div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="text-center">
-              <%= f.hidden_field :orchestra_id, value: params[:id] %>
-              <%= button_tag :class =>"wrapper icon w-25" do %>
-                <%= image_tag "img/icon/Hr.png", class: "img-icon" %>
-                <div>登録</div>
-              <% end %>
-            </div>
+              <div class="text-center">
+                <%= f.hidden_field :orchestra_id, value: params[:id] %>
+                <%= button_tag :class =>"wrapper icon w-25" do %>
+                  <%= image_tag "img/icon/Hr.png", class: "img-icon" %>
+                  <div>登録</div>
+                <% end %>
+              </div>
             <% end %>
-            </div>
           </div>
+        </div>
+        <!---->
         <div style="height:600px; width:100%; overflow:scroll;">
           <table border="2" class="table">
             <thead>
               <tr class="text-center">
                 <th class="table-th4 align-middle">投稿</th>
                 <th class="table-th2 align-middle">
-                  <% if @posts.blank? %>
-                    評価値
-                  <% else %>
-                    <%= "評価値=#{@posts.average(:score).floor(2).to_f}" %>
-                  <% end %>
+                  <%= @posts.blank? ? "評価値" : "評価値=#{@posts.average(:score).floor(2).to_f}" %>
                 </th>
+                <th class="table-th4 align-middle">削除</th>
               </tr>
             </thead>
             <tbody>
@@ -53,6 +51,14 @@
               <tr>
                 <td class="align-middle text-center p-1"><%= post.body %></td>
                 <td class="align-middle text-center p-1"><%= post.score %></td>
+                <td class="align-middle text-center p-1">
+                  <% if post.member_id == current_member.id %>
+                    <%= form_with model: post, url: { controller: "members/posts", action: "destroy" }, method: :delete, local: true do |f| %>
+                      <%= f.hidden_field :id, value: post.id %>
+                      <%= f.submit '削除' %>
+                    <% end %>
+                  <% end %>
+                </td>
               </tr>
               <% end %>
             </tbody>

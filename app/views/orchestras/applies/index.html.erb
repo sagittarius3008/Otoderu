@@ -1,7 +1,7 @@
 <div class="kamaishi photo">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
-      <div class="mx-auto m-5 col-10 card">
+      <div class="mx-auto card col-lg-7 col-10 m-5">
       <h2 class="text-center m-4">承認待ち一覧</h2>
       <table border="2" class="table small-font">
         <thead>
@@ -11,8 +11,8 @@
             <th class="table-th3 align-middle">カナ</th>
             <th class="table-th2 align-middle">楽器</th>
             <th class="table-th5 align-middle">自己紹介</th>
-            <th class="table-th1 align-middle p-1"></th>
-            <th class="table-th1 align-middle p-1"></th>
+            <th class="table-th1 align-middle p-1">登録</th>
+            <th class="table-th1 align-middle p-1">却下</th>
           </tr>
         </thead>
         <tbody>
@@ -27,11 +27,15 @@
                 <%= form_with model: apply.member, url: members_orchestras_path, method: :post, local: true do |f| %>
                   <%= f.hidden_field :member_id, value: apply.member.id %>
                   <%= f.hidden_field :apply_id, value: apply.id %>
-                  <%= f.submit "登録" %>
+                  <%= button_tag :class =>"wrapper icon" do %>
+                    <%= image_tag "img/icon/Tp.png", class: "sm-icon" %>
+                  <% end %>
                 <% end %>
               </td>
               <td class="align-middle">
-                <%= link_to "却下", members_apply_path(apply), method: :delete, class:"mini-red-link-btn font-bold text-line-none" %>
+                <%= link_to members_apply_path(apply), method: :delete, class: "text-dark wrapper link-button" do %>
+                  <%= image_tag "img/icon/Tb.png", class: "sm-icon" %>
+                <% end %>
               </td>
             </tr>
           <% end %>

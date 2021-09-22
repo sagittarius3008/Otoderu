@@ -8,6 +8,7 @@ class Orchestra < ApplicationRecord
   has_many :applies
   has_many :practices
   has_many :members, through: :belongings
+  has_many :posts
 
   with_options presence: true do
     validates :name
