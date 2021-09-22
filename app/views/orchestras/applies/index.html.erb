@@ -27,11 +27,15 @@
                 <%= form_with model: apply.member, url: members_orchestras_path, method: :post, local: true do |f| %>
                   <%= f.hidden_field :member_id, value: apply.member.id %>
                   <%= f.hidden_field :apply_id, value: apply.id %>
-                  <%= f.submit "登録" %>
+                  <%= button_tag :class =>"wrapper icon" do %>
+                    <%= image_tag "img/icon/Tp.png", class: "sm-icon" %>
+                  <% end %>
                 <% end %>
               </td>
               <td class="align-middle">
-                <%= link_to "却下", members_apply_path(apply), method: :delete, class:"mini-red-link-btn font-bold text-line-none" %>
+                <%= link_to members_apply_path(apply), method: :delete, class: "text-dark wrapper link-button" do %>
+                  <%= image_tag "img/icon/Tb.png", class: "sm-icon" %>
+                <% end %>
               </td>
             </tr>
           <% end %>
