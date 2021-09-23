@@ -1,9 +1,8 @@
 module  Body
-  class Slack
+  class TestService
     def initialize(json)
         @json=json
     end
-    
     def execute
     #Faradayを使って、JSON形式のファイルをPOSTできるようにする
           conn = Faraday::Connection.new(:url => 'https://slack.com') do |builder|
@@ -13,12 +12,12 @@ module  Body
           end
       if @json[:event][:subtype] != "bot_message" #これがないと無限ループになる
         body = {
-                  :token => ENV['BOT_USER_ACCESS_TOKEN'],
+                  :token => ENV['BOT_USER_ACCESS_TOKEN'],#あとでherokuで設定します
                   :channel => @json[:event][:channel],#こうするとDM内に返信できます
                   :text  => "こんにちは、私はslackbotです！"
                 }
         conn.post '/api/chat.postMessage',body.to_json, {"Content-type" => 'application/json',"Authorization"=>"Bearer #{ENV['BOT_USER_ACCESS_TOKEN']}"}#ヘッダーはつけなければいけないらしい、このままで大丈夫です。
       end
     end
-  end 
+  end
 end
