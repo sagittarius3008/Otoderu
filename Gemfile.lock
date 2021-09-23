@@ -353,6 +353,7 @@ DEPENDENCIES
   dotenv-rails
   factory_bot_rails
   faker
+  faraday
   font-awesome-sass
   geocoder
   gimei
