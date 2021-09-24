@@ -9,15 +9,15 @@
         </div>
       </div>
       <!--カレンダー-->
-        <%= month_calendar events: @practices do |date, practices| %>
-          <%= date.day %>
-          <% practices.each do |practice| %>
-            <div class="small-font float1 tooltip1">
-              <%= link_to practice.orchestra.name, members_practice_path(practice), class: "practice-font sp-off" %>*
-              <span class="tooltip-text1"><%= simple_format(practice.note) %></span>
-            </div>
-          <% end %>
+      <%= month_calendar events: @practices do |date, practices| %>
+        <%= date.day %>
+        <% practices.each do |practice| %>
+          <div class="small-font float1 tooltip1">
+            <%= link_to practice.orchestra.name, members_practice_path(practice), class: "practice-font sp-off" %>*
+            <span class="tooltip-text1"><%= simple_format(practice.note) %></span>
+          </div>
         <% end %>
+      <% end %>
       <!---->
       <!--団体絞り込みフォーム-->
       <%= form_with url: {controller:"members/attendances", action: "search"}, method: :get, local: true do |f| %>

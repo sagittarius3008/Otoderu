@@ -84,7 +84,6 @@ $(document).on('turbolinks:load', function() {
 		// モーダルウィンドウ
 	$(function(){
 	  $('.js-open-modal').on('click', function(){
-	  	console.log("test");
 	    $(this).next().removeClass('disable');
 	  });
 	  $('.js-close-modal').on('click', function(e){
@@ -92,7 +91,6 @@ $(document).on('turbolinks:load', function() {
 	    $(this).parents('.modal-panel-back').addClass('disable');
 	  });
 	});
-// });
 // 外枠クリックでモーダルウィンドウ消去する
 $(function(){
   $('.modal-panel-back').on('click', function(){
@@ -105,8 +103,6 @@ $(function(){
     e.stopPropagation();
   })
 })
-
-
 
 	  $('a[href^="#"]').click(function(){
 	    var adjust = -40;
@@ -139,15 +135,6 @@ function PageTopAnime() {
 $(window).scroll(function () {
 	PageTopAnime();/* スクロールした際の動きの関数を呼ぶ*/
 });
-
-// ページが読み込まれたらすぐに動かしたい場合の記述
-// $(window).on('load', function () {
-// 	PageTopAnime();/* スクロールした際の動きの関数を呼ぶ*/
-
-
-// console.log("test");
-// });
-
 
 // #page-topボタン
 $('#page-top').click(function () {
