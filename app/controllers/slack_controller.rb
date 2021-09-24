@@ -7,15 +7,8 @@ class SlackController < ApplicationController
     when 'url_verification'
       render json: @body
     when 'event_callback'
-    Slack.configure do |config|
-      config.token = ENV['BOT_USER_ACCESS_TOKEN']
+      json_hash  = params[:slack]
+      Body::TestService.new(json_hash).execute
     end
-    client.chat_postMessage(
-      as_user: 'true',
-      channel: @body['event']['channel'],
-      text: @body['event']['text']
-    )
-    end
-    head :ok
   end
 end

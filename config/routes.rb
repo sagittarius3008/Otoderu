@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     resources :attendances, only:[:index, :show, :update] do
       collection do
         get 'search'
+        post 'update_all'
       end
     end
     resources :orchestras, only:[:index, :create] do

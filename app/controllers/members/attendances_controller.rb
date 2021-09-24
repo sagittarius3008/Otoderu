@@ -35,4 +35,9 @@ class Members::AttendancesController < ApplicationController
     attendance.save
     @member = Member.find_by(id: current_member.id)
   end
+
+  def update_all
+    Attendance.where(member_id:current_member.id).update_all(attendance_status:"出席")
+    redirect_to request.referer
+  end
 end
