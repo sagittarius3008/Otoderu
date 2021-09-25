@@ -1,7 +1,4 @@
 <p id="page-top"><a href="#">Page Top</a></p>
-<%= form_with  url:{controller:"members/attendances", action: "update_all"}, method: :post, local: true do |f| %>
-	<%= f.submit "一括参加", data: { confirm: "全ての練習を出席に変更します。\n出席以外の予定がありましたら別途修正をお願いします。"} %>
-<% end %>
 <div class="divTable fixed small-font m-2">
   <div class="divTableBody">
     <div class="divTableHeading">
