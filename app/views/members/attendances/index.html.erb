@@ -28,6 +28,12 @@
         </div>
       <% end %>
       <!---->
+      <%= form_with  url:{controller:"members/attendances", action: "update_all"}, method: :post, local: true do |f| %>
+        <div class="text-center d-flex m-2">
+          <div><%= f.select :attendance_status, {'未入力':'未入力', '出席':'出席', '欠席':'欠席'}, {include_blank: '選択ボックス'}, class: 'form-control font-size-standard' %></div>
+          <div class="m-1"><%= f.submit "一括変更", data: { confirm: "全ての出欠予定を変更します。\nその他の予定がありましたら別途修正をお願いします。"} %></div>
+        </div>
+      <% end %>
       <div id="attend" class="mx-auto">
         <%= render 'my_schedule', member: @member %>
       </div>
