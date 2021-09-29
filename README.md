@@ -1,4 +1,11 @@
 # Otoderu
+<p align="left"> 
+  <img src="https://img.shields.io/badge/-HTML5-333.svg?logo=html5&style=flat">
+  <img src="https://img.shields.io/badge/-CSS3-1572B6.svg?logo=css3&style=flat">
+  <img src="https://img.shields.io/badge/-Rails-CC0000.svg?logo=rubyonrails&style=flat">
+  <img src="https://img.shields.io/badge/Javascript-276DC3.svg?logo=javascript&style=flat">
+  <img src="https://img.shields.io/badge/-Amazon%20AWS-232F3E.svg?logo=amazon-aws&style=flat">
+</p>
 
 ![Demo](https://user-images.githubusercontent.com/83518855/131471852-b7817ded-56b1-412a-ac25-778ce5ecb9de.gif)
 
