@@ -1,5 +1,5 @@
 class SlackController < ApplicationController
-  # slackの認証を通過させるため、絞って認証をスキップ
+  # slackの認証を通過させるため
   skip_before_action :verify_authenticity_token
   def create
     @body = JSON.parse(request.body.read)
