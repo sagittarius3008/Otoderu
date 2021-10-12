@@ -18,6 +18,7 @@
         <!---->
       </li>
       <li><%= link_to "登録楽器一覧", orchestras_instruments_path, class:"nav-font" %></li>
+      <li><%= link_to "Q&A", about_path, class:"nav-font" %></li>
       <li><%= link_to "ログアウト", destroy_orchestra_session_path, method: :delete, class:"nav-font" %></li>
     <% elsif member_signed_in? %>
       <li class="d-flex vertical-align-center justify-content-center">
@@ -33,9 +34,11 @@
       </li>
       <li><%= link_to "マイページ", members_member_mypage_path, class:"nav-font" %></li>
       <li><%= link_to "入団申請", members_orchestras_path, class:"nav-font" %></li>
+      <li><%= link_to "Q&A", about_path, class:"nav-font" %></li>
       <li><%= link_to "ログアウト", destroy_member_session_path, method: :delete, class:"nav-font" %></li>
     <% else %>
       <li><%= link_to "Top", root_path, class:"nav-font" %></li>
+      <li><%= link_to "Q&A", about_path, class:"nav-font" %></li>
       <li class="d-flex justify-content-center font-weight-bold">
         ─────────────
         <div class="nav-font">団員</div>

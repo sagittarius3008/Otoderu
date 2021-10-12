@@ -9,15 +9,15 @@
         </div>
       </div>
       <!--カレンダー-->
-        <%= month_calendar events: @practices do |date, practices| %>
-          <%= date.day %>
-          <% practices.each do |practice| %>
-            <div class="small-font float1 tooltip1">
-              <%= link_to practice.orchestra.name, members_practice_path(practice), class: "practice-font sp-off" %>*
-              <span class="tooltip-text1"><%= simple_format(practice.note) %></span>
-            </div>
-          <% end %>
+      <%= month_calendar events: @practices do |date, practices| %>
+        <%= date.day %>
+        <% practices.each do |practice| %>
+          <div class="small-font float1 tooltip1">
+            <%= link_to practice.orchestra.name, members_practice_path(practice), class: "practice-font sp-off" %>*
+            <span class="tooltip-text1"><%= simple_format(practice.note) %></span>
+          </div>
         <% end %>
+      <% end %>
       <!---->
       <!--団体絞り込みフォーム-->
       <%= form_with url: {controller:"members/attendances", action: "search"}, method: :get, local: true do |f| %>
@@ -28,6 +28,12 @@
         </div>
       <% end %>
       <!---->
+      <%= form_with  url:{controller:"members/attendances", action: "update_all"}, method: :post, local: true do |f| %>
+        <div class="text-center d-flex m-2">
+          <div><%= f.select :attendance_status, {'未入力':'未入力', '出席':'出席', '欠席':'欠席'}, {include_blank: '選択ボックス'}, class: 'form-control font-size-standard' %></div>
+          <div class="m-1"><%= f.submit "一括変更", data: { confirm: "全ての出欠予定を変更します。\nその他の予定がありましたら別途修正をお願いします。"} %></div>
+        </div>
+      <% end %>
       <div id="attend" class="mx-auto">
         <%= render 'my_schedule', member: @member %>
       </div>

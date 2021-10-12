@@ -82,3 +82,4 @@ gem 'geocoder'
 gem 'bullet', group: 'development'
 gem "toastr-rails"
 gem 'social-share-button'
+gem 'faraday'

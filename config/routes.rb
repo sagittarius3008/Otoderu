@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     resources :attendances, only:[:index, :show, :update] do
       collection do
         get 'search'
+        post 'update_all'
       end
     end
     resources :orchestras, only:[:index, :create] do
@@ -47,7 +48,8 @@ Rails.application.routes.draw do
     resources :practices, only:[:index, :create, :show, :edit, :update, :destroy]
     resources :applies, only: [:index]
   end
-
+  
+  get 'about' => 'homes#about'
   get '/map_request', to: 'maps#map', as: 'map_request'
   post "/receive"=>"slack#create"
 

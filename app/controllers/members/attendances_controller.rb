@@ -35,4 +35,16 @@ class Members::AttendancesController < ApplicationController
     attendance.save
     @member = Member.find_by(id: current_member.id)
   end
+
+  def update_all
+    # TODO 本日以降の予定をアップデート
+    # [実現したいこと] => update_allでは難しい？
+    # Update attendances
+    # SET attendance_status = params[:attendance_status]
+    # WHERE member_id = current_member.id
+    # AND attendance.practice > Date.today
+    
+    Attendance.where(member_id:current_member.id).update_all(attendance_status: params[:attendance_status])
+    redirect_to request.referer
+  end
 end
