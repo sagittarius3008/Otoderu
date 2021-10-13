@@ -87,7 +87,7 @@
 - [テーブル定義書](https://docs.google.com/spreadsheets/d/1a9zYIdhUhD_8Z63i26BLWO315mVppMZ7koWDFI5wkVA/edit?usp=sharing)
 - [アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1lXLAcZVtGDKtB71RUtqQRwT3cMNWfw1PctalsSpCccA/edit?usp=sharing)
 - ER 図  
-  ![スクリーンショット 2021-09-11 224457](https://user-images.githubusercontent.com/83518855/132950076-1ef6e805-aed1-41f1-9db8-7d59615ad94f.png)
+  ![ER図](https://user-images.githubusercontent.com/83518855/134440951-acb6c928-3ca6-4d99-976d-40e85e25b100.png)
   
 ## 使用方法
 
