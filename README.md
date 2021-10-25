@@ -118,3 +118,4 @@ $ rails db:seed
 - [favicon.cc](https://www.favicon.cc)
 - [silhouetteAC](https://www.silhouette-ac.com/)
 - [Font Awesome](https://fontawesome.com/)
+
